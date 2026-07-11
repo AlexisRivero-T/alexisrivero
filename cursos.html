@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!--
+╔══════════════════════════════════════════════════════════════╗
+║  RED CATÓLICA — Alexis Rivero                          ║
+║  Archivo: cursos.html                                      ║
+║  Página: Cursos de formación católica                    ║
+╚══════════════════════════════════════════════════════════════╝
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cursos Gratuitos — Red Católica | Formación Católica</title>
+<meta name="description" content="Cursos gratuitos de formación católica. Apologética, catequesis, teología, Sagrada Escritura, historia de la Iglesia, espiritualidad y más. Por Alexis Rivero.">
+<meta name="keywords" content="cursos católicos gratis, catequesis, apologética, teología, formación católica, Sagrada Escritura">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://redcatolica.com/cursos.html">
+<meta property="og:title" content="Cursos Gratuitos — Red Católica">
+<meta property="og:description" content="Formación católica gratuita. Apologética, catequesis, teología y más.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root{--bg:#060609;--bg2:#0c0c14;--bg3:#13131f;--bg4:#1a1a28;--gold:#c9a84c;--gold-l:#e8d48b;--gold-d:#8a7230;--red:#a01c2d;--red-l:#d4374c;--red-d:#6b1020;--cream:#f5edd8;--text:#d8d0c4;--text2:#b0a898;--muted:#7a7268;--muted2:#555048;--bdr:rgba(201,168,76,.1);--bdr2:rgba(255,255,255,.05);--bdr3:rgba(255,255,255,.025);--shadow:0 4px 24px rgba(0,0,0,.4);--radius:12px;--radius-sm:8px;--transition:.25s cubic-bezier(.4,0,.2,1);--font-serif:'Playfair Display',Georgia,serif;--font-sans:'Inter',sans-serif;--max-w:1200px;--nav-h:56px}
+html.light-mode{--bg:#faf8f5;--bg2:#f0ece6;--bg3:#e8e2d8;--bg4:#ddd6c8;--text:#2a2520;--text2:#4a4540;--muted:#8a857d;--muted2:#aaa5a0;--bdr:rgba(0,0,0,.08);--bdr2:rgba(0,0,0,.05);--bdr3:rgba(0,0,0,.03);--shadow:0 4px 24px rgba(0,0,0,.08);--cream:#1a1510}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;touch-action:manipulation}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;-webkit-overflow-scrolling:touch;transition:background var(--transition),color var(--transition)}
+::selection{background:rgba(201,168,76,.3);color:#fff}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:rgba(201,168,76,.25);border-radius:3px}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button,input,textarea,select{font-family:var(--font-sans)}
+.serif{font-family:var(--font-serif)}.ctn{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;border-radius:var(--radius-sm);font-size:13px;font-weight:600;border:none;cursor:pointer;transition:all var(--transition);touch-action:manipulation;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--red);color:#fff}.btn-primary:hover{background:var(--red-l);box-shadow:0 0 24px rgba(160,28,45,.35)}
+.btn-gold{background:linear-gradient(to bottom,var(--gold-l),var(--gold));color:#000;box-shadow:0 0 20px rgba(201,168,76,.2)}.btn-gold:hover{box-shadow:0 0 32px rgba(201,168,76,.4);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--bdr)}.btn-outline:hover{border-color:var(--gold-d);background:rgba(201,168,76,.03)}
+.btn-sm{padding:7px 16px;font-size:11px;border-radius:7px}
+.btn-ghost{background:none;border:none;color:var(--muted);padding:6px 10px}.btn-ghost:hover{color:var(--text)}
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,6,9,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr);transition:background var(--transition)}
+html.light-mode .nav{background:rgba(250,248,245,.92)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-serif);font-size:15px;font-weight:600;color:var(--cream);transition:color var(--transition)}
+html.light-mode .nav-logo{color:var(--bg)}
+.nav-mark{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--red),var(--red-d));display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--gold);box-shadow:0 2px 10px rgba(160,28,45,.3)}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-link{padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--muted);transition:all var(--transition)}
+.nav-link:hover{color:var(--cream);background:rgba(255,255,255,.04)}
+html.light-mode .nav-link:hover{color:var(--bg);background:rgba(0,0,0,.04)}
+.nav-link.active{color:var(--gold-l)}
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav-toggle{display:none;background:none;border:none;color:var(--muted);cursor:pointer;padding:4px}
+.nav-theme-btn{background:none;border:none;color:var(--muted);cursor:pointer;padding:6px;border-radius:6px;transition:all var(--transition);display:flex}
+.nav-theme-btn:hover{color:var(--gold)}
+.nav-mobile{display:none;padding:12px 24px 16px;border-top:1px solid var(--bdr);max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease}
+.nav-mobile.open{max-height:600px;padding:16px 24px 20px}
+.nav-mobile-link{display:flex;align-items:center;gap:10px;padding:10px 0;font-size:14px;color:var(--muted);border-bottom:1px solid var(--bdr2);transition:color var(--transition)}
+.nav-mobile-link:last-child{border:none}
+.nav-mobile-link:hover{color:var(--cream)}
+.nm-icon{width:32px;height:32px;border-radius:7px;background:rgba(201,168,76,.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold-d);font-size:14px}
+@media(max-width:960px){.nav-links{display:none!important}.nav-toggle{display:flex}}
+@media(min-width:961px){.nav-mobile{display:none!important}}
+/* HERO CURSOS */
+.courses-hero{padding:calc(var(--nav-h) + 48px) 0 40px;text-align:center;position:relative;overflow:hidden}
+.courses-hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(201,168,76,.04) 0%,transparent 70%);pointer-events:none}
+.courses-hero h1{font-family:var(--font-serif);font-size:clamp(28px,5vw,46px);font-weight:800;color:var(--cream);line-height:1.08;margin-bottom:10px;position:relative}
+.courses-hero p{color:var(--muted);font-size:15px;max-width:560px;margin:0 auto 28px;line-height:1.7;font-weight:300;position:relative}
+.courses-hero-stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;position:relative}
+.ch-stat{text-align:center}
+.ch-stat-n{font-family:var(--font-serif);font-size:28px;font-weight:700;color:var(--gold-l)}
+.ch-stat-l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+/* FILTROS */
+.filters{position:sticky;top:var(--nav-h);z-index:50;background:rgba(6,6,9,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--bdr);padding:14px 0;transition:background var(--transition)}
+html.light-mode .filters{background:rgba(250,248,245,.92)}
+.filter-row{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:0 24px}
+.filter-btn{padding:6px 14px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;transition:all var(--transition);border:1px solid var(--bdr2);background:rgba(255,255,255,.015);color:var(--muted);white-space:nowrap;touch-action:manipulation;font-family:var(--font-sans)}
+.filter-btn:hover{border-color:var(--bdr);color:var(--text)}
+.filter-btn.active{border-color:var(--gold-d);background:rgba(201,168,76,.08);color:var(--gold-l)}
+.filter-search{flex:1;min-width:200px;padding:9px 14px;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid var(--bdr2);color:var(--cream);font-size:13px;outline:none;-webkit-appearance:none;touch-action:manipulation;margin:0 24px;width:100%;max-width:360px}
+.filter-search:focus{border-color:rgba(201,168,76,.35)}
+.filter-search::placeholder{color:var(--muted2)}
+/* CURSOS GRID */
+.courses-section{padding:24px 0 80px}
+.courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.courses-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.courses-grid{grid-template-columns:1fr}}
+/* CURSO CARD */
+.course-card{border-radius:var(--radius);background:var(--bg2);border:1px solid var(--bdr2);overflow:hidden;transition:all var(--transition);cursor:pointer;touch-action:manipulation}
+.course-card:hover{border-color:var(--bdr);transform:translateY(-2px);box-shadow:var(--shadow)}
+.course-thumb{position:relative;aspect-ratio:16/9;background:var(--bg3);overflow:hidden}
+.course-thumb img{width:100%;height:100%;object-fit:cover}
+.course-thumb-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(135deg,var(--bg3),var(--bg4))}
+.course-badge{position:absolute;top:10px;left:10px;padding:3px 10px;border-radius:6px;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;backdrop-filter:blur(8px)}
+.badge-free{background:rgba(34,197,94,.2);color:#4ade80;border:1px solid rgba(34,197,94,.25)}
+.badge-member{background:rgba(201,168,76,.2);color:var(--gold-l);border:1px solid rgba(201,168,76,.25)}
+.badge-new{background:rgba(96,165,250,.2);color:#93c5fd;border:1px solid rgba(96,165,250,.25)}
+.course-level{position:absolute;top:10px;right:10px;padding:3px 8px;border-radius:5px;font-size:9px;font-weight:600;backdrop-filter:blur(8px);background:rgba(0,0,0,.5);color:var(--text2);border:1px solid rgba(255,255,255,.08)}
+.course-body{padding:16px}
+.course-cat{display:inline-block;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-d);background:rgba(201,168,76,.06);margin-bottom:8px}
+.course-body h3{font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--cream);line-height:1.3;margin-bottom:6px}
+.course-body p{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.course-meta{display:flex;gap:14px;font-size:11px;color:var(--muted2);flex-wrap:wrap}
+.course-meta span{display:flex;align-items:center;gap:4px}
+.course-progress{margin-top:12px;padding-top:12px;border-top:1px solid var(--bdr2)}
+.course-progress-bar{height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;margin-bottom:6px}
+.course-progress-fill{height:100%;background:linear-gradient(to right,var(--gold-d),var(--gold));border-radius:2px;transition:width .5s ease}
+.course-progress-text{font-size:10px;color:var(--muted2);display:flex;justify-content:space-between}
+/* COURSO VIEWER (expandido dentro de la página) */
+.course-viewer{display:none;margin:0 0 24px;border-radius:var(--radius);background:var(--bg2);border:1px solid var(--bdr2);overflow:hidden;animation:cvIn .3s ease}
+.course-viewer.open{display:block}
+@keyframes cvIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.cv-header{padding:20px 24px;border-bottom:1px solid var(--bdr2);display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;background:var(--bg2);z-index:5}
+.cv-header h2{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--cream);flex:1;min-width:0}
+.cv-close{width:32px;height:32px;border-radius:7px;background:rgba(255,255,255,.03);border:none;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--transition);touch-action:manipulation;flex-shrink:0}
+.cv-close:hover{background:rgba(255,255,255,.07);color:var(--cream)}
+.cv-desc{padding:16px 24px;color:var(--text2);font-size:13px;line-height:1.7;border-bottom:1px solid var(--bdr2)}
+.cv-desc p{margin-bottom:8px}
+.cv-tabs{display:flex;gap:4px;padding:12px 24px;overflow-x:auto;border-bottom:1px solid var(--bdr2);-webkit-overflow-scrolling:touch}
+.cv-tab{padding:8px 14px;border-radius:8px 8px 0 0;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;border:none;border-bottom:2px solid transparent;background:none;transition:all var(--transition);white-space:nowrap;touch-action:manipulation}
+.cv-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.cv-tab:hover{color:var(--text)}
+.cv-tabcontent{display:none;padding:20px 24px}
+.cv-tabcontent.active{display:block}
+/* LECCIONES */
+.lesson{padding:16px 20px;border-radius:var(--radius-sm);background:rgba(255,255,255,.015);border:1px solid var(--bdr3);margin-bottom:10px;transition:all var(--transition)}
+.lesson:hover{background:rgba(201,168,76,.02);border-color:var(--bdr2)}
+.lesson-header{display:flex;align-items:center;gap:12px;cursor:pointer;touch-action:manipulation}
+.lesson-num{width:28px;height:28px;border-radius:6px;background:rgba(201,168,76,.08);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--gold);flex-shrink:0}
+.lesson-info{flex:1;min-width:0}
+.lesson-info h4{font-size:14px;font-weight:600;color:var(--cream);line-height:1.3}
+.lesson-info p{font-size:11px;color:var(--muted2);margin-top:2px}
+.lesson-arrow{color:var(--muted2);transition:transform .2s;flex-shrink:0}
+.lesson.open .lesson-arrow{transform:rotate(90deg)}
+.lesson-content{display:none;padding-top:12px}
+.lesson.open .lesson-content{display:block}
+.lesson-video{position:relative;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:var(--bg3);margin-bottom:10px}
+.lesson-video iframe{width:100%;height:100%;border:none}
+.lesson-text{font-size:14px;color:var(--text2);line-height:1.8}
+.lesson-text p{margin-bottom:10px}
+.lesson-text h5{font-family:var(--font-serif);font-size:15px;font-weight:600;color:var(--cream);margin:14px 0 6px}
+.lesson-text blockquote{border-left:2px solid var(--gold-d);padding:8px 14px;margin:10px 0;color:var(--gold-l);font-style:italic;font-family:var(--font-serif)}
+.lesson-text ul,.lesson-text ol{padding-left:20px;margin:8px 0}
+.lesson-text li{margin-bottom:4px;font-size:13px}
+/* ADD COURSE MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.8);align-items:flex-start;justify-content:center;padding:60px 12px 12px}
+.modal-overlay.open{display:flex}
+.modal-box{width:100%;max-width:680px;background:var(--bg2);border:1px solid var(--bdr2);border-radius:var(--radius);overflow:hidden;max-height:calc(100vh - 72px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.modal-header{padding:14px 20px;border-bottom:1px solid var(--bdr2);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--bg2);z-index:5}
+.modal-header h3{font-family:var(--font-serif);font-size:16px;font-weight:600;color:var(--cream);display:flex;align-items:center;gap:7px}
+.modal-close{width:30px;height:30px;border-radius:7px;background:rgba(255,255,255,.03);border:none;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--transition);touch-action:manipulation}
+.modal-close:hover{background:rgba(255,255,255,.07);color:var(--cream)}
+.modal-body{padding:20px}
+.mf{margin-bottom:14px}
+.mf label{display:block;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:4px}
+.mf input,.mf select,.mf textarea{width:100%;padding:9px 12px;border-radius:7px;background:rgba(255,255,255,.025);border:1px solid var(--bdr2);color:var(--cream);font-size:13px;outline:none;-webkit-appearance:none;touch-action:manipulation;transition:border-color var(--transition)}
+.mf input:focus,.mf select:focus,.mf textarea:focus{border-color:rgba(201,168,76,.35)}
+.mf textarea{min-height:80px;resize:vertical}
+.mf select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237a7268' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px}
+.mf select option{background:var(--bg2)}
+.lesson-adder{display:flex;gap:6px;margin-bottom:10px;align-items:flex-end}
+.lesson-adder input{flex:1}
+.lesson-adder button{padding:9px 14px;border-radius:7px;background:var(--gold);color:#000;font-size:11px;font-weight:600;border:none;cursor:pointer;white-space:nowrap;touch-action:manipulation}
+.added-lessons{max-height:200px;overflow-y:auto;margin-top:8px}
+.added-lesson{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;background:rgba(255,255,255,.02);border:1px solid var(--bdr3);margin-bottom:4px;font-size:12px;color:var(--text2)}
+.added-lesson span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.added-lesson button{background:none;border:none;color:#ef4444;cursor:pointer;padding:2px;flex-shrink:0;touch-action:manipulation}
+/* CTA */
+.courses-cta{background:linear-gradient(135deg,rgba(201,168,76,.04),transparent);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);text-align:center;padding:60px 0}
+.courses-cta h2{font-family:var(--font-serif);font-size:24px;font-weight:700;color:var(--cream);margin-bottom:10px}
+.courses-cta p{color:var(--muted);font-size:14px;margin-bottom:20px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+/* FOOTER */
+.site-footer{padding:32px 0;border-top:1px solid var(--bdr2)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-brand{display:flex;align-items:center;gap:8px}
+.footer-logo{width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,var(--red),var(--red-d));display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--gold)}
+.footer-copy{font-size:11px;color:var(--muted2)}
+.footer-links{display:flex;align-items:center;gap:16px}
+.footer-link{font-size:11px;color:var(--muted2);transition:color var(--transition)}
+.footer-link:hover{color:var(--gold)}
+/* TOAST */
+.toast-container{position:fixed;top:calc(var(--nav-h) + 12px);right:16px;z-index:600;display:flex;flex-direction:column;gap:6px;pointer-events:none}
+.toast{padding:10px 16px;border-radius:10px;font-size:13px;color:var(--cream);animation:tin .3s ease;display:flex;align-items:center;gap:8px;pointer-events:auto;backdrop-filter:blur(12px)}
+.toast-success{background:rgba(22,163,74,.15);border:1px solid rgba(22,163,74,.3)}
+.toast-error{background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.3)}
+.toast-info{background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3)}
+@keyframes tin{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+/* ANIM */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+.anim.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+/* RESPONSIVE */
+@media(max-width:480px){.ctn{padding:0 16px}.courses-hero-stats{gap:20px}.ch-stat-n{font-size:22px}.cv-header,.cv-tabs,.cv-tabcontent{padding-left:16px;padding-right:16px}.cv-desc{padding:12px 16px}.lesson{padding:12px 14px}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" role="navigation">
+  <div class="ctn"><div class="nav-inner">
+    <a href="index.html" class="nav-logo"><div class="nav-mark">✝</div><span>Red Católica</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="biblioteca.html" class="nav-link">Biblioteca</a>
+      <a href="apologetica.html" class="nav-link">Apologética</a>
+      <a href="libros.html" class="nav-link">Libros</a>
+      <a href="cursos.html" class="nav-link active">Cursos</a>
+      <a href="noticias.html" class="nav-link">Noticias</a>
+      <a href="donar.html" class="nav-link">Donar</a>
+      <a href="contacto.html" class="nav-link">Contacto</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-theme-btn" id="themeToggle"><i data-lucide="sun" style="width:16px;height:16px" id="themeIcon"></i></button>
+      <button class="nav-toggle" id="navToggle"><i data-lucide="menu" style="width:20px;height:20px" id="menuIcon"></i></button>
+    </div>
+  </div></div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="index.html" class="nav-mobile-link"><span class="nm-icon">🏠</span>Inicio</a>
+    <a href="biblioteca.html" class="nav-mobile-link"><span class="nm-icon">📖</span>Biblioteca</a>
+    <a href="apologetica.html" class="nav-mobile-link"><span class="nm-icon">🛡️</span>Apologética</a>
+    <a href="libros.html" class="nav-mobile-link"><span class="nm-icon">📚</span>Libros</a>
+    <a href="cursos.html" class="nav-mobile-link"><span class="nm-icon">🎓</span>Cursos</a>
+    <a href="noticias.html" class="nav-mobile-link"><span class="nm-icon">📰</span>Noticias</a>
+    <a href="membresias.html" class="nav-mobile-link"><span class="nm-icon">⭐</span>Membresías</a>
+    <a href="donar.html" class="nav-mobile-link"><span class="nm-icon">💝</span>Donaciones</a>
+    <a href="contacto.html" class="nav-mobile-link"><span class="nm-icon">✉️</span>Contacto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="courses-hero">
+  <div class="ctn">
+    <p style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);margin-bottom:8px;position:relative">Formación católica gratuita</p>
+    <h1>Cursos</h1>
+    <p>Formación integral en la fe católica. Cursos gratuitos de apologética, catequesis, teología, Sagrada Escritura, historia de la Iglesia y espiritualidad. Todo dentro de tu plataforma.</p>
+    <div class="courses-hero-stats">
+      <div class="ch-stat"><div class="ch-stat-n" id="statCourses">0</div><div class="ch-stat-l">Cursos</div></div>
+      <div class="ch-stat"><div class="ch-stat-n" id="statLessons">0</div><div class="ch-stat-l">Lecciones</div></div>
+      <div class="ch-stat"><div class="ch-stat-n">Gratis</div><div class="ch-stat-l">Siempre</div></div>
+      <div class="ch-stat"><div class="ch-stat-n">100%</div><div class="ch-stat-l">Católico</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTROS -->
+<div class="filters" id="filtersBar">
+  <div class="filter-row">
+    <input type="search" class="filter-search" id="searchInput" placeholder="Buscar cursos..." autocomplete="off" spellcheck="false">
+    <button class="filter-btn active" data-cat="Todos">Todos</button>
+    <button class="filter-btn" data-cat="Apologética">Apologética</button>
+    <button class="filter-btn" data-cat="Catequesis">Catequesis</button>
+    <button class="filter-btn" data-cat="Teología">Teología</button>
+    <button class="filter-btn" data-cat="Escritura">Escritura</button>
+    <button class="filter-btn" data-cat="Historia">Historia</button>
+    <button class="filter-btn" data-cat">Espiritualidad">Espiritualidad</button>
+    <button class="filter-btn" data-cat="Moral">Moral</button>
+    <button class="filter-btn" data-cat="Propio">Mis cursos</button>
+  </div>
+</div>
+
+<!-- CURSOS GRID -->
+<section class="courses-section">
+  <div class="ctn">
+    <div class="courses-grid" id="coursesGrid"></div>
+  </div>
+</section>
+
+<!-- CURSO VIEWER (se inserta dinámicamente) -->
+<div id="courseViewerSlot"></div>
+
+<!-- CTA -->
+<section class="courses-cta">
+  <div class="ctn">
+    <h2>¿Tenés un curso que compartir?</h2>
+    <p>Si creaste contenido de formación católica y querés que llegue a miles de personas, contactá para incluirlo en esta plataforma.</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:4px">
+      <button class="btn btn-outline btn-sm" onclick="openAddCourse()"><i data-lucide="plus-circle" style="width:14px;height:14px"></i> Agregar curso</button>
+      <a href="contacto.html" class="btn btn-ghost btn-sm"><i data-lucide="mail" style="width:14px;height:14px"></i> Contactar</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="ctn"><div class="footer-inner">
+    <div class="footer-brand"><div class="footer-logo">✝</div><span class="footer-copy">© 2025 Alexis Rivero · Red Católica</span></div>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Inicio</a>
+      <a href="biblioteca.html" class="footer-link">Biblioteca</a>
+      <a href="contacto.html" class="footer-link">Contacto</a>
+    </div>
+  </div></div>
+</footer>
+
+<!-- TOASTS -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- MODAL AGREGAR CURSO -->
+<div class="modal-overlay" id="addCourseModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3><i data-lucide="graduation-cap" style="width:16px;height:16px;color:var(--gold)"></i>Agregar Curso</h3>
+      <button class="modal-close" onclick="closeAddCourse()"><i data-lucide="x" style="width:14px;height:14px"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="mf"><label>Título del curso *</label><input type="text" id="acTitle" placeholder="Ej: Introducción a la Apologética"></div>
+      <div class="mf"><label>Categoría *</label>
+        <select id="acCat">
+          <option value="">Seleccionar</option>
+          <option value="Apologética">Apologética</option>
+          <option value="Catequesis">Catequesis</option>
+          <option value="Teología">Teología</option>
+          <option value="Escritura">Escritura</option>
+          <option value="Historia">Historia</option>
+          <option value="Espiritualidad">Espiritualidad</option>
+          <option value="Moral">Moral</option>
+        </select>
+      </div>
+      <div class="mf"><label>Nivel</label>
+        <select id="acLevel"><option value="Inicial">Inicial</option><option value="Intermedio">Intermedio</option><option value="Avanzado">Avanzado</option></select>
+      </div>
+      <div class="mf"><label>Descripción</label><textarea id="acDesc" placeholder="Descripción del curso..."></textarea></div>
+      <div class="mf"><label>Imagen URL (opcional)</label><input type="url" id="acImg" placeholder="https://..."></div>
+      <div class="mf"><label>Lecciones</label>
+        <div class="added-lessons" id="addedLessons"></div>
+        <div class="lesson-adder">
+          <input type="text" id="lessonTitle" placeholder="Título de la lección">
+          <input type="url" id="lessonUrl" placeholder="URL del video YouTube (opcional)">
+          <button onclick="addLessonField()">+</button>
+        </div>
+        <p style="font-size:10px;color:var(--muted2);margin-top:4px">Para texto, dejá la URL vacía y escribí el contenido en el campo de abajo. Para video, pegá la URL de YouTube.</p>
+        <div class="mf" id="lessonTextWrap" style="display:none"><label>Contenido de texto (opcional)</label><textarea id="lessonText" rows="4" placeholder="Escribí el contenido de esta lección..."></textarea></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:16px">
+        <button class="btn btn-gold" style="flex:1;justify-content:center" onclick="saveCourse()"><i data-lucide="save" style="width:14px;height:14px"></i> Guardar curso</button>
+        <button class="btn btn-outline" onclick="closeAddCourse()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  lucide.createIcons();
+  initTheme();
+  initNav();
+  initFilters();
+  initCourses();
+  animateStats();
+  loadCustomCourses();
+});
+
+// ===== TEMA =====
+function initTheme() {
+  const s = localStorage.getItem('rc_theme');
+  if (s === 'light') document.documentElement.classList.add('light-mode');
+  updateThemeIcon();
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    document.documentElement.classList.toggle('light-mode');
+    localStorage.setItem('rc_theme', document.documentElement.classList.contains('light-mode') ? 'light' : 'dark');
+    updateThemeIcon();
+  });
+}
+function updateThemeIcon() {
+  const l = document.documentElement.classList.contains('light-mode');
+  const i = document.getElementById('themeIcon');
+  if (i) { i.setAttribute('data-lucide', l ? 'moon' : 'sun'); lucide.createIcons({nodes:[i]}); }
+}
+
+// ===== NAV =====
+function initNav() {
+  const t = document.getElementById('navToggle'), m = document.getElementById('navMobile'), mi = document.getElementById('menuIcon');
+  t.addEventListener('click', () => {
+    const o = m.classList.toggle('open');
+    t.setAttribute('aria-expanded', o);
+    mi.setAttribute('data-lucide', o ? 'x' : 'menu');
+    lucide.createIcons({nodes:[mi]});
+  });
+  m.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    m.classList.remove('open');
+    t.setAttribute('aria-expanded', 'false');
+    mi.setAttribute('data-lucide', 'menu');
+    lucide.createIcons({nodes:[mi]});
+  }));
+  let ls = 0;
+  window.addEventListener('scroll', () => { const s = window.scrollY; if (s > ls && s > 100) m.classList.remove('open'); ls = s; }, {passive:true});
+}
+
+// ===== FILTROS =====
+let activeCat = 'Todos';
+function initFilters() {
+  const btns = document.querySelectorAll('.filter-btn');
+  btns.forEach(b => b.addEventListener('click', () => {
+    btns.forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    activeCat = b.dataset.cat;
+    renderCourses();
+  }));
+  document.getElementById('searchInput').addEventListener('input', () => renderCourses());
+}
+
+// ===== DATOS DE CURSOS =====
+const COURSES = [
+  {
+    id: 'apolo-01', title: 'Introducción a la Apologética Católica', cat: 'Apología', level: 'Inicial', badge: 'free', thumb: '📚',
+    desc: '¿Qué es la apologética y por qué es necesaria? Aprendé los fundamentos para defender la fe con seguridad bíblica, patrística e histórica.',
+    img: '', color: 'rgba(160,28,45,.15)',
+    lessons: [
+      { title: '¿Qué es la apologética católica?', type: 'text', content: '<h5>Definición</h5><p>La apologética católica es la rama de la teología que se dedica a la defensa racional de la fe cristiana. Proviene del griego <em>apología</em>, que significa "defensa". No se trata de pedir disculpas, sino de dar <strong>razones de la esperanza</strong> (1 Pedro 3,15).</p><h5>Orígenes bíblicos</h5><p><strong>Judas 3:</strong> "Contended ardientemente por la fe que ha sido entregada una vez por todos los santos."</p><p><strong>1 Pedro 3,15:</strong> "Estad siempre prontos para dar razón de vuestra esperanza a todo el que os la pidiere."</p><p><strong>Hechos 17:11:</strong> Pablo "diagramaba y disputaba en la sinagoga cada día, y persuadía a judíos y griegos."</p><h5>Pilares de la apología</h5><ul><li><strong>Escritura:</strong> La Biblia como fuente primaria de la revelación</li><li><strong>Tradición:</strong>> Los Padres de la Iglesia como testigos</li><li><strong>Razón:</strong> Lógica y argumentación coherente</li><li><strong>Magisterio:</strong> El Papa y los obispos como guía</li><li><strong>Historia:</strong> Los 2000 años de fe documentada</li></ul>' },
+      { title: 'Los tres pilares: Escritura, Tradición y Magisterio', type: 'text', content: '<h5>De Sola Scriptura a Sola Scriptura?</h5><p>Los hermanos separados de Roma rechazan la Tradición y el Magisterio, afirmando que <strong>solo la Biblia</strong> es fuente de fe. Pero este principio no aparece en ningún texto bíblico.</p><blockquote>"Os he escrito por carta esta breve exhortación: que mantengáis la tradición que habéis aprendido de nosotros, de palabra o por carta." — 2 Tesalonicenses 2,15</blockquote><h5>La Iglesia como intérprete autorizada</h5><p>La misma Biblia nos dice que la Iglesia es "columna y fundamento de la verdad" (1 Tim 3,15). Si la Iglesia no tiene autoridad para interpretar la Escritura, ¿quién la tiene? Cada creyente individual se convertiría en su propio papa.</p><blockquote>"El Espíritu Santo os guiará a toda la verdad." — Juan 16,13</blockquote><p>Es el Espíritu Santo quien guía a la Iglesia hacia toda la verdad, no cada individuo por su cuenta. Por eso Jesús prometió: "Estaré con vosotros todos los días hasta el fin del mundo" (Mt 28,20).</p><h5>Conclusión</h5><p>La fe católica no es "Biblia sola" sino "Biblia en su contexto propio": la Iglesia que escribió la Biblia, la preservó, la canonizó y la interpreta con la asistencia del Espíritu Santo.</p>' },
+      { title: 'Cómo responder a las objeciones más comunes', type: 'text', content: '<h5>Objeción: "Los católicos adoran a María y a los santos"</h5><p>La palabra "adorar" en español puede significar "venerar" o "dar culto supremo". Los católicos <strong>veneran</strong> a María y a los santos, pero adoramos <strong>solo a Dios</strong>. El honor que les damos es como el que se le da a una fotografía: no es el retrato lo que adoramos, sino la persona que representa.</p><blockquote>"Honra a tu padre y a tu madre, como manda el Señor tu Dios." — Éxodo 20,12</blockquote><h5>Objeción: "¿Por qué confesás los pecados a un sacerdote?"</h5><p>La confesión sacramental tiene un fundamento bíblico sólido:</p><p><strong>Juan 20,22-23:</strong> "Sopló sobre ellos y les dijo: Recibid el Espíritu Santo. A quienes remitiereis los pecados, les son remitidos; a quienes se los retuviereis, les son retenidos."</p><p>Es Cristo quien actúa a través del sacerdote, no el sacerdote por su propio poder. Igual que en Juan 20,23 Cristo mismo les dice "a quienes perdonéis", no "a quienes ustedes perdonan".</p><h5>Objeción: "La Biblia dice que solo por fe se es salvo"</h5><p><strong>Santiago 2,24:</strong> "Ya veis que el hombre es justificado por las obras, y no solamente por la fe."</p><p><strong>Romanos 2,6-8:</strong> "Dios pagará a cada uno según sus obras." </p><p>La fe que salva no es un "asentimiento intelectual" vacío, sino una fe que "obra por el amor" (Gálatas 5,6). La fe sin obras está muerta (Santiago 2,17). Es la fe viva la que justifica.</p>' },
+    ]
+  },
+  {
+    id: 'cateq-01', title: 'Catecismo de la Iglesia Católica — Curso completo', cat: 'Catequesis', level: 'Inicial', badge: 'free', thumb: '📖',
+    desc: 'Recorrido completo del Catecismo de la Iglesia Católica en lecciones accesibles. Las 4 partes: Profesión de fe, Sacramentos, Vida en Cristo y Oración.',
+    img: '', color: 'rgba(34,197,94,.12)',
+    lessons: [
+      { title: '¿Qué es el Catecismo?', type: 'text', content: '<p>El Catecismo de la Iglesia Católica (CIC) es el libro que expone de forma sistemática y completa la doctrina católica. Fue promulgado por San Juan Pablo II el 11 de octubre de 1992.</p><p>No es un manual de estudios bíblicos ni un tratado de teología especulativa. Es una exposición <strong>oficial</strong> de la fe de la Iglesia, destinada a todos los fieles, no solo a especialistas.</p><blockquote>"Este Catecismo está destinado no solo a los pastores y teólogos, sino a todos los fieles cristianos." — Juan Pablo II</blockquote>' },
+      { title: 'Estructura: las 4 partes', type: 'text', content: '<h5>Parte I — Profesión de la fe</h5><p>Cómo Dios se revela al hombre, la respuesta del hombre a Dios, las características de la fe, el lenguaje de la fe, la Sagrada Escritura, la Tradición Apostólica, la interpretación del depósito de la fe, el Magisterio de la Iglesia.</p><h5>Parte II — Los Sacramentos de la fe</h5><p>Los 7 sacramentos: Bautismo, Confirmación, Eucaristía, Penitencia, Unción de los Enfermos, Orden Sagrado, Matrimonio. Su origen bíblico, su significado, cómo se celebran y su gracia.</p><h5>Parte III — La vida en Cristo</h5><p>La dignidad de la persona humana, la vocación del hombre, la libertad, la ley moral, las virtudes teologales y cardinales, el pecado, la necesidad de la gracia.</p><h5>Parte IV — La oración cristiana</h5><p>La oración en el Antiguo y Nuevo Testamento, Jesús maestro de oración, el Padre Nuestro explicado verso por verso, las 7 peticiones y la oración de contemplación.</p>' },
+      { title: 'La Revelación: Dios se da a conocer', type: 'text', content: '<h5>Dios habla al hombre</h5><p>Dios no se queda callado. A lo largo de la historia, se ha revelado progresivamente: a Adán y Eva, a los patriarcas, a Moisés y los profetas, y definitivamente en Jesucristo, el Verbo hecho carne.</p><blockquote>"Dios, habiendo hablado antiguamente muchas veces y de muchas maneras a los padres por los profetas, en estos últimos días nos ha hablado por su Hijo." — Hebreos 1,1-2</blockquote><h5>La Sagrada Escritura</h5><p>La Biblia es la Palabra de Dios escrita bajo la inspiración del Espíritu Santo. Contiene todo lo que Dios quiso revelarnos para nuestra salvación. Pero la Biblia no se interpreta de forma aislada, sino dentro de la Tradición viva de la Iglesia.</p><h5>La Tradición Apostólica</h5><p>La Tradición es la transmisión viva de la fe, que acompaña a la Escritura. Los Apóstoles entregaron a sus sucesores lo que recibieron de Cristo. Esta Tradición se transmite mediante la predicación, el testimonio, los escritos, la liturgia y la práctica pastoral.</p><blockquote>"Conservad las tradiciones que habéis aprendido de nosotros, de palabra o por carta." — 2 Tesalonicenses 2,15</blockquote>' },
+    ]
+  },
+  {
+    id: 'teo-01', title: 'Introducción a la Teología Dogmática', cat: 'Teología', level: 'Intermedio', badge: 'free', thumb: '⛪',
+    desc: 'Los grandes misterios de la fe: la Trinidad, la Encarnación, la Redención, la Gracia y la Iglesia. Fundamentos teológicos para entender y defender la fe.',
+    img: '', color: 'rgba(74,32,112,.12)',
+    lessons: [
+      { title: 'La Santísima Trinidad', type: 'text', content: '<p>El misterio central de la fe cristiana: un solo Dios en tres Personas distintas. No son tres dioses, sino un solo Dios subsistiendo en tres Personas iguales en naturaleza pero distintas en origen.</p><h5>El fundamento bíblico</h5><p><strong>Mateo 28,19:</strong> "Bautizándolos en el <strong>nombre del Padre y del Hijo y del Espíritu Santo</strong>."</p><p>Jesús mismo ordenó bautizar en el nombre de las tres Personas, no "en los nombres" (plural), indicando un solo nombre divino compartido.</p><p><strong>2 Corintios 13,13:</strong> "La gracia del Señor Jesucristo, el amor de Dios y la comunión del Espíritu Santo sean con todos vosotros."</p><h5>Padres de la Iglesia</h5><p><strong>San Atanasio:</strong> "El Padre es uno, el Hijo es otro, el Espíritu Santo es otro; pero la divinidad es una."</p><p><strong>San Agustín:</strong> "Si ves la caridad, ves a la Trinidad."</p><h5>Contra las herejías trinitarias</h5><p>Arrianismo (Dios creado, Hijo creado, no de la misma naturaleza) — Condenado en Nicea I (325). Sabidurianismo (tres dioses distintos, el Hijo no es eterno) — Condenado en Constantinopla I (381).</p>' },
+      { title: 'La Encarnación: Dios se hizo hombre', type: 'text', content: '<h5>El misterio de la Navidad</h5><p>Dios no se hizo hombre por necesidad, sino por amor. El Verbo eterno se hizo carne y habitó entre nosotros (Juan 1,14). Esta no es una apariencia: Jesús es verdadero Dios y verdadero hombre, una sola persona con dos naturalezas.</p><blockquote>"Y el Verbo se hizo carne, y habitó entre nosotros, y vimos su gloria, gloria como del unigénito del Padre." — Juan 1,14</blockquote><h5>Contra las herejías cristológicas</h5><p><strong>Docetismo:</strong> Cristo parecía humano pero no lo era, solo tenía apariencia humana (Condenado en Éfeso, 431).</p><p><strong>Monofisismo:</strong> La naturaleza divina de Cristo absorbió la humana, dejándolo sin humanidad real (Condenado en Calcedonia, 451).</p><p>La Iglesia enseña claramente: dos naturalezas, una divina y una humana, unidas en una sola persona, sin confusión, sin cambio, sin división, sin separación.</p><h5>¿Por qué importa?</h5><p>Si Cristo no es verdaderamente hombre, no puede morir en la cruz. Si no puede morir, no puede resucitar. Si no resucita, no hay salvación. La Encarnación es esencial para nuestra redención.</p>' },
+      { title: 'La Gracia: cómo Dios nos salva', type: 'text', content: '<h5>¿Gratis o mediante los sacramentos?</h5><p>Los protestantes enseñan que la salvación es "solo por fe, sin obras". Pero la Biblia enseña que somos justificados por la fe que obra por el amor (Gálatas 5,6) y que el bautismo nos salva (1 Pedro 3,21).</p><h5>La gracia es una participación real</h5><p>La gracia no es solo un "perdón externo". Es una participación real en la vida de Cristo. Mediante los sacramentos, Dios infunde en nosotros su vida divina, transformándonos de dentro hacia fuera.</p><blockquote>"Porque por gracia habéis sido salvos mediante la fe, y esto no proviene de vosotros; es don de Dios." — Efesios 2,8</blockquote><h5>Cooperar con la gracia</h5><p>San Agustín lo expresó bellamente: "El que te creó sin ti no te justificará sin ti. El que te creó sin ti no te santificará sin ti."</p><p>No podemos salvarnos por nuestro propio esfuerzo, pero tampoco debemos resistir la gracia. La cooperación con la gracia significa corresponder activamente al llamado de Dios a la conversión, a los sacramentos y a la vida de oración.</p>' },
+    ]
+  },
+  {
+    id: 'esc-01', title: 'Cómo leer la Biblia católicamente', cat: 'Escritura', level: 'Inicial', badge: 'free', thumb: '📜',
+    desc: 'Método católico de lectura bíblica. No basta leer la Biblia: hay que leerla como la Iglesia nos enseña, con la guía del Magisterio.',
+    img: '', color: 'rgba(201,168,76,.12)',
+    lessons: [
+      { title: 'Principios de interpretación católica', type: 'text', content: '<h5>1. La Biblia es un solo libro</h5><p>La Biblia no es una colección de libros sueltos, sino una unidad orgánica. Cada libro se lee a la luz del todo. La Biblia se interpreta a la luz de sí misma y del Espíritu Santo que la inspiró.</p><h5>2. La Biblia se lee en la Iglesia</h5><p>El "sentido pleno" de la Escritura no surge de la interpretación individual, sino del "sentido de la Iglesia". Es el Magisterio (Papa y obispos en comunión) quien tiene la autoridad de interpretar auténticamente.</p><h5>3. La Biblia se lee en contexto</h5><p>Cada pasaje se interpreta según el género literario: poema, historia, profecía, carta, apocalíptico. No se puede tomar un verso aislado y construir toda una doctrina sin considerar el contexto amplio.</p><h5>4. La Escritura y la Tradición van juntas</h5><p>La Sagrada Escritura y la Tradición forman un solo depósito de la fe. No se pueden separar. La Tradición nos dice qué libros pertenecen al canon bíblico y cómo interpretarlos correctamente.</p><blockquote>"La Sagrada Tradición y la Sagrada Escritura están íntimamente unidas y compenetradas entre sí. Ambas brotan de una misma fuente divina y tienden a un mismo fin." — Dei Verbum 9</blockquote><h5>5. La Biblia se lee con la fe de la Iglesia</h5><p>La lectura católica de la Biblia no es un ejercicio académico frío. Es un acto de fe: escuchar a Dios que nos habla a través de sus palabras para alimentar nuestra vida espiritual.</p>' },
+      { title: 'Géneros literarios de la Biblia', type: 'text', content: '<h5>Libros históricos</h5><p>Génesis, Éxodo, Josué, Jueces, Reyes, Crónicas, Esdras, Nehemías, Macabeos. Narran la historia de la salvación. Se leen como historia de la relación de Dios con su pueblo.</p><h5>Libros sapienciales</h5><p>Job, Salmos, Proverbios, Eclesiástés, Cantar de los Cantares, Sabiduría, Eclesiástico. Contienen himnos, oraciones, reflexiones sobre el sufrimiento, la sabiduría y el amor.</p><h5>Libros proféticos</h5><p>Isaías, Jeremías, Ezequiel, Daniel, los 12 profetas menores. Llamaban a la conversión, anunciaban el Mesías, denunciaban la injusticia. Se leen como promesas de Dios y denuncias proféticas.</p><h5>Evangelios</h5><p>Mateo, Marcos, Lucas, Juan. Cuatro perspectivas complementarias sobre la vida y enseñanzas de Jesús. Juan es el más teológico; Lucas el más histórico; Marcos el más conciso; Mateo el que más conecta con el AT.</p><h5>Cartas y Apocalipsis</h5<p>Las cartas paulinas aplican la fe a situaciones concretas de las primeras comunidades. El Apocalipsis es literatura apocalíptica: no es un código secreto del fin del mundo, sino un mensaje de esperanza para los perseguidos.</p>' },
+      { title: 'Plan de lectura sugerido', type: 'text', content: '<h5>Para principiantes</h5><p><strong>1. Evangelio de Marcos</strong> — El evangelio más corto y dinámico. Lectura recomendada: 1 capítulo al día.</p><p><strong>2. Evangelio de Juan</strong> — El más profundo. Leer con calma, meditando cada pasaje.</p><p><strong>3> Génesis 1-3</strong> — Orígenes de todo. Fundamento para entender el resto.</p><h5>Para intermedios</h5><p><strong>4. Romanos</strong> — La síntesis de la teología paulina. Lento, capítulo por capítulo.</p><p><strong>5> Salmos seleccionados</strong> — 23, 51, 103, 119, 139.</p><p><strong>6> Isaías 40-55</strong> — Los cantos del Siervo Sufridor. El texto mesiánico por excelencia.</p><h5>Para avanzados</h5><p><strong>7. Juan 5-8</strong> — Discurso de la Última Cena, promesas, oración sacerdotal.</p><p><strong>8> Romanos 9-11</strong> — El plan de Dios para Israel y la Iglesia.</p><p><strong>9> Apocalipsis 1-5</strong> — Cartas a las 7 iglesias. Con comentarios de Padres de la Iglesia.</p>' },
+    ]
+  },
+  {
+    id: 'hist-01', title: 'Historia de la Iglesia — 2000 años de fe', cat: 'Historia', level: 'Intermedio', badge: 'free', thumb: '🏛️',
+    desc: 'Un recorrido por los 20 siglos de historia de la Iglesia Católica, desde los mártires hasta nuestros días. Concilios, herejías, santos y conversiones.',
+    img: '', color: 'rgba(234,179,8,.12)',
+    lessons: [
+      { title: 'La Iglesia primitiva (I-III siglo)', type: 'text', content: '<p>Los primeros cristianos se reunían en las casas para la "fracción del pan" y la "oración" (Hechos 2,42). Eran mayormente judíos que creyeron que Jesús era el Mesías.</p><h5>Persecución romana</h5><p>Nerón culpó a los cristianos del incendio de Roma (64 d.C.). Muchos mártires dieron testimonio con su sangre. El coliseo fue escenario de martirio. Tertuliano escribió: "La sangre de los mártires es semilla de cristianos."</p><h5>Los Padres Apostólicos</h5><p><strong>San Clemente de Roma</strong> (c. 96) — Tercer obispo de Roma. Carta a los Corintios sobre la sucesión apostólica.</p><p><strong>San Ignacio de Antioquía</strong> (c. 107-110) — Testimonio de la sucesión de Pedro y los obispos.</p><p><strong>San Policarpo de Esmirna</strong> (c. 69-155) — Discípulo de Juan el Apóstol. Mártir quemado vivo.</p><p><strong>San Justino Mártir</strong> (c. 100-165) — Primer apologista cristiano. Explicó la fe cristiana al emperador.</p><p><strong>San Ireneo de Lyon</strong> (c. 130-202) — "Contra las herejías" y "Demostración de la predicación apostólica". Demostró que las herejías son posteriores a la Iglesia.</p><p><strong>San Hipólito de Roma</strong> (c. 170-236) — "Refutación de todas las herejías". Primero en usar el término "católica" para la Iglesia universal.</p>' },
+      { title: 'Los grandes Concilios (IV-VIII siglo)', type: 'text', content: '<h5>Nicea I (325) — Contra el arrianismo</h5><p>Definió que el Hijo es "de la misma naturaleza" que el Padre. Formuló el Credo Niceno que rezamos hoy. 318 obispos asistieron.</p><blockquote>"Creemos en un solo Señor Jesucristo, Hijo único de Dios, engendrado, no creado, de la misma naturaleza que el Padre."</blockquote><h5>Constantinopla I (381) — Contra el pneumatomaquismo</h5><p>Añadió al Credo que el Espíritu Santo es "Señor y dador de vida" y que el Hijo es "de la misma naturaleza". 150 obispos.</p><h5>Éfeso (431) — María Theotókos</h5><p>Definió que María es "Madre de Dios" (Theotókos). Contra el nestorianismo que separaba las dos naturalezas de Cristo. "Si alguno no confiesa que María es Madre de Dios, sea anatema."</p><h5>Calcedonia (451) — Dos naturalezas de Cristo</h5><p>Definió que Cristo es "una sola y misma persona en dos naturalezas, sin confusión, sin cambio, sin división, sin separación". Contra el monofisismo de Eutiques. 630 obispos.</p><h5>Laterano IV (1215) — Transubstanciación</h5><p>Definió la presencia real de Cristo en la Eucaristía: la sustancia del pan y del vino se convierte en el Cuerpo y Sangre de Cristo. Contra la doctrina de Conrado de Marburg que decía que era solo simbólico.</p>' },
+      { title: 'Edad Media (XI-XV siglo)', type: 'text', content: '<h5>Monacato y preservación</h5><p>Los monjes copiaban manuscritos durante siglos en scriptorios. Sin ellos, gran parte de la literatura antigua se habría perdido. San Benito y la orden benedictina fueron fundamentales.</p><h5>Las Cruzadas</h5>
+<p>Expediciones militares para recuperar Tierra Santa. Una página oscura de la historia. La IV Cruzada saqueó Constantinopla en 1204. La Iglesia condenó estos excesos pero no puede negar que sucedieron.</p><h5>El Cisma de Oriente (1054)</h5>
+<p>El patriarca de Constantinopla excomulgó al Papa. Este cisma, que persiste hasta hoy, es una de las heridas más dolorosas de la Iglesia.</p><h5>La Inquisición</h5>
+<p>Tribunal eclesiástico creado para combatir la herejía. Funcionaba principalmente en España. Fue excesiva en sus métodos, pero su existencia no es toda la historia de la Iglesia como muchos piensan.</p><h5>San Francisco de Asís</h5>
+<p>Reformó la Iglesia desde abajo. Renunció la riqueza y fundó la Orden Franciscana. Demostró que la santidad no requiere poder, sino amor.</p><h5>Santo Tomás de Aquino</h5>
+<p>Sintetizó la fe con la razón (aristotelismo). Su "Suma Teológica" sigue siendo la obra teológica más importante de la historia occidental.</p><h5>San Ignacio de Loyola</h5>
+<p>Fundó la Compañía de Jesús. Sus Ejercicios Espirituales son una de las obras maestras de la espiritualidad cristiana. La Contrarreforma nació como respuesta a los problemas que él ya había identificado.</p>' },
+      { title: 'La Contrarreforma y la Reforma Católica', type: 'text',   content: '<h5>Los problemas que San Ignacio ya veía</h5><p>Lutero publicó sus 95 tesis en 1517, desafiando la venta de indulgencias. Lo que muchos presentan como "reforma" era una rebelión contra la Iglesia.</p><h5>El Concilio de Trento (1545-1563)</h5>
+<p>La respuesta de la Iglesia. Reformó la disciplina eclesiástica, reafirmó las 73 libros bíblicos (contra los 66 protestantes), definió la doctrina de los sacramentos, la justificación por fe y obras, el primado del Papa, la Tradición y el valor de las indulgencias.</p><h5>La verdadera Reforma Católica</h>
+<p>No fue Lutero, sino santos como San Carlos Borromeo, San Roberto Belarmino, San Francisco de Borja, San Francisco de Sales, Santa Teresa de Jesús, San Juan de la Cruz, San Pedro Canisio. Ellos renovaron la Iglesia desde adentro.</p><h5>Mártires de la reforma</h5><p>San Tomás Moro, San Juan Fisher, San Pío V — sacerdotes fieles que murieron por no aceptar el protestantismo.</p>' },
+      { title: 'Iglesia Moderna (XVI-XX siglo)', type: 'text', content: '<h5>Vaticano I (1869-1870) — Primado e infalibilidad</h5>
+<p>Definió el primado jurisdiccional del Papa sobre toda la Iglesia y su infalibilidad cuando habla <em>ex cathedra</em>. Fue interrumpido por la invasión italiana. El texto fue aprobado pero la sesión no concluyó.</p><h5>León XIII y la Rerum Novarum (1891)</h5>
+>Encíclica sobre la condición de los obreros. Promovió la doctrina social de la Iglesia: salario justo, descanso dominical, sindicatos, seguridad social. Muchos estados la ignoraron, pero influyó en las leyes laborales modernas.</p><h5>Concilio Vaticano II (1962-1965)</h5>
+<p>21 concilio ecuménico convocado por San Juan XXIII. Documentos clave: <strong>Lumen Gentium</strong> (sobre la Iglesia), <strong>Dei Verbum</strong> (sobre la Revelación), <strong>Gaudium et Spes</strong> (sobre la alegría), <strong>Dignitatis Humanae</strong> (sobre la dignidad humana), <strong>Nostra Aetate</strong> (sobre la alegría y esperanza), <strong>Sacrosanctum Concilium</strong> (sobre la liturgia).</p><h5>San Juan Pablo II y el nuevo milenio</h5>
+<p>El Papa peregrino que viajó más que cualquier Papa en la historia. Canonizó más santos que ningún otro Papa. Contribuyó enormemente a la caída del comunismo. Su Catecismo es el primero escrito para laicos en toda la historia de la Iglesia.</p><p>Falleció el 2 de abril de 2005. "No tengáis miedo."</p>' },
+    ]
+  },
+  {
+    id: 'espi-01', title: 'Los Ejercicios Espirituales de San Ignacio', cat: 'Espiritualidad', level: 'Intermedio', badge: 'free', thumb: '🕊️',
+    dist: '4 semanas', img: '', color: 'rgba(201,168,76,.12)',
+    desc: 'El método espiritual más practicado del mundo cristiano. 4 semanas para purificar el alma y ordenar la vida según la voluntad de Dios.',
+    lessons: [
+      { title: 'Principio y Fundamento', type: 'text', content: '<h5>La meta:Buscar y encontrar la voluntad de Dios</h5><p>Los Ejercicios no son una técnica de relajación ni un manual de meditación genérica. Son un método estructurado para <strong>discernir la voluntad de Dios</strong> en cada decisión y ordenar la vida entera según ese discernimiento.</p><blockquote>"El hombre es creado para alabar, hacer reverencia y servir a Dios nuestro Señor, y mediante esto salvar su alma." — Principio y Fundamento</blockquote><h5>Tres momentos clave</h5><p><strong>1. Considerar (Pensar):</strong> ¿Qué hago esto? ¿Esto me acerca de Dios o me aleja? ¿Estoy en gracia o en pecado?</p><p><strong>2. Comparar (Sentir):</strong> ¿Qué pasaría si hago esto? ¿Qué pasaría si no lo hago? ¿Cuál opción me acerca más a Dios?</p><p><strong>3. Decidir (Querer):</strong> Elegir lo que más me acerca a Dios, y actuar en consecuencia.</p><h5>Regla de San Ignacio</h5><p>"En todo buscar la voluntad de Dios" — Esta regla resume todo. No es un ejercicio pasivo: es activo y constante. Se aplica en los grandes momentos de la vida Y en los pequeños.</p><h5>No es autoayuda</h5>
+<p>Los Ejercicios no son un "manual de vida fácil". Exigen honestidad radical con uno mismo. Puede ser incómodo. Ese es parte del proceso de purificación que San Ignacio llamaba "purificación espiritual".</p>' },
+      { title: 'Primera Semana: Purificación', type: 'text', content: '<h5>Día 1: Principio y Fundamento</h5><p>Comenzá con una oración preparatoria: "Señor, yo quiero hacer esta retreat con sinceridad. Deseo escuchar tu voz. Muéstrame tu voluntad para ordenar mi vida."</p><p>Recuerda: el objetivo no es "sentirse bien" sino <strong>buscar la voluntad de Dios</strong>.</p><p>Luego del 1 al 5: ¿Qué hago con mi tiempo libre? ¿Me acerca a Dios o me aleja? ¿Hablo de Dios con otros o me quedo en silencio?</p><h5>Día 2: Pecado personal</h5><p>Examina tu vida con honestidad. No se trata de hacer una lista de pecados para sentir culpa. Se trata de reconocer las actitudes, palabras y omisiones que te alejan de Dios.</p><p>Mira especialmente: orgullo, envidia, resentimiento, chisme, falta de caridad, sensualidad, pereza, gula, pereza espiritual.</p><blockquote>"La mayor tentación es fingir que no tenemos pecado." — San Juan de la Cruz</blockquote><p>Termina pidiendo perdón por cada pecado reconocido, con propósito de enmienda.</p><h5>Día 3: La Pasión</h5>
+<p>Medita la Pasión de Cristo lentamente. No como una historia lejana, sino como algo real y presente. Jesús sufrió todo eso <strong>por ti</strong>.</p><p>¿Tengo cruz en mi vida? ¿Acepto el sufrimiento con paciencia o me quejo de él?</p><h5>Día 4: La muerte del ego</h5>
+<p>Reconoce que el egoísmo es la raíz de muchos pecados. El deseo de ser visto, aprobado y agradado nos aleja de Dios.</p><p>"Morir al ego" no significa aniquilarse a sí mismo. Significa dejar de vivir para que Cristo viva en ti. Morir al orgullo, a la vanidad, a la soberbia.</p><h5>Día 5: Cinco pecados del mundo</h5>
+<ul><li><strong>Avaricia:</strong> El deseo desordenado de tener más de lo necesario, a costa de los demás.</li>
+<li><strong>Lujuria:</strong> El deseo desordenado de placeres sexuales fuera del matrimonio.</li>
+<li><strong>Gula:</strong> El exceso en comida y bebida, desperdicio de recursos.</li>
+<li><strong>Pereza:</strong> El enojo desordenado ante el éxito ajeno.</li>
+<li><strong>Pereza espiritual:</strong> La envidia por la santidad ajena, resentimiento por la gracia que Dios da a otros.</li></ul>
+<p>Termina pidiendo perdón y gracia para vencer estos pecados.</p>' },
+      { title: 'Segunda Semana: Meditación', type: 'text', content: '<h5>Día 6-7: La meditación</h5>
+<p>Medita la vida de Cristo: su nacimiento en un pesebre, su vida sencilla, su obediencia al Padre, su compasión por los pecadores, su oración constante, su arresto, su pasión y su muerte.</p>
+<p>¿Cómo resuélves problemas? ¿Te enojas con los que discrepan? ¿Juzgas sin conocer los motivos? ¿Consuelas sin escuchar?</p>
+<h5>Día 8: Las tres edades de la vida</h5>
+<p><strong>Infancia:</strong> Cuando eras niño, ¿fuiste obediente o rebelde? Da gracias por los padres que te formaron en la fe.</p>
+<p><strong>Juventud:</strong> ¿Buscaste a Dios en tu juventud? ¿Viviste la fe como un estorbo? ¿Te alejaste por presiones del mundo?</p>
+<p><strong>Adulto:</strong> ¿Estás viviendo con coherencia lo que crees? ¿Tu fe es viva o solo cultural?</p>
+<h5>Día 9-10: Los dos bandos</h5>
+<p>San Ignacio describe la batalla entre el "buen espíritu" (ángeles) y el "mal espíritu" (demonios). Cada decisión es una batalla espiritual.</p>
+<p>¿En qué bando estás? ¿Vives según el mundo o según el Evangelio? ¿Eres del mundo o de Dios?</p>
+<p>Termina con una oración pidiendo la gracia para elegir siempre el buen espíritu.</p>' },
+      { title: 'Tercera Semana: La elección', type: 'text', content: '<h5>Día 11-12: Las dos bandos (cont.)</h5>
+<p>Cada día se presenta una elección concreta: ¿vencer la pereza con generosidad? ¿Ser amable con el que te ofende? ¿Hablar bien de quien habla mal de ti?</p>
+<h5>Día 13-14: Los tres grados de humildad</h5>
+<p><strong>Grado 1:</strong> Humildad externa — No buscar el primer lugar, no presumir, dejarse servir.</p>
+<p><strong>Grado 2:</strong> Humildad interna — No pensar "soy mejor que los demás", no juzgarse a sí mismo de manera negativa.</p>
+<p><strong>Grado 3:</strong> Humildad profunda — Reconocer que todo bien que tengo es don de Dios y que sin Él no soy nada.</p>
+<h5>Día 15-16: Contemplación y acción</h5>
+<p>Medita el misterio de la Encarnación: Dios se hizo pequeño para hacernos grandes. El Creador del universo nació en un pesebre.</p>
+<p>¿Respondes con gratitud? ¿Reconoces que todo lo que tienes viene de Dios? ¿Compartes tu fe con otros?</p>
+<h5>Día 17-18: Decisiones concretas</h5>
+<p>¿Hay una decisión que has estado postergando por miedo o pereza? ¿Hay un llamado de Dios que ignoras? ¿Hay una relación que necesitas sanar?</p>
+<p>Termina con un compromiso concreto de cambio y una oración de entrega total a Dios.</p>' },
+      { title: 'Cuarta Semana: Consolación y unión', type: 'text', content: '<h5>Día 19-20: Consolación</h5>
+<p>Medita la Pasión de Cristo como fuente de consuelo para los que sufren injustamente. Jesús entendió el sufrimiento porque Él mismo lo vivió.</p>
+<p>¿Hay sufrimientos en tu vida? ¿Los ofreces a Dios o te rebelas contra Él? ¿Confías en que Él puede sacar bien del mal?</p>
+<h5>Día 21-22: Unión con Dios</h5>
+<p>Medita la Eucaristía como el sacramento de la unión con Cristo. No es solo un símbolo: es la presencia real de Cristo en la Iglesia y en cada alma que lo recibe.</p>
+<p>¿Te acercas a la Eucaristía con fe viva? ¿La recibes con preparación y devoción?</p>
+<h5>Día 23-24: Entrega total</h5>
+<p>Haz un examen general de tu vida: ¿estás en gracia de Dios? ¿Hay pecado no confesado? ¿Hay alguien a quien necesitas pedir perdón?</p>
+<p>Tu vida pertenece a Dios. Entrégasela completamente. No retengas nada para ti. La entrega total trae paz interior.</p>
+<p>Termina con la Oración de Abandono: "Tómalo, Señor, y recíbeme todo. Todo es tuyo."</p>
+<p>San Ignacio dice que esta oración siempre es escuchada. No es una fórmula mágica, sino una expresión de total confianza en la misericordia de Dios.</p>
+<h5>Conclusión de la Tercera Semana</h5>
+<p>Los Ejercicios no terminan con la cuarta semana. Son un método de vida. El verdadero fruto se ve en la transformación gradual de tu vida diaria: más paz, más caridad, más cercanía con Dios.</p>
+<p>San Ignacio recomendaba repetir los Ejercicios al menos una vez al año, idealmente cada trimestre. La vida cristiana es un camino, no un destino que se alcanza de una vez.</p>' },
+    ]
+  },
+  {
+    id: 'moral-01', title: 'Moral Católica: Fundamentos', cat: 'Moral', level: 'Inicial', badge: 'free', thumb: '⚖️',
+    dist: '6 lecciones', img: '', color: 'rgba(239,68,68,.12)',
+    desc: 'Los fundamentos de la moral católica. Ley natural, ley divina, virtudes, pecado, gracia y la conciencia moral.',
+    lessons: [
+      { title: 'Ley Natural', type: 'text', content: '<h5>La ley escrita en el corazón</h5>
+<p>San Pablo dice que la ley moral no existe solo en las tablas de Moisés, sino que está "escrita en los corazones" (Romanos 2,15). Todos los pueblos del mundo, de alguna forma, saben que matar es mal y que es bueno ayudar al prójimo.</p>
+<h5>Los mandamientos como camino</h5>
+<p>Los 10 mandamientos no son una lista arbitraria de prohibiciones, sino un camino de libertad. Son como las instrucciones de un padre que sabe qué es mejor para sus hijos.</p>
+<p>Jesús resumió toda la ley en dos mandamientos: <strong>"Amarás al Señor tu Dios" y "Amarás al prójimo como a ti mismo"</strong> (Mateo 22,37-40).</p>
+<h5>Cumplimiento en el corazón, no solo en la pizarra</h5>
+<p>El fariseo cumplía la ley exteriormente pero su corazón estaba lejos de Dios. La ley moral católica exige que el corazón se conforme a la ley, no solo las acciones.</p>
+<blockquote>"No penséis que he venido a abolir la ley o a los profetas. No he venido a abolir, sino a dar plenitud a la ley." — Mateo 5,17</blockquote>' },
+      { title: 'Ley Divina y ley natural', type: 'text', content: '<h5>Ley natural vs. Ley divina</h5>
+<p>La <strong>ley natural</strong> se conoce por la razón humana (no necesariamente por revelación): no matar, no robar, no mentir, honrar padres, etc.</p>
+<p>La <strong>ley divina</strong> va más allá: incluye los 10 mandamientos, el Sermón del Monte, las bienaventuranzas, el mandamiento del amor, y todo lo que Cristo enseñó.</p>
+<p>La Iglesia reconoce que la ley natural participa de la ley divina, pero la ley divina la perfecciona y amplía la comprensión.</p>
+<h5>Objeción: "La ley católica es muy difícil de cumplir"</h5>
+<p>Nadie dijo que es fácil. Cristo dijo que el camino es estrecho (Mateo 7,13-14). Pero con la gracia de los sacramentos, la oración y la comunidad de la Iglesia, es perfectamente posible.</p>
+<blockquote>"Mi yugo es llevado con muchas persecuciones, pero la Iglesia crece cada día." — Tertuliano, Apología, cap. 37</blockquote>' },
+      { title: 'Virtudes teologales y cardinales', type: ' text', content: '<h5>Las virtudes teologales</h5>
+<p>Las tres virtudes teologales (fe, esperanza, caridad) son infundidas directamente por Dios en el bautismo. Son un <strong>don de Dios</strong>, no un logro humano.</p>
+<p>La fe no es solo creer que Dios existe, sino <strong>confiar plenamente</strong> en Él, incluso en las dificultades.</p>
+<p>La esperanza cristiana no es optimismo ciego, sino <strong>seguridad en la promesa de Dios</strong> de que cumplirá lo que dijo.</p>
+<p>La caridad no es solo ser amable, sino <strong>amar hasta al enemigo</strong>, como enseñó Jesús (Mateo 5,44-48).</p>
+<h5>Las virtudes cardinales</h5>
+<p><strong>Prudencia:</strong> La virtud de decidir correctamente en cada situación. No es cobardía, sino sabiduría práctica.</p>
+<p><strong>Justicia:</strong> Dar a cada uno lo que le corresponde: a Dios la adoración, al prójimo el respeto, a uno mismo la honestidad.</p>
+<p><strong>Fortaleza:</strong> La virtud de mantenerse firme en el bien ante presiones, dificultades y persecuciones. No es dureza, sino constancia.</p>
+<p><strong>Templanza:</strong> moderar el placer para que no se convierta en desorden. El placer es bueno, pero debe estar ordenado.</p>' },
+      { title: 'Pecado, gracia y conciencia', type: 'text', content: '<h5>¿Qué es el pecado?</h5>
+<p>San Agustín lo definió: "Es amor desordenado hacia un bien inferior." No es solo "hacer algo mal", sino un desorden del amor que debe ordenarse hacia Dios.</p>
+<p>El pecado daña la relación con Dios, destruye la paz interior, lastima al prójimo y tiene consecuencias eternas si no se arrepiente.</p>
+<h5>La gracia no es solo "perdón"</h5>
+<p>La gracia de Dios no es solo que Dios "pase por alto" el pecado. Es una <strong>participación real en la vida divina</strong>. Nos transforma interiormente, nos da fuerzas para vencer el pecado y nos hace capaces de amar como Dios nos ama.</p>
+<blockquote>"La gracia no suprime la naturaleza, la sana, sino la perfecciona." — Trento, Dz 23</blockquote>
+<h5>La conciencia moral</h5>
+<p>La conciencia es la voz de Dios en el interior. No es un sentimiento subjetivo ni una "voz interior vaga". Es el juicio práctico de la razón sobre la moralidad de nuestras acciones.</p>
+<p>Debe formarse con la Palabra de Dios, con la enseñanza de la Iglesia y con el examen de la conciencia. Una conciencia no formada fácilmente se vuelve arbitraria.</p>
+<blockquote>"Si tu ojo te escandaliza, arranca lo que escandaliza." — Mateo 5,29</blockquote>' },
+    ]
+  },
+];
+
+// ===== CARGAR Y RENDERIZAR CURSOS =====
+let allCourses = [...COURSES];
+let customCourses = [];
+
+function loadCustomCourses() {
+  try {
+    const s = localStorage.getItem('rc_courses');
+    if (s) customCourses = JSON.parse(s);
+  } catch(e) {}
+  allCourses = [...COURSES, ...customCourses];
+  renderCourses();
+  animateStats();
+}
+
+function renderCourses() {
+  const grid = document.getElementById('coursesGrid');
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  let filtered = allCourses;
+
+  if (activeCat !== 'Todos') {
+    if (activeCat === 'Propio') {
+      filtered = customCourses;
+    } else {
+      filtered = allCourses.filter(c => c.cat === activeCat);
+    }
+  }
+
+  if (search) {
+    filtered = filtered.filter(c =>
+      c.title.toLowerCase().includes(search) ||
+      c.desc.toLowerCase().includes(search) ||
+      c.cat.toLowerCase().includes(search)
+    );
+  }
+
+  if (!filtered.length) {
+    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px 0;color:var(--muted2);font-size:13px">No se encontraron cursos para ese filtro.</p>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(c => {
+    const thumbStyle = c.img
+      ? `<img src="${c.img}" alt="${esc(c.title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover">`
+      : `<div class="course-thumb-placeholder">${c.thumb}</div>`;
+
+    return `
+      <div class="course-card" onclick="openCourse('${c.id}')" data-id="${c.id}">
+        <div class="course-thumb">${thumbStyle}
+          <span class="course-badge badge-${c.badge}">${c.badge === 'free' ? 'Gratis' : c.badge === 'member' ? 'Miembro' : 'Nuevo'}</span>
+          <span class="course-level">${c.level}</span>
+        </div>
+        <div class="course-body">
+          <div class="course-cat">${c.cat}</div>
+          <h3>${esc(c.title)}</h3>
+          <p>${esc(c.desc)}</p>
+          <div class="course-meta">
+            <span><i data-lucide="book-open" style="width:12px;height:12px"></i> ${c.lessons.length} lecciones</span>
+            <span><i data-lucide="clock" style="width:12px;height:12px"></i> ${c.dist || 'Autoestudio'}</span>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function animateStats() {
+  const totalCourses = allCourses.length;
+  const totalLessons = allCourses.reduce((s, c) => s + c.lessons.length, 0);
+  const el1 = document.getElementById('statCourses');
+  const el2 = document.getElementById('statLessons');
+  if (el1) el1.textContent = totalCourses;
+  if (el2) el2.textContent = totalLessons;
+}
+
+// ===== VER CURSO (dentro de la página) =====
+function openCourse(id) {
+  const course = allCourses.find(c => c.id === id);
+  if (!course) return;
+
+  const slot = document.getElementById('courseViewerSlot');
+  const tabs = ['info', 'lessons'];
+  const levelColors = { 'Inicial': 'rgba(34,197,94,.15)', 'Intermedio': 'rgba(96,165,250,.15)', 'Avanzado': 'rgba(201,168,76,.15)' };
+
+  let html = `<div class="course-viewer open" id="cv_${id}">`;
+  html += `<div class="cv-header">
+    <h2>${esc(course.title)}</h2>
+    <button class="cv-close" onclick="closeCourse('${id}')"><i data-lucide="x" style="width:14px;height:14px"></i></button>
+  </div>`;
+
+  // Tab Info
+  html += `<div class="cv-tabcontent active" id="cv_info_${id}">`;
+  html += `<div class="cv-desc">`;
+  html += `<p style="margin-bottom:12px">${esc(course.desc)}</p>`;
+  html += `<div style="display:flex;gap:10px;flex-wrap:wrap">`;
+  html += `<span style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--muted)"><i data-lucide="book-open" style="width:13px;height:13px;color:var(--gold-d)"></i>${course.lessons.length} lecciones</span>`;
+  html += `<span style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--muted)"><i data-lucide="clock" style="width:13px;height:13px;color:var(--muted)"></i>${course.dist || 'Autoestudio'}</span>`;
+  html += `<span style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:${levelColors[course.level]}"><i data-lucide="signal" style="width:13px;height:13px"></i>${course.level}</span>`;
+  html += `</div></div>`;
+  html += `</div></div>`;
+
+  // Tab Lessons
+  html += `<div class="cv-tabcontent" id="cv_lessons_${id}">`;
+  course.lessons.forEach((l, i) => {
+    html += `<div class="lesson" id="less_${id}_${i}">
+      <div class="lesson-header" onclick="toggleLesson('${id}',${i})">
+        <div class="lesson-num">${i + 1}</div>
+        <div class="lesson-info">
+          <h4>${esc(l.title)}</h4>
+          <p>${l.type === 'video' ? '▶ Video' : '📖 Texto'}</p>
+        </div>
+        <span class="lesson-arrow"><i data-lucide="chevron-right" style="width:14px;height:14px"></i></span>
+      </div>
+      <div class="lesson-content" id="lcontent_${id}_${i}">`;
+    if (l.type === 'video' && l.url) {
+      html += `<div class="lesson-video"><iframe src="https://www.youtube.com/embed/${l.url}" loading="lazy" allowfullscreen title="${esc(l.title)}"></iframe></div>`;
+    } else {
+      html += `<div class="lesson-text">${l.content || '<p style="color:var(--muted2);font-style:italic">Sin contenido de texto para esta lección.</p>'}</div>`;
+    }
+    html += `</div></div>`;
+  });
+  html += `</div></div>`;
+
+  // Scroll al viewer
+  slot.innerHTML = html;
+  setTimeout(() => slot.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+
+  lucide.createIcons({ nodes: slot.querySelectorAll('[data-lucide]') });
+}
+
+function toggleCourse(id) {
+  const el = document.getElementById('cv_' + id);
+  if (!el) return;
+  const isOpen = el.classList.toggle('open');
+  if (!isOpen) el.remove();
+}
+
+function closeCourse(id) {
+  const el = document.getElementById('cv_' + id);
+  if (!el) return;
+  el.classList.remove('open');
+  setTimeout(() => el.remove(), 300);
+}
+
+function toggleLesson(id, i) {
+  const el = document.getElementById('less_' + id + '_' + i);
+  if (!el) return;
+  el.classList.toggle('open');
+}
+
+function closeAddCourse() {
+  document.getElementById('addCourseModal').classList.remove('open');
+  document.getElementById('acTitle').value = '';
+  document.getElementById('acDesc').value = '';
+  document.getElementById('acImg').value = '';
+  document.getElementById('acLevel').selectedIndex = 0;
+  document.getElementById('addedLessons').innerHTML = '';
+  document.getElementById('lessonTextWrap').style.display = 'none';
+  document.getElementById('lessonTitle').value = '';
+  document.getElementById('lessonUrl').value = '';
+  document.getElementById('lessonText').value = '';
+}
+
+let tempLessons = [];
+function addLessonField() {
+  const t = document.getElementById('lessonTitle').value.trim();
+  const u = document.getElementById('lessonUrl').value.trim();
+  const tx = document.getElementById('lessonText').value.trim();
+
+  if (!t) { toast('Escribí un título para la lección', 'error'); return; }
+
+  if (u) {
+    document.getElementById('lessonTextWrap').style.display = 'none';
+    tempLessons.push({ title: t, type: 'video', url: u });
+  } else {
+    document.getElementById('lessonTextWrap').style.display = 'block';
+    tempLessons.push({ title: t, type: 'text', content: tx || '' });
+  }
+
+  renderAddedLessons();
+  document.getElementById('lessonTitle').value = '';
+  document.getElementById('lessonUrl').value = '';
+  document.getElementById('lessonText').value = '';
+}
+
+function renderAddedLessons() {
+  const c = document.getElementById('addedLessons');
+  if (!tempLessons.length) { c.innerHTML = '<p style="font-size:11px;color:var(--muted2)">Sin lecciones agregadas.</p>'; return; }
+  c.innerHTML = tempLessons.map((l, i) =>
+    `<div class="added-lesson"><span>${i + 1}. ${esc(l.title)}</span><button onclick="removeLesson(${i})" title="Eliminar" aria-label="Eliminar lección"><i data-lucide="trash-2" style="width:12px;height:12px"></i></button></div>`
+  ).join('');
+  lucide.createIcons({ nodes: c.querySelectorAll('[data-lucide]') });
+}
+
+function removeLesson(i) {
+  tempLessons.splice(i, 1);
+  renderAddedLessons();
+}
+
+function saveCourse() {
+  const title = document.getElementById('acTitle').value.trim();
+  const cat = document.getElementById('acCat').value;
+  const level = document.getElementById('acLevel').value;
+  const desc = document.getElementById('acDesc').value.trim();
+  const img = document.getElementById('acImg').value.trim();
+
+  if (!title || !cat) { toast('Completá título y categoría', 'error'); return; }
+  if (tempLessons.length === 0) { toast('Agregá al menos una lección', 'error'); return; }
+
+  const course = {
+    id: 'custom-' + Date.now(),
+    title, cat, level, desc, img,
+    badge: 'new',
+    lessons: tempLessons.map(l => ({
+      title: l.title,
+      type: l.type,
+      url: l.url || '',
+      content: l.content || ''
+    }))
+  };
+
+  customCourses.push(course);
+  try { localStorage.setItem('rc_courses', JSON.stringify(customCourses)); } catch(e) {}
+  closeAddCourse();
+  allCourses = [...COURSES, ...customCourses];
+  renderCourses();
+  animateStats();
+  toast('Curso guardado exitosamente', 'success');
+}
+
+// ===== TOAST =====
+function toast(m, t) {
+  t = t || 'info';
+  const c = document.getElementById('toastContainer');
+  const el = document.createElement('div');
+  const icons = { success: 'check-circle-2', error: 'alert-circle', info: 'info' };
+  el.className = `toast toast-${t}`;
+  el.innerHTML = `<i data-lucide="${icons[t]||'info'}" style="width:14px;height:14px;flex-shrink:0"></i>${esc(m)}`;
+  c.appendChild(el);
+  lucide.createIcons({ nodes: [el] });
+  setTimeout(() => { el.style.opacity = '0'; el.style.transition = 'opacity .3s'; setTimeout(() => el.remove(), 300); }, 3500);
+}
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+</script>
+</body>
+</html>
