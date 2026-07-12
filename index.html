@@ -1,562 +1,369 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red Católica. | Alexis Rivero</title>
+    <title>Red Católica Alexis Rivero</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque&wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#0a0a0a;--bg2:#171717;--card:rgba(255,255,255,0.05);--t1:#fff;--t2:rgba(255,255,255,0.6);--t3:rgba(255,255,255,0.4);--t4:rgba(255,255,255,0.25);--acc:#10b981;--accg:rgba(16,185,129,0.15);--accs:#34d399;--bdr:rgba(255,255,255,0.1);--bdh:rgba(255,255,255,0.2);--red:#ef4444;--blue:#3b82f6;--purple:#a855f7;--warn:#f59e0b;--orange:#f97316;--ytred:#ff0000}
+        html{scroll-behavior:smooth}
+        body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;overflow-x:hidden}
+        body::before{content:'';position:fixed;top:-200px;right:-200px;width:800px;height:500px;background:radial-gradient(ellipse,rgba(16,185,129,0.06),transparent 70%);filter:blur(100px);pointer-events:none;z-index:0}
+        body::after{content:'';position:fixed;bottom:-300px;left:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(59,130,246,0.04),transparent 70%);filter:blur(120px);pointer-events:none;z-index:0}
+        header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.7);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr);transition:.3s}
+        header.scrolled{background:rgba(10,10,10,0.95);box-shadow:0 4px 30px rgba(0,0,0,0.3)}
+        .hi{max-width:1280px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
+        .logo{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--t1);white-space:nowrap}
+        .logo i{color:var(--acc);font-size:20px}
+        .logo span{color:var(--t3);font-weight:400;font-size:13px;margin-left:4px;display:none}
+        @media(min-width:950px){.logo span{display:inline}}
+        .nav{display:flex;align-items:center;gap:3px}
+        .nav a{color:var(--t3);text-decoration:none;font-size:12px;font-weight:500;padding:7px 11px;border-radius:8px;transition:.2s;white-space:nowrap}
+        .nav a:hover{color:var(--t1);background:rgba(255,255,255,0.06)}
+        .nav a.active{color:var(--accs);background:var(--accg)}
+        .nm{display:none;cursor:pointer;color:var(--t3);font-size:12px;font-weight:500;padding:7px 11px;border-radius:8px;transition:.2s;border:none;background:transparent;font-family:'Inter',sans-serif}
+        .nm:hover{color:var(--t1);background:rgba(255,255,255,0.06)}
+        @media(max-width:1100px){.nav a.hs{display:none}.nm{display:block}}
+        .dd{display:none;position:absolute;top:100%;right:0;margin-top:8px;background:var(--bg2);border:1px solid var(--bdr);border-radius:14px;padding:8px;min-width:210px;box-shadow:0 20px 40px rgba(0,0,0,0.5);animation:fi .2s ease;z-index:200}
+        .dd.show{display:block}
+        .dd a{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;font-size:13px;color:var(--t2);text-decoration:none}
+        @keyframes fi{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+        .ham{display:none;background:none;border:none;color:var(--t1);font-size:22px;cursor:pointer;padding:8px}
+        @media(max-width:768px){.nav{display:none}.ham{display:block}.nav.mo{display:flex;flex-direction:column;position:fixed;inset:0;top:64px;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);padding:24px;gap:4px;z-index:99;overflow-y:auto}.nav.mo a{font-size:15px;padding:14px 16px;border-radius:12px}}
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+        .hero{position:relative;z-index:1;padding:88px 0 24px}
+        .h-inner{max-width:1280px;margin:0 auto;padding:0 24px}
+        .h-grid{display:grid;grid-template-columns:380px 1fr;gap:48px;align-items:center}
+        @media(max-width:900px){.h-grid{grid-template-columns:1fr 300px;gap:36px}}
+        @media(max-width:640px){.h-grid{grid-template-columns:1fr;gap:28px}}
+        .pw{position:relative}
+        .pf{position:relative;border-radius:24px;overflow:hidden;border:2px solid rgba(255,255,255,0.1);box-shadow:0 0 0 1px rgba(255,255,255,0.06),0 24px 60px rgba(0,0,0,0.4);transition:.5s}
+        .pf:hover{border-color:rgba(16,185,129,0.3);box-shadow:0 0 0 1px rgba(16,185,129,0.2),0 28px 70px rgba(0,0,0,0.5);transform:translateY(-4px)}
+        .pf img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block}
+        .pa{position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:60%;height:4px;background:linear-gradient(90deg,transparent,var(--acc),transparent);border-radius:4px 4px 0 0}
+        .pg{position:absolute;inset:-2px;border-radius:26px;background:radial-gradient(ellipse at center,rgba(16,185,129,0.08),transparent 70%);pointer-events:none;transition:.5s}
+        .pf:hover .pg{background:radial-gradient(ellipse at center,rgba(16,185,129,0.15),transparent 70%)}
+        .hr{display:flex;flex-direction:column;gap:0}
+        .hbadge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:var(--accg);border:1px solid rgba(16,185,129,0.2);border-radius:100px;font-size:12px;font-weight:500;color:var(--hs);margin-bottom:28px;text-transform:uppercase;letter-spacing:.06em;width:fit-content;backdrop-filter:blur(10px)}
+        .hero h1{font-family:'Bricolagage Grotesque',sans-serif;font-size:clamp(32px,5vw,56px);font-weight:700;line-height:.93;letter-spacing:-.035em;margin-bottom:20px}
+        .hero h1 .ac{color:var(--accs)}
+        .hdesc{color:var(--t2);font-size:16px;font-weight:300;line-height:1.75;margin-bottom:28px}
+        .hb{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+        .bp{display:inline-flex;align-items:center;gap:8px;padding:15px 24px;background:linear-gradient(135deg,var(--acc),#059669);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;text-decoration:none;transition:.3s;box-shadow:0 4px 20px rgba(16,185,129,0.3)}
+        .bp:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(16,185,129,0.4)}
+        .bs{display:inline-flex;align-items:center;gap:8px;padding:15px 24px;background:rgba(255,255,255,0.08);color:var(--t1);border:1px solid var(--bdr);border-radius:12px;font-size:14px;font-weight:500;font-family:'Inter',sans-serif;cursor:pointer;text-decoration:none;transition:.3s;backdrop-filter:blur(10px)}
+        .bs:hover{border-color:var(--bdh);transform:translateY(-2px)}
+        .hstats{display:flex;gap:28px;flex-wrap:wrap}
+        .hs .n{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;color:var(--accs);display:block;line-height:1}
+        .hs .l{font-size:12px;color:var(--t3);margin-top:4px;display:block}
+        @media(max-width:640px){.hstats{gap:20px}.hs .n{font-size:22px}.hb{justify-content:center}.hbtns{justify-content:center}}
+        @media(max-width:900px){.hr{align-items:center;text-align:center}}
+
+        /* YOUTUBE */
+        .yts{background:linear-gradient(180deg,transparent,rgba(255,0,0,0.015) 50%,transparent)}
+        .yg{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+        @media(max-width:768px){.yg{grid-template-columns:1fr}}
+        .ych{background:var(--card);border:1px solid var(--bdr);border-radius:16px;overflow:hidden;transition:.3s}
+        .ych:hover{border-color:var(--bdh);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
+        .ych-banner{width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--bg2);position:relative}
+        .ych-banner img{width:100%;height:100%;object-fit:cover;display:block}
+        .ych-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.6) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+        .ych-name{font-family:'Bragolage Grotesque',sans-serif;font-size:20px;font-weight:700;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.5)}
+        .ych-subs{font-size:13px;color:rgba(255,255,255,0.7);margin-top:4px}
+        .ych-body{padding:20px 24px 24px}
+        .ych-desc{color:var(--t2);font-size:14px;line-height:1.7;margin-bottom:20px}
+        .ysub{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;background:var(--ytred);color:#fff;border-radius:12px;font-size:14px;font-weight:600;text-decoration:none;transition:.3s;box-shadow:0 4px 15px rgba(255,0,0,0.2)}
+        .ysub:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,0,0,0.3)}
+        .yvs{display:flex;flex-direction:column;gap:10px}
+        .yvc{display:grid;grid-template-columns:164px 1fr;gap:14px;align-items:center;background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:14px;cursor:pointer;transition:.3s;text-decoration:none;color:var(--t1)}
+        .yvc:hover{border-color:var(--bdh);transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.2)}
+        .yt{width:164px;aspect-ratio:16/9;border-radius:10px;overflow:hidden;position:relative;flex-shrink:0;background:var(--bg2)}
+        .yt img{width:100%;height:100%;object-fit:cover;display:block}
+        .yt::after{content:'';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);transition:.3s}
+        .yvc:hover .yt::after{background:rgba(255,0,0,0.6)}
+        .yt i{position:relative;z-index:1;font-size:32px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.5)}
+        .yvi h4{font-size:14px;font-weight:500;line-height:1.4;margin-bottom:3px}
+        .yvi span{font-size:12px;color:var(--t3)}
+        @media(max-width:480px){.yvc{grid-template-columns:120px 1fr;gap:10px}.yt{width:120px}}
+        .yt-hint{margin-top:14px;font-size:12px;color:var(--t4);font-style:italic;display:flex;align-items:center;gap:6px}
+        .yt-hint i{font-size:14px}
+
+        /* BOOK */
+        .bg2{display:grid;grid-template-columns:340px 1fr;gap:40px;align-items:center}
+        @media(max-width:768px){.bg2{grid-template-columns:1fr;gap:32px}}
+        .bc{border-radius:14px;overflow:hidden;border:1px solid var(--bdr);box-shadow:0 24px 60px rgba(0,0,0,0.4);transition:.5s}
+        @media(max-width:768px){.bc{max-width:300px;margin:0 auto}}
+        .bc:hover{transform:rotate(-1.5deg) scale(1.02);box-shadow:0 30px 70px rgba(0,0,0,0.5)}
+        .bc img{width:100%;display:block}
+        .bt h3{font-family:'Bragolage Grotesque',sans-serif;font-size:24px;font-weight:700;margin-bottom:8px;line-height:1.2}
+        .bt .su{color:var(--t2);font-size:15px;font-style:italic;margin-bottom:16px;line-height:1.6}
+        .bt p{color:var(--t2);font-size:14px;line-height:1.7;margin-bottom:14px}
+        .btg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+        .btg span{font-size:11px;padding:4px 10px;background:var(--bg2);border:1px solid var(--bdr);border-radius:6px;color:var(--t3)}
+        .cbadge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.25);border-radius:8px;font-size:12px;font-weight:500;color:#fbbf24;margin-bottom:20px}
+        .cbadge i{font-size:14px}
+
+        /* COMUNES */
+        .wrap{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 24px}
+        section{padding:72px 0;position:relative;z-index:1}
+        .sl{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--acc);margin-bottom:12px}
+        .sl i{font-size:14px}
+        .st{font-family:'Bragolage Grotesque',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:700;line-height:1;letter-spacing:-.03em;margin-bottom:12px}
+        .sd{color:var(--t2);font-size:16px;font-weight:300;max-width:600px;margin-bottom:40px}
+        .divider{border:none;border-top:1px solid var(--bdr);margin:0}
+        .qg{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+        .ql{display:flex;align-items:center;gap:12px;padding:16px 18px;background:var(--card);border:1px solid var(--bdr);border-radius:12px;text-decoration:none;color:var(--t1);transition:.3s}
+        .ql:hover{border-color:var(--bdh);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.2)}
+        .ql i{font-size:20px;color:var(--acc);flex-shrink:0}
+        .ql div{flex:1}
+        .ql span{font-size:13px;font-weight:500;display:block}
+        .ql small{font-size:11px;color:var(--t3);font-weight:300}
+        .vb{text-align:center;padding:48px 32px;border:1px solid var(--bdr);border-radius:24px;background:linear-gradient(135deg,rgba(16,185,129,0.04),rgba(59,130,246,0.02));position:relative;overflow:hidden}
+        .vb::before{content:'\201C';position:absolute;top:-20px;left:20px;font-size:200px;font-family:Georgia,serif;color:rgba(16,185,129,0.06);line-height:1}
+        .vb blockquote{font-family:'Bricolagage Grotesque',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:400;font-style:italic;color:var(--t1);max-width:700px;margin:0 auto 16px;line-height:1.45;position:relative;z-index:1}
+        .vb cite{color:var(--accs);font-size:14px;font-style:normal}
+        footer{position:relative;z-index:1;border-top:1px solid var(--bdr);padding:48px 24px 32px}
+        .fi2{max-width:1280px;margin:0 auto}
+        .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+        @media(max-width:768px){.fg{grid-template-columns:1fr 1fr;gap:24px}}
+        @media(max-width:480px){.fg{grid-template-columns:1fr}}
+        .fb p{color:var(--t3);font-size:13px;margin-top:12px;line-height:1.6}
+        .fc h4{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:16px}
+        .fc a{display:block;color:var(--t2);text-decoration:none;font-size:14px;padding:4px 0;transition:.2s}
+        .fc a:hover{color:var(--accs)}
+        .fb2{border-top:1px solid var(--bdr);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+        .fb2 p{color:var(--t4);font-size:12px}
+        .fb2 em{color:var(--t3)}
+        .fs2{display:flex;gap:8px}
+        .fs2 a{width:36px;height:36px;border-radius:10px;background:var(--card);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;color:var(--t3);text-decoration:none;font-size:16px;transition:.3s}
+        .fs2 a:hover{color:var(--accs);border-color:rgba(16,185,129,0.3);background:var(--accg)}
+        .btt{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:12px;background:var(--bg2);border:1px solid var(--bdr);color:var(--t2);font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:100;opacity:0;transform:translateY(20px);transition:.3s}
+        .btt.vis{opacity:1;transform:translateY(0)}
+        .btt:hover{border-color:var(--acc);color:var(--acc)}
+    </style>
 </head>
-
 <body>
 
-<header>
-
-    <h1>Red Católica | Alexis Rivero</h1>
-
-    <h2>
-        Predicador Católico • Apologista Católico • Escritor
-    </h2>
-
-    <p>
-        Creador del canal Red Católica | Alexis Rivero
-    </p>
-
-    <nav>
-
-        <a href="index.html">Inicio</a>
-
-        <a href="biblioteca.html">Biblioteca</a>
-
-        <a href="libros.html">Mis Libros</a>
-
-        <a href="cursos.html">Cursos</a>
-
-        <a href="blog.html">Blog</a>
-
-        <a href="reflexiones.html">Reflexiones</a>
-
-        <a href="publicaciones.html">Publicaciones</a>
-
-        <a href="textos-biblicos.html">Textos Bíblicos</a>
-
-        <a href="apologetica.html">Apologética</a>
-
-        <a href="noticias.html">Noticias</a>
-
-        <a href="donaciones.html">Donaciones</a>
-
-        <a href="membresias.html">Membresías</a>
-
-        <a href="contacto.html">Contacto</a>
-
-    </nav>
-
+<header id="hdr">
+    <div class="hi">
+        <a href="index.html" class="logo"><i class="ri-cross-line"></i> Red Católica Alexis Rivero</a>
+        <nav class="nav" id="nav">
+            <a href="index.html" class="active">Inicio</a>
+            <a href="biblioteca.html" class="hs">Biblioteca</a>
+            <a href="libros.html" class="hs">Libros</a>
+            <a href="cursos.html" class="hs">Cursos</a>
+            <a href="blog.html" class="hs">Blog</a>
+            <a href="apologetica.html" class="hs">Apologética</a>
+            <button class="nm" id="ddBtn" onclick="ddT()">Más <i class="ri-arrow-down-s-line"></i></button>
+            <div class="dd" id="ddM">
+                <a href="reflexiones.html"><i class="ri-quill-pen-line" style="color:var(--purple)"></i> Reflexiones</a>
+                <a href="publicaciones.html"><i class="ri-book-2-line" style="color:var(--blue)"></i> Publicaciones</a>
+                <a href="textos-biblicos.html"><i class="ri-bible-line" style="color:var(--warn)"></i> Textos Bíblicos</a>
+                <a href="noticias.html"><i class="ri-newspaper-line" style="color:var(--orange)"></i> Noticias</a>
+                <a href="donaciones.html"><i class="ri-heart-line" style="color:var(--red)"></i> Donaciones</a>
+                <a href="membresias.html"><i class="ri-vip-crown-line" style="color:var(--warn)"></i> Membresías</a>
+                <a href="contacto.html"><i class="ri-mail-line" style="color:var(--acc)"></i> Contacto</a>
+            </div>
+        </nav>
+        <button class="ham" id="hamB" onclick="mobT()"><i class="ri-menu-3-line"></i></button>
+    </div>
 </header>
 
-<hr>
-
-<section>
-
-<h2>Bienvenido</h2>
-
-<img src="img/alexis.png" alt="Alexis Rivero" width="300">
-
-<p>
-
-Bienvenido a Red Católica.
-
-Este portal tiene como misión anunciar el Evangelio, defender la fe católica y ofrecer formación sólida basada en la Sagrada Escritura, la Tradición y el Magisterio de la Iglesia.
-
-</p>
-
-<p>
-
-Aquí encontrarás libros, cursos, documentos, artículos, noticias, reflexiones y recursos para profundizar en la fe.
-
-</p>
-
-<p>
-
-<a href="https://youtube.com/@alexisrivero?si=PnilUQeldEaItm3X">
-
-Canal de YouTube
-
-</a>
-
-</p>
-
-<p>
-
-<a href="https://whatsapp.com/channel/0029ValfUDzLikg3mxO2ev3T">
-
-Canal de WhatsApp
-
-</a>
-
-</p>
-
+<!-- ====== HERO — RETRATO ====== -->
+<section class="hero">
+    <div class="h-inner">
+        <div class="h-grid">
+            <div class="pw">
+                <div class="pf"><div class="pg"></div><img src="Polish_20260711_225639957.jpg" alt="Alexis Rivero — Predicador, Apologista, Escritor"><div class="pa"></div></div>
+            </div>
+            <div class="hr">
+                <div class="hbadge"><i class="ri-cross-line"></i> Predicador · Apologista · Escritor</div>
+                <h1>Red Católica<br>Alexis <span class="ac">Rivero</span></h1>
+                <p class="hdesc">Creador del canal Red Católica Alexis Rivero en YouTube. Predicador, apologista y escritor. Un espacio para la formación en la fe católica, la defensa de la verdad y la predicación del Evangelio.</p>
+                <div class="hb">
+                    <a href="https://youtube.com/@alexisrivero?si=-LK0BXOC55Q6kgqq" target="_blank" class="bp"><i class="ri-youtube-fill"></i> Ir al Canal</a>
+                    <a href="biblioteca.html" class="bs"><i class="ri-book-shelf-line"></i> Biblioteca</a>
+                </div>
+                <div class="hstats">
+                    <div class="hs"><span class="n">80+</span><span class="l">Documentos católicos</span></div>
+                    <div class="hs"><span class="n">17</span><span class="l">Categorías</span></div>
+                    <div class="hs"><span class="n">73</span><span class="l">Libros bíblicos</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<hr>
+<hr class="divider">
 
-<section>
+<!-- ====== YOUTUBE ====== -->
+<section class="yts">
+    <div class="wrap">
+        <div class="sl"><i class="i class="ri-youtube-fill" style="color:var(--ytred)"></i> Canal de YouTube</div>
+        <h2 class="st">Red Católica Alexis Rivero</h2>
+        <p class="sd">Predicación, formación católica, apologética y defensa de la fe.</p>
+        <div class="yg">
 
-<h2>Mi último libro</h2>
+            <!-- CANAL -->
+            <div>
+                <div class="ych">
+                    <div class="ych-banner">
+                        <img src="img/canal-banner.jpg" alt="Canal Red Católica Alexis Rivero — 250K suscriptores" onerror="this.src='https://z-cdn-media.chatglm.cn/files/4048edc5-aa3b-400c-92a2-d2501b2c52f6.png?auth_key=1883822871-d8e8ac7e3b494c95a012702484c1260d-0-c7e23e9fcd9f922607c11b70b698229b'">
+                        <div class="ych-overlay">
+                            <div class="ych-name">Red Católica<br>Alexis Rivero</div>
+                            <div class="ych-subs">250K suscriptores</div>
+                        </div>
+                    </div>
+                    <div class="ych-body">
+                        <p class="ych-desc">Predicación, formación católica, apologística, defensa y explicación de la fe católica. Contenido para fortalecer la fe y conocer la verdadera doctrina de la Iglesia.</p>
+                        <a href="https://youtube.com/@alexisrivero?si=-LK0BXOC55Q6kgqq" target="_blank" class="ysub"><i class="ri-youtube-fill"></i> Suscribirse al canal</a>
+                    </div>
+                </div>
+            </div>
 
-<img src="img/libros/dictadura-sospecha.jpg" width="250">
+            <!-- VIDEOS -->
+            <div>
+                <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:600;margin-bottom:16px;color:var(--t2)">Últimos videos</h3>
+                <div class="yvs">
 
-<h3>La Dictadura de la Sospecha</h3>
+                    <a href="https://youtu.be/yuLYNUmvWFo?si=-LK0BXOC55Q6kgqq" target="_blank" class="yvc">
+                        <div class="yt"><img src="https://i3.ytimg.com/vi/yuLYNUmvWFo/hqdefault.jpg" alt="Video" onerror="this.style.background='linear-gradient(135deg,#1a0a0a,#0f0f0f)';this.innerHTML='<i class=\\'ri-youtube-fill\\' style=\\'font-size:36px;color:rgba(255,0,0,0.7)\\'></i>'"><i class="ri-play-fill"></i></div>
+                        <div class="yvi"><h4>Ver video en YouTube →</h4><span>youtube.com</span></div>
+                    </a>
 
-<p><strong>Autor:</strong> Alexis Rivero</p>
+                    <a href="https://youtu.be/5WlnnqofJxE?si=2hsq_4e4s7w9ffLH" target="_blank" class="yvc">
+                        <div class="yt"><img src="https://i3.ytimg.com/vi/5WlnnqofJxE/hqdefault.jpg" alt="Video" onerror="this.style.background='linear-gradient(135deg,#0f0f0f,#1a1a2e)';this.innerHTML='<i class=\\'ri-youtube-fill\\' style=\\'font-size:36px;color:rgba(255,0,0,0.5)\\'></i>'"><i class="ri-play-fill"></i></div>
+                        <div class="yvi"><h4>Ver video en YouTube →</h4><span>youtube.com</span></div>
+                    </a>
 
-<p><strong>Editorial:</strong> Grupo Ígneo</p>
+                    <a href="https://youtu.be/dLoQqAPIqOQ?si=VPDAJ8xu2FftefLB" target="_blank" class="yvc">
+                        <div class="yt"><img src="https://i3.ytimg.com/vi/dLoQqAPIqOQ/hqdefault.jpg" alt="Video" onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#0f0f0f)';this.innerHTML='<i class=\\'ri-youtube-fill\\' style=\\'font-size:36px;color:rgba(255,0,0,0.5)\\'></i>'"><i class="ri-play-fill"></i></div>
+                        <div class="yvi"><h4>Ver video en YouTube →</h4><span>youtube.com</span></div>
+                    </a>
 
-<p><strong>Estado:</strong> Próximamente.</p>
+                    <a href="https://youtu.be/38slDKHusLE?si=qA3rnpTrSZAPm_w7" target="_blank" class="yvc">
+                        <div class="yt"><img src="https://i3.ytimg.com/vi/38slDKHusLE/hqdefault.jpg" alt="Video" onerror="this.style.background='linear-gradient(135deg,#0f0f0f,#1a1a2e)';this.innerHTML='<i class=\\'ri-youtube-fill\\' style=\\'font-size:36px;color:rgba(255,0,0,0.5)\\'></i>'"><i class="ri-play-fill"></i></div>
+                        <div class="yvi"><h4>Ver video en YouTube →</h4><span>youtube.com</span></div>
+                    </a>
 
-<p>
+                    <a href="https://youtu.be/407bNXnqXcM?si=cBD24Xh5sGOpfU9m" target="_blank" class="yvc">
+                        <div class="yt"><img src="https://i3.ytimg.com/vi/407bNXnqXcM/hqdefault.jpg" alt="Video" onerror="this.style.background='linear-gradient(135deg,#0f0f0f,#1a1a2e)';this.innerHTML='<i class=\\'ri-youtube-fill\\' style=\\'font-size:36px;color:rgba(255,0,0,0.5)\\'></i>'"><i class="ri-play-fill"></i></div>
+                        <div class="yvi"><h4>Ver video en YouTube →</h4><span>youtube.com</span></div>
+                    </a>
 
-Una obra que analiza la presunción de inocencia, el funcionamiento del sistema judicial y la importancia de la verdad y la justicia.
+                    <a href="https://youtu.be/swhg8nq2_FU?si=pZmCOjWeA2TnRPOo" target="_blank" class="yvc">
+                        <div class="yt"><img src="https://i3.ytimg.com/vi/swhg8nq2_FU/hqdefault.jpg" alt="Video" onerror="this.style.background='linear-gradient(135deg,#0f0f0f,#1a1a2e)';this.innerHTML='<i class=\\'ri-youtube-fill\\' style=\\'font-size:36px;color:rgba(255,0,0,0.5)\\'></i>'"><i class="ri-play-fill"></i></div>
+                        <div class="yvi"><h4>Ver video en YouTube →</h4><span>youtube.com</span></div>
+                    </a>
+                </div>
 
-</p>
-
-<button>Ver detalles</button>
-
+                <p class="yt-hint"><i class="ri-information-line"></i> Guardá las miniaturas de tus videos en <code style="background:var(--bg2);padding:2px 6px;border-radius:4px;font-size:12px">img/videos/</code> y actualizá los enlaces de cada tarjeta.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<hr>
+<hr class="divider">
 
+<!-- ====== LIBRO — PORTADA REAL ====== -->
 <section>
-
-<h2>Biblioteca Católica</h2>
-
-<ul>
-
-<li><a href="biblioteca.html">Biblia</a></li>
-
-<li><a href="biblioteca.html">Catecismo</a></li>
-
-<li><a href="biblioteca.html">Código de Derecho Canónico</a></li>
-
-<li><a href="biblioteca.html">Concilios</a></li>
-
-<li><a href="biblioteca.html">Encíclicas</a></li>
-
-<li><a href="biblioteca.html">Padres de la Iglesia</a></li>
-
-<li><a href="biblioteca.html">Doctores de la Iglesia</a></li>
-
-<li><a href="biblioteca.html">Historia de la Iglesia</a></li>
-
-<li><a href="biblioteca.html">Teología</a></li>
-
-<li><a href="biblioteca.html">Apologética</a></li>
-
-<li><a href="biblioteca.html">Familia</a></li>
-
-<li><a href="biblioteca.html">Matrimonio</a></li>
-
-<li><a href="biblioteca.html">Jóvenes</a></li>
-
-<li><a href="biblioteca.html">Hijos</a></li>
-
-<li><a href="biblioteca.html">Psicología Católica</a></li>
-
-<li><a href="biblioteca.html">Profecías</a></li>
-
-<li><a href="biblioteca.html">Santos</a></li>
-
-</ul>
-
+    <div class="wrap">
+        <div class="sl"><i class="ri-book-2-line"></i> Próximamente</div>
+        <div class="bg2">
+            <div class="bc">
+                <img src="Polish_20260711_230416034.jpg" alt="La Dictadura de la Sospecha — Alexis Rivero">
+            </div>
+            <div class="bt">
+                <div class="cbadge"><i class="ri-time-line"></i> Próximamente — Mes que viene</div>
+                <h3>La Dictadura de la Sospecha</h3>
+                <p class="su">«El colapso del Derecho, el daño a la infancia y el despertar de la razón en Uruguay»</p>
+                <p>Próximamente disponible. Un análisis documentado sobre el sistema judicial uruguayo, la Ley 19.580, la industria de la denuncia falsa y el costo humano en hombres y familias atrapados en una maquinaria que confunde ideología con justicia.</p>
+                <div class="btg"><span>Derecho</span><span>Justicia</span><span>Familia</span><span>Uruguay</span></div>
+                <div style="display:flex;gap:12px;flex-wrap:wrap">
+                    <a href="libros.html" class="bs" style="font-size:14px;padding:12px 24px"><i class="ri-bell-line"></i> Avísame cuando salga</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<hr>
+<hr class="divider">
 
+<!-- EXPLORAR -->
 <section>
-
-<h2>Cursos Católicos</h2>
-
-<p>Próximamente podrás acceder a cursos gratuitos y cursos exclusivos para miembros.</p>
-
-<a href="cursos.html">Ver Cursos</a>
-
+    <div class="wrap">
+        <div class="sl"><i class="ri-compass-3-line"></i> Explorar</div>
+        <h2 class="st">Todo en un lugar</h2>
+        <p class="sd">Biblioteca católica, cursos, reflexiones y más.</p>
+        <div class="qg">
+            <a href="biblioteca.html" class="ql"><i class="ri-book-shelf-line"></i><div><span>Biblioteca Católica</span><small>80+ documentos</small></div></a>
+            <a href="libros.html" class="ql"><i class="ri-book-2-line"></i><div><span>Mis Libros</span><small>Publicaciones</small></div></a>
+            <a href="cursos.html" class="ql"><i class="ri-graduation-cap-line"></i><div><span>Cursos</span><small>Formación</small></div></a>
+            <a href="blog.html" class="ql"><i class="ri-article-line"></i><div><span>Blog</span><small>Artículos</small></div></a>
+            <a href="reflexiones.html" class="ql"><i class="ri-quill-pen-line"></i><div><span>Reflexiones</span><small>Pensamientos</small></div></a>
+            <a href="textos-biblicos.html" class="ql"><i class="ri-bible-line"></i><div><span>Textos Bíblicos</span><small>Sagrada Escritura</small></div></a>
+            <a href="apologetica.html" class="ql"><i class="ri-shield-check-line"></i><div><span>Apologética</span><small>Defensa de la fe</small></div></a>
+            <a href="noticias.html" class="ql"><i class="ri-newspaper-line"></i><div><span>Noticias</span><small>Actualidad</small></div></a>
+            <a href="donaciones.html" class="ql"><i class="ri-heart-line"></i><div><span>Donaciones</span><small>Apoyá el proyecto</small></div></a>
+            <a href="membresias.html" class="ql"><i class="ri-vip-crown-line"></i><div><span>Membresías</span><small>Acceso exclusivo</small></div></a>
+            <a href="contacto.html" class="ql"><i class="ri-mail-line"></i><div><span>Contacto</span><small>Escribime</small></div></a>
+            <a href="publicaciones.html" class="ql"><i class="ri-store-2-line"></i><div><span>Tienda</span><small>Libros y más</small></div></a>
+        </div>
+    </div>
 </section>
 
-<hr>
+<hr class="divider">
 
+<!-- VERSO -->
 <section>
-
-<h2>Blog</h2>
-
-<a href="blog.html">Entrar al Blog</a>
-
+    <div class="wrap">
+        <div class="vb">
+            <blockquote>«Id por todo el mundo y proclamad el Evangelio a toda la creación.»</blockquote>
+            <cite>— Marcos 16,15</cite>
+        </div>
+    </div>
 </section>
-
-<hr>
-
-<section>
-
-<h2>Reflexiones</h2>
-
-<a href="reflexiones.html">Leer Reflexiones</a>
-
-</section>
-
-<hr>
-
-<section>
-
-<h2>Textos Bíblicos</h2>
-
-<a href="textos-biblicos.html">Ver Textos Bíblicos</a>
-
-</section>
-
-<hr>
-
-<section>
-
-<h2>Noticias</h2>
-
-<a href="noticias.html">Ver Noticias</a>
-
-</section>
-
-<hr>
-
-<section>
-
-<h2>Apoyar este proyecto</h2>
-
-<a href="donaciones.html">Donar</a>
-
-<br><br>
-
-<a href="membresias.html">Membresías</a>
-
-</section>
-
-<hr>
 
 <footer>
-
-<h2>Contacto</h2>
-
-<p>
-
-Correo:
-
-alexisrivero496@gmail.com
-
-</p>
-
-<p>
-
-YouTube:
-
-https://youtube.com/@alexisrivero?si=PnilUQeldEaItm3X
-
-</p>
-
-<p>
-
-WhatsApp:
-
-https://whatsapp.com/channel/0029ValfUDzLikg3mxO2ev3T
-
-</p>
-
-<p>
-
-© 2026 Red Católica | Alexis Rivero
-/* ===========================
-   RED CATÓLICA | ALEXIS RIVERO
-=========================== */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-
-font-family:Arial,Helvetica,sans-serif;
-
-background:#f5f5f5;
-
-color:#222;
-
-line-height:1.7;
-
-}
-
-/* ===== ENCABEZADO ===== */
-
-header{
-
-background:#111;
-
-color:white;
-
-padding:40px 20px;
-
-text-align:center;
-
-}
-
-header h1{
-
-font-size:48px;
-
-margin-bottom:10px;
-
-}
-
-header h2{
-
-color:#d4af37;
-
-margin-bottom:15px;
-
-font-weight:normal;
-
-}
-
-header p{
-
-font-size:18px;
-
-}
-
-/* ===== MENÚ ===== */
-
-nav{
-
-margin-top:30px;
-
-display:flex;
-
-justify-content:center;
-
-flex-wrap:wrap;
-
-gap:15px;
-
-}
-
-nav a{
-
-background:#d4af37;
-
-color:#111;
-
-padding:12px 22px;
-
-text-decoration:none;
-
-border-radius:8px;
-
-font-weight:bold;
-
-transition:.3s;
-
-}
-
-nav a:hover{
-
-background:white;
-
-transform:translateY(-3px);
-
-}
-
-/* ===== SECCIONES ===== */
-
-section{
-
-background:white;
-
-width:90%;
-
-max-width:1200px;
-
-margin:40px auto;
-
-padding:40px;
-
-border-radius:12px;
-
-box-shadow:0 5px 20px rgba(0,0,0,.15);
-
-}
-
-section h2{
-
-color:#222;
-
-margin-bottom:20px;
-
-border-left:6px solid #d4af37;
-
-padding-left:15px;
-
-}
-
-section h3{
-
-margin-top:15px;
-
-margin-bottom:15px;
-
-}
-
-section img{
-
-max-width:100%;
-
-border-radius:10px;
-
-display:block;
-
-margin:auto;
-
-}
-
-/* ===== BOTONES ===== */
-
-button{
-
-background:#d4af37;
-
-color:#111;
-
-border:none;
-
-padding:15px 30px;
-
-border-radius:8px;
-
-font-size:17px;
-
-cursor:pointer;
-
-margin-top:20px;
-
-transition:.3s;
-
-}
-
-button:hover{
-
-background:#111;
-
-color:white;
-
-}
-
-/* ===== LISTAS ===== */
-
-ul{
-
-margin-top:20px;
-
-}
-
-li{
-
-margin-bottom:12px;
-
-}
-
-/* ===== ENLACES ===== */
-
-a{
-
-color:#004aad;
-
-}
-
-a:hover{
-
-color:#d4af37;
-
-}
-
-/* ===== PIE ===== */
-
-footer{
-
-background:#111;
-
-color:white;
-
-text-align:center;
-
-padding:40px;
-
-margin-top:60px;
-
-}
-
-footer h2{
-
-color:#d4af37;
-
-margin-bottom:20px;
-
-}
-
-footer p{
-
-margin:10px 0;
-
-}
-
-/* ===== RESPONSIVE ===== */
-
-@media(max-width:768px){
-
-header h1{
-
-font-size:34px;
-
-}
-
-header h2{
-
-font-size:20px;
-
-}
-
-nav{
-
-flex-direction:column;
-
-align-items:center;
-
-}
-
-section{
-
-padding:25px;
-
-}
-
-button{
-
-width:100%;
-
-}
-
-}
-
-</p>
-
+    <div class="fi2">
+        <div class="fg">
+            <div class="fb">
+                <div class="logo" style="margin-bottom:4px"><i class="ri-cross-line"></i> Red Católica Alexis Rivero</div>
+                <p>Predicador, apologista, escritor. Un espacio para la formación en la fe católica y la defensa de la verdad.</p>
+            </div>
+            <div class="fc"><h4>Contenido</h4><a href="biblioteca.html">Biblioteca</a><a href="libros.html">Libros</a><a href="cursos.html">Cursos</a><a href="blog.html">Blog</a><a href="reflexiones.html">Reflexiones</a></div>
+            <div class="fc"><h4>Recursos</h4><a href="textos-biblicos.html">Textos Bíblicos</a><a href="apologetica.html">Apologética</a><a href="noticias.html">Noticias</a><a href="publicaciones.html">Publicaciones</a></div>
+            <div class="fc"><h4>Colaborá</h4><a href="donaciones.html">Donaciones</a><a href="membresias.html">Membresías</a><a href="contacto.html">Contacto</a></div>
+        </div>
+        <div class="fb2">
+            <p>© 2026 Red Católica | Alexis Rivero — <em>"Ad Maiorem Dei Gloriam"</em></p>
+            <div class="fs2">
+                <a href="https://youtube.com/@alexisrivero?si=-LK0BXOC55Q6kgqq" target="_blank" title="YouTube"><i class="ri-youtube-line"></i></a>
+                <a href="#" title="Instagram"><i class="ri-instagram-line"></i></a>
+                <a href="#" title="Facebook"><i class="ri-facebook-circle-line"></i></a>
+                <a href="#" title="X"><i class="ri-twitter-x-line"></i></a>
+                <a href="#" title="GitHub"><i class="ri-github-line"></i></a>
+            </div>
+        </div>
+    </div>
 </footer>
 
-</body>
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="ri-arrow-up-line"></i></button>
 
+<script>
+const hdr=document.getElementById('hdr');
+window.addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',window.scrollY>20);document.getElementById('btt').classList.toggle('vis',window.scrollY>500)});
+
+let ddO=false;
+function ddT(){ddO=!ddO;document.getElementById('ddM').classList.toggle('show',ddO)}
+document.addEventListener('click',e=>{if(!e.target.closest('#ddBtn')&&!e.target.closest('#ddM')){ddO=false;document.getElementById('ddM').classList.remove('show')}});
+
+let mo=false;
+function mobT(){mo=!mo;const n=document.getElementById('nav'),b=document.getElementById('hamB');n.classList.toggle('mo',mo);b.innerHTML=mo?'<i class="ri-close-line"></i>':'<i class="ri-menu-3-line"></i>';document.body.style.overflow=mo?'hidden':''}
+</script>
+</body>
 </html>
