@@ -1,267 +1,1240 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Libros | Alexis Rivero</title>
-    <!-- Tailwind CSS para diseño moderno y responsive -->
-    <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mis Libros | Alexis Rivero</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#0f172a;
+color:white;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+.card{
+background:#1e293b;
+border:1px solid #334155;
+border-radius:20px;
+}
+
+.btn{
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+.fade{
+animation:fade .4s;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+</style>
+
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col">
 
-    <!-- BARRA DE NAVEGACIÓN Y MENÚ DE PESTAÑAS -->
-    <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50 shadow-lg">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div>
-                <h1 class="text-2xl font-black tracking-wider text-amber-500">📚 MIS LIBROS</h1>
-                <p class="text-xs text-gray-400">Libros escritos por Alexis Rivero sobre la fe católica, la apologética y la sociedad.</p>
-            </div>
-            <nav class="flex gap-2 bg-gray-950 p-1 rounded-lg border border-gray-700">
-                <button onclick="switchTab('public-view')" id="btn-public-view" class="px-4 py-2 rounded-md font-medium text-sm transition-all bg-amber-500 text-gray-950 shadow">
-                    👁️ Ver Lanzamiento
-                </button>
-                <button onclick="switchTab('admin-view')" id="btn-admin-view" class="px-4 py-2 rounded-md font-medium text-sm transition-all text-gray-400 hover:text-white">
-                    🛠️ Panel de Gestión
-                </button>
-            </nav>
-        </div>
-    </header>
+<body>
 
-    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8">
-        
-        <!-- PESTAÑA 1: VISTA PÚBLICA DEL LANZAMIENTO -->
-        <section id="public-view" class="tab-content block animate-fadeIn">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                
-                <!-- Columna Izquierda: Portada y Conversión -->
-                <div class="lg:col-span-4 lg:sticky lg:top-24 flex flex-col gap-6">
-                    <!-- Contenedor de la Portada utilizando tu imagen local -->
-                    <div class="rounded-2xl shadow-2xl border-2 border-amber-500/30 overflow-hidden relative group bg-gray-950">
-                        <img src="./portada.jpg"
-     alt="Portada de La Dictadura de la Sospecha"
-     class="w-full h-auto object-cover">
-                        <div class="absolute top-4 left-4 z-10">
-                            <span class="text-xs font-bold tracking-widest uppercase bg-amber-500 text-gray-950 px-2.5 py-1 rounded-full">Próximamente</span>
-                        </div>
-                    </div>
+<header class="bg-slate-900 border-b border-slate-700 sticky top-0 z-50">
 
-                    <!-- Botón de Compra / Reserva -->
-                    <a href="#" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-gray-950 font-bold text-center py-4 px-6 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 tracking-wide uppercase">
-                        🛒 Reservar Ejemplar (Preventa)
-                    </a>
+<div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
 
-                    <!-- Interacción: Reacciones -->
-                    <div class="bg-gray-800 border border-gray-700 rounded-xl p-4 shadow-md">
-                        <p class="text-sm font-semibold text-gray-400 mb-3 text-center uppercase tracking-wider">¿Qué te parece esta obra?</p>
-                        <div class="flex justify-around items-center">
-                            <button onclick="addReaction('love')" class="flex flex-col items-center gap-1 group bg-gray-900/50 hover:bg-gray-900 p-2.5 rounded-lg w-16 transition-colors">
-                                <span class="text-2xl transform group-hover:scale-125 transition-transform">❤️</span>
-                                <span id="count-love" class="text-xs font-mono text-gray-400">24</span>
-                            </button>
-                            <button onclick="addReaction('shock')" class="flex flex-col items-center gap-1 group bg-gray-900/50 hover:bg-gray-900 p-2.5 rounded-lg w-16 transition-colors">
-                                <span class="text-2xl transform group-hover:scale-125 transition-transform">😮</span>
-                                <span id="count-shock" class="text-xs font-mono text-gray-400">42</span>
-                            </button>
-                            <button onclick="addReaction('growth')" class="flex flex-col items-center gap-1 group bg-gray-900/50 hover:bg-gray-900 p-2.5 rounded-lg w-16 transition-colors">
-                                <span class="text-2xl transform group-hover:scale-125 transition-transform">📈</span>
-                                <span id="count-growth" class="text-xs font-mono text-gray-400">18</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+<div>
 
-                <!-- Columna Derecha: Información Editorial y Comentarios -->
-                <div class="lg:col-span-8 flex flex-col gap-8">
-                    <div>
-                        <h2 id="view-title" class="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">La Dictadura de la Sospecha</h2>
-                        <p id="view-subtitle" class="text-lg md:text-xl text-amber-400 font-medium mt-2 leading-relaxed border-b border-gray-800 pb-4">
-                            El colapso del Derecho, el daño a la infancia y el despertar de la razón en Uruguay
-                        </p>
-                    </div>
+<h1 class="text-3xl font-black text-amber-400">
+📚 MIS LIBROS
+</h1>
 
-                    <!-- Sinopsis -->
-                    <div class="bg-gray-800/40 border border-gray-800 rounded-xl p-6">
-                        <h3 class="text-xs font-bold uppercase tracking-widest text-amber-500 mb-3">Sinopsis Oficial</h3>
-                        <p id="view-synopsis" class="text-gray-300 leading-relaxed text-justify whitespace-pre-line">
-                            La Dictadura de la sospecha es una investigación fáctica y un ensayo crítico que desnuza las consecuencias jurídicas, sociales y humanas de la implementación de la Ley 19.580 en el Uruguay contemporáneo. A través de un desglose que abarca desde la captura ideológica de las cátedras universitarias hasta el alarmante fenómeno de la alienación parental y las tasas de suicidio masculino, el autor expone cómo el Estado de derecho ha sufrido una metamorfosis hacia un "derecho penal de autor".
+<p class="text-sm text-gray-400">
+Libros oficiales de Alexis Rivero
+</p>
 
-                            Lejos de ser un mero análisis de escritorio, este libro funciona como una autopsia al sistema judicial de familia y como un manual de supervivencia civil para los ciudadanos atrapados en el engranaje de la sospecha automática. Una obra indispensable para entender la crisis oculta del tejido social oriental y la urgente necesidad de restaurar la presunción de inocencia y la igualdad ante la ley.
-                        </p>
-                    </div>
+</div>
 
-                    <!-- Ficha Técnica -->
-                    <div class="overflow-hidden rounded-xl border border-gray-800 shadow-md">
-                        <table class="w-full text-left border-collapse text-sm">
-                            <thead>
-                                <tr class="bg-gray-800 text-gray-400 uppercase tracking-wider text-xs border-b border-gray-700">
-                                    <th class="px-6 py-3 font-semibold">Especificación</th>
-                                    <th class="px-6 py-3 font-semibold">Detalle Operativo</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-800 bg-gray-900/50">
-                                <tr>
-                                    <td class="px-6 py-3.5 font-medium text-gray-400">Autor</td>
-                                    <td class="px-6 py-3.5 text-white">Alexis Rivero</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-3.5 font-medium text-gray-400">Editorial</td>
-                                    <td class="px-6 py-3.5 text-white">Grupo Ígneo</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-3.5 font-medium text-gray-400">Estado</td>
-                                    <td class="px-6 py-3.5 text-amber-400">Próximamente</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-3.5 font-medium text-gray-400">Canal Oficial</td>
-                                    <td class="px-6 py-3.5 text-amber-400 hover:underline"><a href="#" target="_blank">YouTube: Redcatólica Alexis Rivero</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+<div class="flex gap-3">
 
-                    <!-- Sección de Comentarios (Simulada) -->
-                    <div class="bg-gray-800 border border-gray-700 rounded-xl p-6 flex flex-col gap-4 shadow-md">
-                        <h3 class="text-lg font-bold text-white tracking-tight border-b border-gray-700 pb-2">Comunidad y Debate</h3>
-                        <div class="flex gap-3">
-                            <div class="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center font-bold text-gray-900 shrink-0">U</div>
-                            <div class="w-full">
-                                <textarea id="comment-input" rows="2" placeholder="Escribe tu opinión o pregunta sobre el libro..." class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-sm text-gray-100 focus:outline-none focus:border-amber-500 resize-none"></textarea>
-                                <button onclick="postComment()" class="mt-2 bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold px-4 py-2 rounded-md transition-colors float-right">
-                                    Enviar Comentario
-                                </button>
-                            </div>
-                        </div>
-                        <div id="comments-list" class="flex flex-col gap-4 mt-4 border-t border-gray-700/50 pt-4">
-                            <div class="bg-gray-900/40 p-4 rounded-lg border border-gray-800">
-                                <div class="flex justify-between items-center mb-1">
-                                    <span class="text-xs font-bold text-amber-400">Dr. Martínez (Montevideo)</span>
-                                    <span class="text-[10px] text-gray-500 font-mono">Hace 2 horas</span>
-                                </div>
-                                <p class="text-sm text-gray-300">Un análisis descarnado y necesario sobre la pérdida de garantías constitucionales en los procesos de familia. Hacía falta que alguien lo ponga en papel con esta claridad.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<button
+onclick="switchTab('public-view')"
+id="btn-public-view"
+class="btn bg-amber-500 text-black px-5 py-2 rounded-lg font-bold">
 
-        <!-- PESTAÑA 2: PANEL DE GESTIÓN (ADMINISTRACIÓN) -->
-        <section id="admin-view" class="tab-content hidden animate-fadeIn max-w-2xl mx-auto">
-            <div class="bg-gray-800 border border-gray-700 rounded-2xl p-6 shadow-xl">
-                <div class="border-b border-gray-700 pb-4 mb-6">
-                    <h2 class="text-xl font-black text-white tracking-tight uppercase">Cargar Nueva Obra</h2>
-                    <p class="text-xs text-gray-400 mt-1">Completa los datos para actualizar la interfaz principal de la obra.</p>
-                </div>
+Ver Libro
 
-                <form id="book-form" onsubmit="handleFormSubmit(event)" class="flex flex-col gap-5">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5">Título del Libro *</label>
-                        <input type="text" id="form-title" required placeholder="Ej. La Dictadura de la sospecha" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-amber-500 transition-colors text-white">
-                    </div>
+</button>
 
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5">Subtítulo o Eslogan *</label>
-                        <input type="text" id="form-subtitle" required placeholder="Ej. El colapso del Derecho en Uruguay" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-amber-500 transition-colors text-white">
-                    </div>
+<button
+onclick="switchTab('admin-view')"
+id="btn-admin-view"
+class="btn bg-slate-700 px-5 py-2 rounded-lg">
 
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5">Sinopsis y Análisis *</label>
-                        <textarea id="form-synopsis" required rows="6" placeholder="Escribe aquí la sinopsis oficial de la obra..." class="w-full bg-gray-900 border border-gray-700 rounded-lg p-4 text-sm focus:outline-none focus:border-amber-500 transition-colors text-white resize-y leading-relaxed"></textarea>
-                    </div>
+Administrar
 
-                    <div class="flex gap-3 justify-end mt-2">
-                        <button type="button" onclick="switchTab('public-view')" class="px-5 py-2.5 text-sm font-semibold text-gray-400 hover:text-white transition-colors">
-                            Cancelar
-                        </button>
-                        <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-gray-950 font-bold px-6 py-2.5 rounded-lg text-sm transition-all shadow-md">
-                            Guardar y Actualizar Vista
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </section>
+</button>
 
-    </main>
+</div>
 
-    <footer class="bg-gray-950 border-t border-gray-800 text-center py-6 text-xs text-gray-500 mt-12">
-        <p>&copy; 2026 Mil Libros. Todos los derechos reservados.</p>
-    </footer>
+</div>
 
-    <!-- LÓGICA DE CONTROL (JAVASCRIPT) -->
-    <script>
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.replace('block', 'hidden');
-            });
-            document.getElementById(tabId).classList.replace('hidden', 'block');
+</header>
 
-            const btnPublic = document.getElementById('btn-public-view');
-            const btnAdmin = document.getElementById('btn-admin-view');
+<main class="max-w-7xl mx-auto p-6">
 
-            if (tabId === 'public-view') {
-                btnPublic.className = "px-4 py-2 rounded-md font-medium text-sm transition-all bg-amber-500 text-gray-950 shadow";
-                btnAdmin.className = "px-4 py-2 rounded-md font-medium text-sm transition-all text-gray-400 hover:text-white";
-            } else {
-                btnAdmin.className = "px-4 py-2 rounded-md font-medium text-sm transition-all bg-amber-500 text-gray-950 shadow";
-                btnPublic.className = "px-4 py-2 rounded-md font-medium text-sm transition-all text-gray-400 hover:text-white";
-            }
-        }
+<section id="public-view">
 
-        function addReaction(type) {
-            const element = document.getElementById(`count-${type}`);
-            let currentCount = parseInt(element.innerText);
-            element.innerText = currentCount + 1;
-            
-            element.parentElement.classList.add('scale-105', 'border-amber-500/50');
-            setTimeout(() => {
-                element.parentElement.classList.remove('scale-105', 'border-amber-500/50');
-            }, 150);
-        }
+<div class="grid lg:grid-cols-12 gap-8">
 
-        function postComment() {
-            const input = document.getElementById('comment-input');
-            const text = input.value.trim();
-            if (!text) return;
+<div class="lg:col-span-4">
 
-            const list = document.getElementById('comments-list');
-            const newComment = document.createElement('div');
-            newComment.className = "bg-gray-900/40 p-4 rounded-lg border border-gray-800 animate-fadeIn";
-            newComment.innerHTML = `
-                <div class="flex justify-between items-center mb-1">
-                    <span class="text-xs font-bold text-amber-400">Lector Anónimo</span>
-                    <span class="text-[10px] text-gray-500 font-mono">Ahora mismo</span>
-                </div>
-                <p class="text-sm text-gray-300">${text}</p>
-            `;
-            
-            list.prepend(newComment);
-            input.value = '';
-        }
+<div class="card overflow-hidden">
 
-        function handleFormSubmit(event) {
-            event.preventDefault();
+<img
+src="portada.jpg"
+alt="Portada"
+class="w-full">
 
-            const title = document.getElementById('form-title').value;
-            const subtitle = document.getElementById('form-subtitle').value;
-            const synopsis = document.getElementById('form-synopsis').value;
+</div>
 
-            document.getElementById('view-title').innerText = title;
-            document.getElementById('view-subtitle').innerText = subtitle;
-            document.getElementById('view-synopsis').innerText = synopsis;
+<a href="#"
+class="block text-center mt-5 bg-amber-500 hover:bg-amber-600 text-black font-bold py-4 rounded-xl">
 
-            alert('¡Contenido de la obra actualizado exitosamente en la vista de lanzamiento!');
-            switchTab('public-view');
-        }
-    </script>
+🛒 RESERVAR EJEMPLAR
 
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(4px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-            animation: fadeIn 0.3s ease-out forwards;
-        }
-    </style>
+</a>
+
+<div class="card mt-6 p-5">
+
+<h3 class="text-center text-amber-400 font-bold mb-4">
+
+Impacto del lanzamiento
+
+</h3>
+
+<div class="grid grid-cols-2 gap-4">
+
+<div class="text-center">
+
+<p class="text-3xl font-black">
+1.2M
+</p>
+
+<p class="text-gray-400 text-sm">
+
+Visualizaciones
+
+</p>
+
+</div>
+
+<div class="text-center">
+
+<p class="text-3xl font-black">
+
+18.450
+
+</p>
+
+<p class="text-gray-400 text-sm">
+
+Reservas
+
+</p>
+
+</div>
+
+<div class="text-center">
+
+<p class="text-3xl font-black">
+
+4.9★
+
+</p>
+
+<p class="text-gray-400 text-sm">
+
+Calificación
+
+</p>
+
+</div>
+
+<div class="text-center">
+
+<p class="text-3xl font-black">
+
+97%
+
+</p>
+
+<p class="text-gray-400 text-sm">
+
+Opiniones positivas
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card mt-6 p-5">
+
+<h3 class="text-center font-bold mb-5">
+
+Reacciones
+
+</h3>
+
+<div class="flex justify-around">
+
+<button onclick="addReaction('love')" class="text-center">
+
+<div class="text-4xl">
+
+❤️
+
+</div>
+
+<div id="count-love" class="font-bold">
+
+250K
+
+</div>
+
+</button>
+
+<button onclick="addReaction('shock')" class="text-center">
+
+<div class="text-4xl">
+
+😮
+
+</div>
+
+<div id="count-shock" class="font-bold">
+
+150K
+
+</div>
+
+</button>
+
+<button onclick="addReaction('fire')" class="text-center">
+
+<div class="text-4xl">
+
+🔥
+
+</div>
+
+<div id="count-fire" class="font-bold">
+
+87K
+
+</div>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+<div class="lg:col-span-8 fade">
+
+<div class="mb-8">
+
+<h2 id="view-title"
+class="text-5xl font-black text-white leading-tight">
+
+La Dictadura de la Sospecha
+
+</h2>
+
+<p id="view-subtitle"
+class="text-xl text-amber-400 mt-3">
+
+El colapso del Derecho, el daño a la infancia y el despertar de la razón en Uruguay.
+
+</p>
+
+</div>
+
+<div class="card p-8 mb-8">
+
+<h3 class="text-amber-400 font-bold uppercase mb-5">
+
+Sinopsis
+
+</h3>
+
+<p id="view-synopsis"
+class="text-gray-300 leading-8 text-justify">
+
+La Dictadura de la Sospecha es una investigación jurídica y social que analiza cómo determinadas reformas legislativas alteraron profundamente la presunción de inocencia, el derecho de familia y la protección de la infancia en el Uruguay.
+
+A través de documentos oficiales, estadísticas, estudios académicos y casos públicos, el autor expone cómo el Estado comenzó a sustituir la prueba por la sospecha, debilitando garantías fundamentales.
+
+La obra estudia la alienación parental, el aumento del suicidio masculino, la influencia ideológica en la educación y la pérdida de seguridad jurídica, proponiendo un retorno al Estado de Derecho y a la igualdad ante la ley.
+
+Más que un ensayo, constituye una investigación destinada a abrir un debate público sobre uno de los mayores desafíos institucionales del Uruguay contemporáneo.
+
+</p>
+
+</div>
+
+<div class="card overflow-hidden mb-8">
+
+<table class="w-full">
+
+<thead class="bg-slate-800">
+
+<tr>
+
+<th class="text-left p-4">
+Especificación
+</th>
+
+<th class="text-left p-4">
+Detalle
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr class="border-t border-slate-700">
+
+<td class="p-4 text-gray-400">
+Autor
+</td>
+
+<td class="p-4">
+Alexis Rivero
+</td>
+
+</tr>
+
+<tr class="border-t border-slate-700">
+
+<td class="p-4 text-gray-400">
+Editorial
+</td>
+
+<td class="p-4">
+Grupo Ígneo
+</td>
+
+</tr>
+
+<tr class="border-t border-slate-700">
+
+<td class="p-4 text-gray-400">
+Estado
+</td>
+
+<td class="p-4 text-amber-400">
+Próximamente
+</td>
+
+</tr>
+
+<tr class="border-t border-slate-700">
+
+<td class="p-4 text-gray-400">
+Formato
+</td>
+
+<td class="p-4">
+Tapa blanda y Digital
+</td>
+
+</tr>
+
+<tr class="border-t border-slate-700">
+
+<td class="p-4 text-gray-400">
+Idioma
+</td>
+
+<td class="p-4">
+Español
+</td>
+
+</tr>
+
+<tr class="border-t border-slate-700">
+
+<td class="p-4 text-gray-400">
+ISBN
+</td>
+
+<td class="p-4">
+En trámite
+</td>
+
+</tr>
+
+<tr class="border-t border-slate-700">
+
+<td class="p-4 text-gray-400">
+Canal Oficial
+</td>
+
+<td class="p-4">
+
+<a href="https://youtube.com/@RedCatolicaAlexisRivero"
+target="_blank"
+class="text-amber-400 hover:underline">
+
+Red Católica Alexis Rivero
+
+</a>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<div class="card p-8">
+
+<h3 class="text-2xl font-bold mb-5">
+
+Comentarios
+
+</h3>
+
+<div class="mb-5">
+
+<textarea
+id="comment-input"
+rows="4"
+placeholder="Escribí tu opinión sobre el libro..."
+class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4 resize-none">
+
+</textarea>
+
+<button
+onclick="postComment()"
+class="mt-4 bg-amber-500 hover:bg-amber-600 text-black font-bold px-6 py-3 rounded-xl">
+
+Publicar comentario
+
+</button>
+
+</div>
+
+<div id="comments-list">
+
+<div class="bg-slate-900 rounded-xl p-5 border border-slate-700 mb-4">
+
+<strong class="text-amber-400">
+
+Dr. Martínez
+
+</strong>
+
+<p class="text-sm text-gray-400 mb-3">
+
+Hace 2 horas
+
+</p>
+
+<p>
+
+Una investigación muy seria. Este libro promete abrir un debate muy importante sobre el Derecho y las garantías constitucionales.
+
+</p>
+
+</div>
+
+<div class="bg-slate-900 rounded-xl p-5 border border-slate-700">
+
+<strong class="text-amber-400">
+
+María González
+
+</strong>
+
+<p class="text-sm text-gray-400 mb-3">
+
+Hace 6 horas
+
+</p>
+
+<p>
+
+Excelente presentación. Ya reservé mi ejemplar.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section id="admin-view" class="hidden">
+
+<div class="max-w-3xl mx-auto">
+
+<div class="card p-8">
+
+<h2 class="text-3xl font-black text-amber-400 mb-2">
+
+Panel de Administración
+
+</h2>
+
+<p class="text-gray-400 mb-8">
+
+Desde aquí podrás modificar toda la información del libro sin tocar el código.
+
+</p>
+
+<form onsubmit="handleFormSubmit(event)">
+
+<div class="mb-6">
+
+<label class="block mb-2 font-bold">
+
+Título
+
+</label>
+
+<input
+type="text"
+id="form-title"
+value="La Dictadura de la Sospecha"
+class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4">
+
+</div>
+
+<div class="mb-6">
+
+<label class="block mb-2 font-bold">
+
+Subtítulo
+
+</label>
+
+<input
+type="text"
+id="form-subtitle"
+value="El colapso del Derecho, el daño a la infancia y el despertar de la razón en Uruguay."
+class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4">
+
+</div>
+
+<div class="mb-6">
+
+<label class="block mb-2 font-bold">
+
+Sinopsis
+
+</label>
+
+<textarea
+id="form-synopsis"
+rows="10"
+class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4 resize-none">
+
+La Dictadura de la Sospecha es una investigación jurídica y social sobre la transformación del Derecho de Familia, la presunción de inocencia y las consecuencias sociales derivadas de la legislación vigente.
+
+</textarea>
+
+</div>
+
+<div class="grid md:grid-cols-2 gap-5">
+
+<div>
+
+<label class="block mb-2 font-bold">
+
+Editorial
+
+</label>
+
+<input
+type="text"
+value="Grupo Ígneo"
+class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4">
+
+</div>
+
+<div>
+
+<label class="block mb-2 font-bold">
+
+Estado
+
+</label>
+
+<select
+class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4">
+
+<option>
+
+Próximamente
+
+</option>
+
+<option>
+
+Disponible
+
+</option>
+
+<option>
+
+Agotado
+
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="mt-8 flex gap-4">
+
+<button
+type="submit"
+class="bg-amber-500 hover:bg-amber-600 text-black font-bold px-8 py-3 rounded-xl">
+
+Guardar Cambios
+
+</button>
+
+<button
+type="button"
+onclick="switchTab('public-view')"
+class="bg-slate-700 hover:bg-slate-600 px-8 py-3 rounded-xl">
+
+Volver
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+<div class="card p-8 mt-8">
+
+<h3 class="text-2xl font-bold text-amber-400 mb-5">
+
+Estadísticas del libro
+
+</h3>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+<div class="text-center">
+
+<div class="text-4xl font-black text-amber-400">
+
+1.2M
+
+</div>
+
+<div class="text-gray-400">
+
+Visualizaciones
+
+</div>
+
+</div>
+
+<div class="text-center">
+
+<div class="text-4xl font-black text-green-400">
+
+18.450
+
+</div>
+
+<div class="text-gray-400">
+
+Reservas
+
+</div>
+
+</div>
+
+<div class="text-center">
+
+<div class="text-4xl font-black text-red-400">
+
+250K
+
+</div>
+
+<div class="text-gray-400">
+
+Me gusta
+
+</div>
+
+</div>
+
+<div class="text-center">
+
+<div class="text-4xl font-black text-blue-400">
+
+150K
+
+</div>
+
+<div class="text-gray-400">
+
+Impacto
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<script>
+
+// =========================
+// CAMBIO DE PESTAÑAS
+// =========================
+
+function switchTab(tab){
+
+const publicView=document.getElementById("public-view");
+const adminView=document.getElementById("admin-view");
+
+const btnPublic=document.getElementById("btn-public-view");
+const btnAdmin=document.getElementById("btn-admin-view");
+
+if(tab==="public-view"){
+
+publicView.classList.remove("hidden");
+adminView.classList.add("hidden");
+
+btnPublic.classList.remove("bg-slate-700");
+btnPublic.classList.add("bg-amber-500","text-black");
+
+btnAdmin.classList.remove("bg-amber-500","text-black");
+btnAdmin.classList.add("bg-slate-700");
+
+}else{
+
+adminView.classList.remove("hidden");
+publicView.classList.add("hidden");
+
+btnAdmin.classList.remove("bg-slate-700");
+btnAdmin.classList.add("bg-amber-500","text-black");
+
+btnPublic.classList.remove("bg-amber-500","text-black");
+btnPublic.classList.add("bg-slate-700");
+
+}
+
+}
+
+
+
+// =========================
+// REACCIONES
+// =========================
+
+function addReaction(tipo){
+
+const contador=document.getElementById("count-"+tipo);
+
+let texto=contador.innerHTML;
+
+texto=texto.replace("K","");
+
+let numero=parseFloat(texto);
+
+numero+=0.1;
+
+contador.innerHTML=numero.toFixed(1)+"K";
+
+contador.animate([
+
+{transform:"scale(1.0)"},
+
+{transform:"scale(1.4)"},
+
+{transform:"scale(1.0)"}
+
+],{
+
+duration:250
+
+});
+
+}
+
+
+
+// =========================
+// COMENTARIOS
+// =========================
+
+function postComment(){
+
+const input=document.getElementById("comment-input");
+
+const texto=input.value.trim();
+
+if(texto===""){
+
+alert("Escribe un comentario.");
+
+return;
+
+}
+
+const lista=document.getElementById("comments-list");
+
+const comentario=document.createElement("div");
+
+comentario.className="bg-slate-900 rounded-xl p-5 border border-slate-700 mb-4";
+
+comentario.innerHTML=`
+
+<strong class="text-amber-400">
+
+Lector
+
+</strong>
+
+<p class="text-sm text-gray-400 mb-3">
+
+Ahora mismo
+
+</p>
+
+<p>${texto}</p>
+
+`;
+
+lista.prepend(comentario);
+
+input.value="";
+
+}
+
+
+
+// =========================
+// ACTUALIZAR INFORMACIÓN
+// =========================
+
+function handleFormSubmit(e){
+
+e.preventDefault();
+
+document.getElementById("view-title").innerHTML=
+
+document.getElementById("form-title").value;
+
+document.getElementById("view-subtitle").innerHTML=
+
+document.getElementById("form-subtitle").value;
+
+document.getElementById("view-synopsis").innerHTML=
+
+document.getElementById("form-synopsis").value;
+
+alert("Libro actualizado correctamente.");
+
+switchTab("public-view");
+
+}
+
+
+
+// =========================
+// CONTADOR AUTOMÁTICO
+// =========================
+
+setInterval(()=>{
+
+const vistas=document.querySelectorAll(".contador");
+
+vistas.forEach(item=>{
+
+let n=parseInt(item.innerHTML);
+
+n++;
+
+item.innerHTML=n;
+
+});
+
+},7000);
+
+</script>
+<script>
+
+// =========================
+// CONTADORES EN VIVO
+// =========================
+
+let reservas = 18450;
+let vistas = 1200000;
+
+setInterval(() => {
+
+reservas += Math.floor(Math.random()*3);
+
+const r = document.getElementById("live-reservas");
+
+if(r){
+
+r.innerHTML = reservas.toLocaleString("es-UY");
+
+}
+
+},12000);
+
+setInterval(() => {
+
+vistas += Math.floor(Math.random()*25);
+
+const v = document.getElementById("live-vistas");
+
+if(v){
+
+v.innerHTML = vistas.toLocaleString("es-UY");
+
+}
+
+},3000);
+
+
+
+// =========================
+// ANIMACIÓN DE PORTADA
+// =========================
+
+window.addEventListener("load",()=>{
+
+const portada=document.querySelector("img");
+
+if(portada){
+
+portada.animate([
+
+{opacity:0,transform:"scale(.9)"},
+
+{opacity:1,transform:"scale(1)"}
+
+],{
+
+duration:700,
+
+fill:"forwards"
+
+});
+
+}
+
+});
+
+
+
+// =========================
+// BOTÓN PREVENTA
+// =========================
+
+const boton=document.querySelector("a");
+
+if(boton){
+
+boton.addEventListener("mouseenter",()=>{
+
+boton.style.boxShadow="0 0 30px rgba(245,158,11,.7)";
+
+});
+
+boton.addEventListener("mouseleave",()=>{
+
+boton.style.boxShadow="none";
+
+});
+
+}
+
+
+
+// =========================
+// MENSAJE DE BIENVENIDA
+// =========================
+
+setTimeout(()=>{
+
+console.log("Bienvenido a la Biblioteca de Alexis Rivero");
+
+},1000);
+
+</script>
+
+<footer class="mt-20 border-t border-slate-700">
+
+<div class="max-w-7xl mx-auto py-10 px-6">
+
+<div class="grid md:grid-cols-3 gap-10">
+
+<div>
+
+<h3 class="text-xl font-black text-amber-400">
+
+Alexis Rivero
+
+</h3>
+
+<p class="text-gray-400 mt-4">
+
+Autor, investigador y creador de contenido sobre apologética católica, derecho, sociedad e historia.
+
+</p>
+
+</div>
+
+<div>
+
+<h3 class="text-xl font-black text-amber-400">
+
+Próximos libros
+
+</h3>
+
+<ul class="mt-4 space-y-2 text-gray-300">
+
+<li>📘 La Dictadura de la Sospecha</li>
+
+<li>📗 Cristianismo y Civilización</li>
+
+<li>📕 Historia del Papado</li>
+
+<li>📙 El Judaísmo y Cristo</li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h3 class="text-xl font-black text-amber-400">
+
+Sígueme
+
+</h3>
+
+<div class="mt-4 space-y-2">
+
+<p>📺 YouTube</p>
+
+<p>📚 Biblioteca</p>
+
+<p>🌐 Sitio Oficial</p>
+
+<p>✉️ Contacto Editorial</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="text-center mt-12 text-gray-500">
+
+© 2026 Alexis Rivero · Todos los derechos reservados.
+
+</div>
+
+</div>
+
+</footer>
+<script>
+
+// ===============================
+// EFECTO DE APARICIÓN AL HACER SCROLL
+// ===============================
+
+const elementos=document.querySelectorAll(".card");
+
+const observer=new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.animate([
+
+{
+opacity:0,
+transform:"translateY(30px)"
+},
+
+{
+opacity:1,
+transform:"translateY(0)"
+}
+
+],{
+
+duration:600,
+fill:"forwards"
+
+});
+
+}
+
+});
+
+});
+
+elementos.forEach(card=>observer.observe(card));
+
+
+
+// ===============================
+// CAMBIAR EL TÍTULO DE LA PESTAÑA
+// ===============================
+
+let alternar=false;
+
+setInterval(()=>{
+
+document.title=alternar
+? "📚 Mis Libros | Alexis Rivero"
+: "🔥 Próximamente - La Dictadura de la Sospecha";
+
+alternar=!alternar;
+
+},4000);
+
+
+
+// ===============================
+// MENSAJE DE BIENVENIDA
+// ===============================
+
+window.onload=function(){
+
+console.log("Biblioteca cargada correctamente.");
+
+};
+
+</script>
+
+</main>
+
+<footer class="bg-slate-950 border-t border-slate-700 mt-20">
+
+<div class="max-w-7xl mx-auto px-6 py-10">
+
+<div class="flex flex-col md:flex-row justify-between items-center gap-4">
+
+<div>
+
+<h3 class="text-xl font-black text-amber-400">
+
+Alexis Rivero
+
+</h3>
+
+<p class="text-gray-400 text-sm">
+
+Investigación • Apologética • Historia • Derecho
+
+</p>
+
+</div>
+
+<div class="text-center">
+
+<p class="text-gray-400">
+
+📚 Biblioteca Oficial
+
+</p>
+
+<p class="text-gray-500 text-sm">
+
+Todos los libros y publicaciones oficiales.
+
+</p>
+
+</div>
+
+<div>
+
+<a href="https://youtube.com/@RedCatolicaAlexisRivero"
+
+target="_blank"
+
+class="bg-red-600 hover:bg-red-700 px-5 py-3 rounded-xl font-bold">
+
+📺 YouTube
+
+</a>
+
+</div>
+
+</div>
+
+<hr class="border-slate-700 my-8">
+
+<p class="text-center text-gray-500 text-sm">
+
+© 2026 Alexis Rivero · Todos los derechos reservados.
+
+</p>
+
+</div>
+
+</footer>
+
 </body>
+
 </html>
