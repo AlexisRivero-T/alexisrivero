@@ -425,20 +425,25 @@ Red Católica Alexis Rivero
 <!-- SECCIÓN DE COMENTARIOS CON MOTOR AUTOMÁTICO -->
 <div class="bg-gray-800 border border-gray-700 rounded-xl p-6 flex flex-col gap-4 shadow-md">
     <div class="flex justify-between items-center border-b border-gray-700 pb-2">
-        <h3 class="text-lg font-bold text-white tracking-tight">Comunidad y Debate</h3>
-        <span class="text-xs bg-amber-500/10 text-amber-400 font-mono px-2 py-0.5 rounded-full border border-amber-500/20">
-            <span id="total-comments-counter">1500</span> comentarios
+        <div class="flex justify-between items-center border-b border-slate-700 pb-3 mb-5">
+        <h3 class="text-2xl font-bold text-white">Comunidad y Debate</h3>
+        <span class="text-xs bg-amber-500/10 text-amber-400 font-mono px-2.5 py-1 rounded-full border border-amber-500/20">
+            <span id="total-comments-counter">100</span> comentarios
         </span>
     </div>
     
-    <!-- Caja para agregar comentario nuevo manual -->
-    <div class="flex gap-3">
-        <div class="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center font-bold text-gray-900 shrink-0">U</div>
-        <div class="w-full">
-            <textarea id="comment-input" rows="2" placeholder="Escribe tu opinión o pregunta sobre el libro..." class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-sm text-gray-100 focus:outline-none focus:border-amber-500 resize-none"></textarea>
-            <button onclick="postComment()" class="mt-2 bg-gradient-to-r from-amber-500 to-amber-600 text-gray-950 text-xs font-bold px-4 py-2 rounded-md float-right">
-                Enviar Comentario
-            </button>
+    <!-- Caja para agregar comentario manual -->
+    <div class="mb-5">
+        <textarea id="comment-input" rows="3" placeholder="Escribí tu opinión sobre el libro..." class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4 text-sm text-gray-100 focus:outline-none focus:border-amber-500 resize-none"></textarea>
+        <button onclick="postComment()" class="mt-3 bg-amber-500 hover:bg-amber-600 text-black font-bold px-5 py-2.5 rounded-xl text-sm transition-colors float-right">
+            Publicar comentario
+        </button>
+        <div class="clear-both"></div>
+    </div>
+
+    <!-- Contenedor con scroll para los 100 comentarios + los guardados -->
+    <div id="comments-list" class="flex flex-col gap-4 mt-6 border-t border-slate-700/50 pt-4 max-h-[500px] overflow-y-auto pr-2">
+        <!-- El motor inteligente cargará los comentarios aquí -->
         </div>
     </div>
 
