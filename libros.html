@@ -1,1356 +1,478 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Mis Libros | Alexis Rivero</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<style>
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-background:#0f172a;
-color:white;
-font-family:Arial,Helvetica,sans-serif;
-}
-
-.card{
-background:#1e293b;
-border:1px solid #334155;
-border-radius:20px;
-}
-
-.btn{
-transition:.3s;
-}
-
-.btn:hover{
-transform:translateY(-2px);
-}
-
-.fade{
-animation:fade .4s;
-}
-
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(10px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Libros | Alexis Rivero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: #0f172a;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 20px;
+        }
+        .btn {
+            transition: .3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .fade {
+            animation: fade .4s;
+        }
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<header class="bg-slate-900 border-b border-slate-700 sticky top-0 z-50">
-
-<div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
-
-<div>
-
-<h1 class="text-3xl font-black text-amber-400">
-📚 MIS LIBROS
-</h1>
-
-<p class="text-sm text-gray-400">
-Libros oficiales de Alexis Rivero
-</p>
-
-</div>
-
-<div class="flex gap-3">
-
-<button
-onclick="switchTab('public-view')"
-id="btn-public-view"
-class="btn bg-amber-500 text-black px-5 py-2 rounded-lg font-bold">
-
-Ver Libro
-
-</button>
-
-<button
-onclick="switchTab('admin-view')"
-id="btn-admin-view"
-class="btn bg-slate-700 px-5 py-2 rounded-lg">
-
-Administrar
-
-</button>
-
-</div>
-
-</div>
-
-</header>
-
-<main class="max-w-7xl mx-auto p-6">
-
-<section id="public-view">
-
-<div class="grid lg:grid-cols-12 gap-8">
-
-<div class="lg:col-span-4">
-
-<div class="card overflow-hidden">
-
-<img src="RIVERO_opción-01%20(1).jpg" alt="Portada">
-
-</div>
-
-<a href="#"
-class="block text-center mt-5 bg-amber-500 hover:bg-amber-600 text-black font-bold py-4 rounded-xl">
-
-🛒 RESERVAR EJEMPLAR
-
-</a>
-
-<div class="card mt-6 p-5">
-
-<h3 class="text-center text-amber-400 font-bold mb-4">
-
-Impacto del lanzamiento
-
-</h3>
-
-<div class="grid grid-cols-2 gap-4">
-
-<div class="text-center">
-
-<p class="text-3xl font-black">
-1.2M
-</p>
-
-<p class="text-gray-400 text-sm">
-
-Visualizaciones
-
-</p>
-
-</div>
-
-<div class="text-center">
-
-<p class="text-3xl font-black">
-
-18.450
-
-</p>
-
-<p class="text-gray-400 text-sm">
-
-Reservas
-
-</p>
-
-</div>
-
-<div class="text-center">
-
-<p class="text-3xl font-black">
-
-4.9★
-
-</p>
-
-<p class="text-gray-400 text-sm">
-
-Calificación
-
-</p>
-
-</div>
-
-<div class="text-center">
-
-<p class="text-3xl font-black">
-
-97%
-
-</p>
-
-<p class="text-gray-400 text-sm">
-
-Opiniones positivas
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="card mt-6 p-5">
-
-<h3 class="text-center font-bold mb-5">
-
-Reacciones
-
-</h3>
-
-<div class="flex justify-around">
-
-<button onclick="addReaction('love')" class="text-center">
-
-<div class="text-4xl">
-
-❤️
-
-</div>
-
-<div id="count-love" class="font-bold">
-
-250K
-
-</div>
-
-</button>
-
-<button onclick="addReaction('shock')" class="text-center">
-
-<div class="text-4xl">
-
-😮
-
-</div>
-
-<div id="count-shock" class="font-bold">
-
-150K
-
-</div>
-
-</button>
-
-<button onclick="addReaction('fire')" class="text-center">
-
-<div class="text-4xl">
-
-🔥
-
-</div>
-
-<div id="count-fire" class="font-bold">
-
-87K
-
-</div>
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-<div class="lg:col-span-8 fade">
-
-<div class="mb-8">
-
-<h2 id="view-title"
-class="text-5xl font-black text-white leading-tight">
-
-La Dictadura de la Sospecha
-
-</h2>
-
-<p id="view-subtitle"
-class="text-xl text-amber-400 mt-3">
-
-El colapso del Derecho, el daño a la infancia y el despertar de la razón en Uruguay.
-
-</p>
-
-</div>
-
-<div class="card p-8 mb-8">
-
-<h3 class="text-amber-400 font-bold uppercase mb-5">
-
-Sinopsis
-
-</h3>
-
-<p id="view-synopsis"
-class="text-gray-300 leading-8 text-justify">
-
-La Dictadura de la Sospecha es una investigación jurídica y social que analiza cómo determinadas reformas legislativas alteraron profundamente la presunción de inocencia, el derecho de familia y la protección de la infancia en el Uruguay.
-
-A través de documentos oficiales, estadísticas, estudios académicos y casos públicos, el autor expone cómo el Estado comenzó a sustituir la prueba por la sospecha, debilitando garantías fundamentales.
-
-La obra estudia la alienación parental, el aumento del suicidio masculino, la influencia ideológica en la educación y la pérdida de seguridad jurídica, proponiendo un retorno al Estado de Derecho y a la igualdad ante la ley.
-
-Más que un ensayo, constituye una investigación destinada a abrir un debate público sobre uno de los mayores desafíos institucionales del Uruguay contemporáneo.
-
-</p>
-
-</div>
-
-<div class="card overflow-hidden mb-8">
-
-<table class="w-full">
-
-<thead class="bg-slate-800">
-
-<tr>
-
-<th class="text-left p-4">
-Especificación
-</th>
-
-<th class="text-left p-4">
-Detalle
-</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr class="border-t border-slate-700">
-
-<td class="p-4 text-gray-400">
-Autor
-</td>
-
-<td class="p-4">
-Alexis Rivero
-</td>
-
-</tr>
-
-<tr class="border-t border-slate-700">
-
-<td class="p-4 text-gray-400">
-Editorial
-</td>
-
-<td class="p-4">
-Grupo Ígneo
-</td>
-
-</tr>
-
-<tr class="border-t border-slate-700">
-
-<td class="p-4 text-gray-400">
-Estado
-</td>
-
-<td class="p-4 text-amber-400">
-Próximamente
-</td>
-
-</tr>
-
-<tr class="border-t border-slate-700">
-
-<td class="p-4 text-gray-400">
-Formato
-</td>
-
-<td class="p-4">
-Tapa blanda y Digital
-</td>
-
-</tr>
-
-<tr class="border-t border-slate-700">
-
-<td class="p-4 text-gray-400">
-Idioma
-</td>
-
-<td class="p-4">
-Español
-</td>
-
-</tr>
-
-<tr class="border-t border-slate-700">
-
-<td class="p-4 text-gray-400">
-ISBN
-</td>
-
-<td class="p-4">
-En trámite
-</td>
-
-</tr>
-
-<tr class="border-t border-slate-700">
-
-<td class="p-4 text-gray-400">
-Canal Oficial
-</td>
-
-<td class="p-4">
-
-<a href="https://youtube.com/@RedCatolicaAlexisRivero"
-target="_blank"
-class="text-amber-400 hover:underline">
-
-Red Católica Alexis Rivero
-
-</a>
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-<div class="card p-8">
-
-<!-- SECCIÓN DE COMENTARIOS CON MOTOR AUTOMÁTICO -->
-<div class="bg-gray-800 border border-gray-700 rounded-xl p-6 flex flex-col gap-4 shadow-md">
-    <div class="flex justify-between items-center border-b border-slate-700 pb-3 mb-5">
-        <h3 class="text-2xl font-bold text-white">Comunidad y Debate</h3>
-        <span class="text-xs bg-amber-500/10 text-amber-400 font-mono px-2.5 py-1 rounded-full border border-amber-500/20">
-            <span id="total-comments-counter">1500</span> comentarios
-        </span>
-    </div>
-    
-    <!-- Caja para agregar comentario manual -->
-    <div class="mb-5">
-        <textarea id="comment-input" rows="3" placeholder="Escribí tu opinión sobre el libro..." class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4 text-sm text-gray-100 focus:outline-none focus:border-amber-500 resize-none"></textarea>
-        <button onclick="postComment()" class="mt-3 bg-amber-500 hover:bg-amber-600 text-black font-bold px-5 py-2.5 rounded-xl text-sm transition-colors float-right">
-            Publicar comentario
-        </button>
-        <div class="clear-both"></div>
-    </div>
-
-    <!-- Contenedor con scroll para los 100 comentarios distintos + los guardados -->
-    <div id="comments-list" class="flex flex-col gap-4 mt-6 border-t border-slate-700/50 pt-4 max-h-[500px] overflow-y-auto pr-2">
-        // ========================================================
-// MOTOR DE 100 COMENTARIOS ÚNICOS Y PERSISTENCIA (BASE 1500)
-// ========================================================
-
-const nombres = ['Carlos', 'María', 'Juan', 'Ana', 'Diego', 'Laura', 'Esteban', 'Patricia', 'Nicolás', 'Florencia', 'Gabriel', 'Valentina', 'Santiago', 'Lucía', 'Martín', 'Elena', 'Alejandro', 'Andrés', 'Gonzalo', 'Guzmán', 'Tabaré', 'Mathías', 'Álvaro', 'Rodrigo', 'Cecilia', 'Beatriz', 'Ignacio', 'Joaquín', 'Roberto', 'Guillermo', 'Daniela', 'Federico', 'Sebastián', 'Agustín', 'Eduardo', 'Verónica', 'Marcelo', 'Camila', 'Facundo', 'Matías'];
-const apellidos = ['Rodríguez', 'González', 'Martínez', 'García', 'Pérez', 'López', 'Sánchez', 'Ramírez', 'Álvarez', 'Fernández', 'Díaz', 'Silva', 'Pereira', 'Ferreira', 'Sosa', 'Castro', 'Suárez', 'Olivera', 'Acosta', 'Borda', 'Viera', 'Méndez', 'Ríos', 'Blanco', 'Torres', 'Suarez', 'Giménez'];
-const departamentos = ['Montevideo', 'Maldonado', 'Canelones', 'Colonia', 'Salto', 'Paysandú', 'Rocha', 'San José', 'Tacuarembó', 'Soriano', 'Rivera', 'Artigas', 'Lavalleja', 'Flores', 'Florida', 'Durazno', 'Treinta y Tres', 'Río Negro', 'Cerro Largo'];
-
-const frases = [
-    "Excelente investigación. Un análisis sumamente necesario y valiente sobre las garantías procesales.",
-    "Ya quiero que salga para comprar mi ejemplar. Felicitaciones por poner estos temas sobre la mesa.",
-    "Un enfoque brillante y muy riguroso. El Uruguay actual necesita este debate constitucional urgente.",
-    "Excelente aporte de Alexis Rivero. Un grito de cordura jurídica ante tanta arbitrariedad.",
-    "Totalmente de acuerdo con el planteo del libro. La presunción de inocencia es sagrada.",
-    "Un trabajo impecable. Hacía falta una autopsia seria del sistema judicial de familia.",
-    "Imprescindible lectura para abogados, legisladores y ciudadanos comunes. Gran trabajo intelectual.",
-    "Mis más sinceras felicitaciones por el coraje de abordar este tabú sin rodeos ideológicos.",
-    "El análisis fáctico es brutal. Abre los ojos ante realidades institucionales que muchos callan.",
-    "¡Muchos éxitos con este lanzamiento! Cuenta con mi reserva desde el interior.",
-    "Brillante estructura argumentativa. Una defensa formidable del Estado de Derecho y la igualdad.",
-    "Se nota que hay un trabajo de investigación exhaustivo detrás. Un gran aporte para la sociedad.",
-    "Gracias por dar el paso y escribir sobre esto. Apoyo total desde mi departamento.",
-    "Un libro clave para entender las crisis ocultas del tejido social familiar en nuestro país.",
-    "Una obra necesaria para el despertar de la razón. Éxitos totales en las librerías.",
-    "Completamente necesario este libro, mi total apoyo a la investigación realizada.",
-    "Un enfoque jurídico muy lúcido y directo. Hacía falta un texto con esta claridad.",
-    "Felicitaciones por la valentía de publicar este material. Lo comparto plenamente.",
-    "Un aporte fundamental para cuestionar lo que nadie se atreve a cuestionar hoy en día.",
-    "Excelente redacción, atrapante y con fundamentos muy sólidos de principio a fin.",
-    "Es una lectura obligatoria para entender los desafíos reales de nuestra justicia actual.",
-    "Gran trabajo. Se nota el compromiso con la verdad y el análisis estructural riguroso.",
-    "Ya reservé el mío. Es un orgullo ver este nivel de debate y rigurosidad en el país.",
-    "Un texto indispensable que desarma argumentos falsos con datos y leyes claras.",
-    "Firme, claro y sumamente documentado. Felicitaciones por este gran logro literario."
-];
-
-function generarComentarios() {
-    const listContainer = document.getElementById('comments-list');
-    if(!listContainer) return;
-    
-    let htmlContenido = '';
-
-    // 1. Renderiza primero los comentarios que TÚ escribas y queden guardados
-    const customComments = JSON.parse(localStorage.getItem('custom-comments')) || [];
-    customComments.forEach(c => {
-        htmlContenido += `
-            <div class="bg-slate-900 p-4 rounded-xl border border-amber-500/30 shadow-md">
-                <div class="flex justify-between items-center mb-1">
-                    <span class="text-xs font-bold text-amber-400">Lector (Guardado)</span>
-                    <span class="text-[10px] text-gray-500 font-mono">${c.tiempo}</span>
-                </div>
-                <p class="text-sm text-gray-200">${c.texto}</p>
+    <header class="bg-slate-900 border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-black text-amber-400">📚 MIS LIBROS</h1>
+                <p class="text-sm text-gray-400">Libros oficiales de Alexis Rivero</p>
             </div>
-        `;
-    });
+            <div class="flex gap-3">
+                <button onclick="switchTab('public-view')" id="btn-public-view" class="btn bg-amber-500 text-black px-5 py-2 rounded-lg font-bold">Ver Libro</button>
+                <button onclick="switchTab('admin-view')" id="btn-admin-view" class="btn bg-slate-700 px-5 py-2 rounded-lg">Administrar</button>
+            </div>
+        </div>
+    </header>
 
-    // 2. Genera exactamente 100 comentarios base completamente mezclados y distintos
-    for (let i = 100; i > 0; i--) {
-        // Mezclas matemáticas para que ningún comentario repita el mismo nombre con la misma frase
-        const nIdx = (i * 7 + 3) % nombres.length;
-        const aIdx = (i * 13 + 5) % apellidos.length;
-        const dIdx = (i * 3 + 2) % departamentos.length;
-        const fIdx = (i * 19 + i) % frases.length;
+    <main class="max-w-7xl mx-auto p-6">
+        <section id="public-view">
+            <div class="grid lg:grid-cols-12 gap-8">
+                <!-- COLUMNA IZQUIERDA -->
+                <div class="lg:col-span-4">
+                    <div class="card overflow-hidden">
+                        <img src="RIVERO_opción-01%20(1).jpg" alt="Portada">
+                    </div>
+                    
+                    <a href="#" class="block text-center mt-5 bg-amber-500 hover:bg-amber-600 text-black font-bold py-4 rounded-xl">
+                        🛒 RESERVAR EJEMPLAR
+                    </a>
 
-        let tiempo;
-        if (i > 90) {
-            tiempo = `Hace ${101 - i} min`;
-        } else if (i > 40) {
-            tiempo = `Hace ${Math.floor((100 - i) / 2) + 1} horas`;
-        } else {
-            tiempo = `Hace ${Math.floor((40 - i) / 5) + 1} días`;
+                    <div class="card mt-6 p-5">
+                        <h3 class="text-center text-amber-400 font-bold mb-4">Impacto del lanzamiento</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center">
+                                <p id="live-vistas" class="text-3xl font-black">1.2M</p>
+                                <p class="text-gray-400 text-sm">Visualizaciones</p>
+                            </div>
+                            <div class="text-center">
+                                <p id="live-reservas" class="text-3xl font-black">18.450</p>
+                                <p class="text-gray-400 text-sm">Reservas</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-3xl font-black">4.9★</p>
+                                <p class="text-gray-400 text-sm">Calificación</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-3xl font-black">97%</p>
+                                <p class="text-gray-400 text-sm">Opiniones positivas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-6 p-5">
+                        <h3 class="text-center font-bold mb-5">Reacciones</h3>
+                        <div class="flex justify-around">
+                            <button onclick="addReaction('love')" class="text-center">
+                                <div class="text-4xl">❤️</div>
+                                <div id="count-love" class="font-bold">250K</div>
+                            </button>
+                            <button onclick="addReaction('shock')" class="text-center">
+                                <div class="text-4xl">😮</div>
+                                <div id="count-shock" class="font-bold">150K</div>
+                            </button>
+                            <button onclick="addReaction('fire')" class="text-center">
+                                <div class="text-4xl">🔥</div>
+                                <div id="count-fire" class="font-bold">87K</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMNA DERECHA -->
+                <div class="lg:col-span-8 fade">
+                    <div class="mb-8">
+                        <h2 id="view-title" class="text-5xl font-black text-white leading-tight">La Dictadura de la Sospecha</h2>
+                        <p id="view-subtitle" class="text-xl text-amber-400 mt-3">El colapso del Derecho, el daño a la infancia y el despertar de la razón en Uruguay.</p>
+                    </div>
+
+                    <div class="card p-8 mb-8">
+                        <h3 class="text-amber-400 font-bold uppercase mb-5">Sinopsis</h3>
+                        <p id="view-synopsis" class="text-gray-300 leading-8 text-justify">
+                            La Dictadura de la Sospecha es una investigación jurídica y social que analiza cómo determinadas reformas legislativas alteraron profundamente la presunción de inocencia, el derecho de familia y la protección de la infancia en el Uruguay. A través de documentos oficiales, estadísticas, estudios académicos y casos públicos, el autor expone cómo el Estado comenzó a sustituir la prueba por la sospecha, debilitando garantías fundamentales. La obra estudia la alienación parental, el aumento del suicidio masculino, la influencia ideológica en la educación y la pérdida de seguridad jurídica, proponiendo un retorno al Estado de Derecho y a la igualdad ante la ley. Más que un ensayo, constituye una investigación destinada a abrir un debate público sobre uno de los mayores desafíos institucionales del Uruguay contemporáneo.
+                        </p>
+                    </div>
+
+                    <div class="card overflow-hidden mb-8">
+                        <table class="w-full">
+                            <thead class="bg-slate-800">
+                                <tr>
+                                    <th class="text-left p-4">Especificación</th>
+                                    <th class="text-left p-4">Detalle</th>
+                                </tr>
+                            </table>
+                            <tbody>
+                                <tr class="border-t border-slate-700">
+                                    <td class="p-4 text-gray-400">Autor</td>
+                                    <td class="p-4">Alexis Rivero</td>
+                                </tr>
+                                <tr class="border-t border-slate-700">
+                                    <td class="p-4 text-gray-400">Editorial</td>
+                                    <td class="p-4">Grupo Ígneo</td>
+                                </tr>
+                                <tr class="border-t border-slate-700">
+                                    <td class="p-4 text-gray-400">Estado</td>
+                                    <td class="p-4 text-amber-400">Próximamente</td>
+                                </tr>
+                                <tr class="border-t border-slate-700">
+                                    <td class="p-4 text-gray-400">Formato</td>
+                                    <td class="p-4">Tapa blanda y Digital</td>
+                                </tr>
+                                <tr class="border-t border-slate-700">
+                                    <td class="p-4 text-gray-400">Idioma</td>
+                                    <td class="p-4">Español</td>
+                                </tr>
+                                <tr class="border-t border-slate-700">
+                                    <td class="p-4 text-gray-400">ISBN</td>
+                                    <td class="p-4">En trámite</td>
+                                </tr>
+                                <tr class="border-t border-slate-700">
+                                    <td class="p-4 text-gray-400">Canal Oficial</td>
+                                    <td class="p-4">
+                                        <a href="https://youtube.com/@RedCatolicaAlexisRivero" target="_blank" class="text-amber-400 hover:underline">Red Católica Alexis Rivero</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- SECCIÓN DE COMENTARIOS TOTALMENTE REPARADA -->
+                    <div class="card p-8">
+                        <div class="flex justify-between items-center border-b border-slate-700 pb-3 mb-5">
+                            <h3 class="text-2xl font-bold text-white">Comunidad y Debate</h3>
+                            <span class="text-xs bg-amber-500/10 text-amber-400 font-mono px-2.5 py-1 rounded-full border border-amber-500/20">
+                                <span id="total-comments-counter">1500</span> comentarios
+                            </span>
+                        </div>
+                        
+                        <div class="mb-5">
+                            <textarea id="comment-input" rows="3" placeholder="Escribí tu opinión sobre el libro..." class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4 text-sm text-gray-100 focus:outline-none focus:border-amber-500 resize-none"></textarea>
+                            <button onclick="postComment()" class="mt-3 bg-amber-500 hover:bg-amber-600 text-black font-bold px-5 py-2.5 rounded-xl text-sm transition-colors float-right">Publicar comentario</button>
+                            <div class="clear-both"></div>
+                        </div>
+
+                        <!-- Contenedor único con Scroll para los 100 comentarios automáticos -->
+                        <div id="comments-list" class="flex flex-col gap-4 mt-6 border-t border-slate-700/50 pt-4 max-h-[500px] overflow-y-auto pr-2">
+                            <!-- El JavaScript inyectará aquí los 100 testimonios limpios -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISTA DE ADMINISTRACIÓN -->
+        <section id="admin-view" class="hidden">
+            <div class="max-w-3xl mx-auto">
+                <div class="card p-8">
+                    <h2 class="text-3xl font-black text-amber-400 mb-2">Panel de Administración</h2>
+                    <p class="text-gray-400 mb-8">Desde aquí podrás modificar toda la información del libro sin tocar el código.</p>
+                    <form onsubmit="handleFormSubmit(event)">
+                        <div class="mb-6">
+                            <label class="block mb-2 font-bold">Título</label>
+                            <input type="text" id="form-title" value="La Dictadura de la Sospecha" class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block mb-2 font-bold">Subtítulo</label>
+                            <input type="text" id="form-subtitle" value="El colapso del Derecho, el daño a la infancia y el despertar de la razón en Uruguay." class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block mb-2 font-bold">Sinopsis</label>
+                            <textarea id="form-synopsis" rows="10" class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4 resize-none">La Dictadura de la Sospecha es una investigación jurídica y social sobre la transformación del Derecho de Familia, la presunción de inocencia y las consecuencias sociales derivadas de la legislación vigente.</textarea>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block mb-2 font-bold">Editorial</label>
+                                <input type="text" value="Grupo Ígneo" class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4">
+                            </div>
+                            <div>
+                                <label class="block mb-2 font-bold">Estado</label>
+                                <select class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4">
+                                    <option>Próximamente</option>
+                                    <option>Disponible</option>
+                                    <option>Agotado</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex gap-4">
+                            <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-black font-bold px-8 py-3 rounded-xl">Guardar Cambios</button>
+                            <button type="button" onclick="switchTab('public-view')" class="bg-slate-700 hover:bg-slate-600 px-8 py-3 rounded-xl">Volver</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="bg-slate-950 border-t border-slate-700 mt-20">
+        <div class="max-w-7xl mx-auto px-6 py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <h3 class="text-xl font-black text-amber-400">Alexis Rivero</h3>
+                    <p class="text-gray-400 text-sm">Investigación • Apologética • Historia • Derecho</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-gray-400">📚 Biblioteca Oficial</p>
+                    <p class="text-gray-500 text-sm">Todos los libros y publicaciones oficiales.</p>
+                </div>
+                <div>
+                    <a href="https://youtube.com/@RedCatolicaAlexisRivero" target="_blank" class="bg-red-600 hover:bg-red-700 px-5 py-3 rounded-xl font-bold">📺 YouTube</a>
+                </div>
+            </div>
+            <hr class="border-slate-700 my-8">
+            <p class="text-center text-gray-500 text-sm">© 2026 Alexis Rivero · Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- LOGICA JAVASCRIPT UNIFICADA Y PROTEGIDA -->
+    <script>
+        // 1. Cambio de Pestañas
+        function switchTab(tab) {
+            const publicView = document.getElementById("public-view");
+            const adminView = document.getElementById("admin-view");
+            const btnPublic = document.getElementById("btn-public-view");
+            const btnAdmin = document.getElementById("btn-admin-view");
+
+            if (tab === "public-view") {
+                publicView.classList.remove("hidden");
+                adminView.classList.add("hidden");
+                btnPublic.classList.remove("bg-slate-700");
+                btnPublic.classList.add("bg-amber-500", "text-black");
+                btnAdmin.classList.remove("bg-amber-500", "text-black");
+                btnAdmin.classList.add("bg-slate-700");
+            } else {
+                adminView.classList.remove("hidden");
+                publicView.classList.add("hidden");
+                btnAdmin.classList.remove("bg-slate-700");
+                btnAdmin.classList.add("bg-amber-500", "text-black");
+                btnPublic.classList.remove("bg-amber-500", "text-black");
+                btnPublic.classList.add("bg-slate-700");
+            }
         }
 
-        htmlContenido += `
-            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/60">
-                <div class="flex justify-between items-center mb-1">
-                    <span class="text-xs font-bold text-amber-400">${nombres[nIdx]} ${apellidos[aIdx]} (${departamentos[dIdx]})</span>
-                    <span class="text-[10px] text-gray-500 font-mono">${tiempo}</span>
-                </div>
-                <p class="text-sm text-gray-300">${frases[fIdx]}</p>
-            </div>
-        `;
-    }
-
-    listContainer.innerHTML = htmlContenido;
-    
-    // Mantiene la visual en 1500 y le suma tus comentarios nuevos guardados
-    document.getElementById('total-comments-counter').innerText = 1500 + customComments.length;
-}
-
-function postComment() {
-    const input = document.getElementById('comment-input');
-    const text = input.value.trim();
-    if (!text) return;
-
-    const customComments = JSON.parse(localStorage.getItem('custom-comments')) || [];
-    customComments.unshift({ texto: text, tiempo: 'Ahora mismo' });
-    localStorage.setItem('custom-comments', JSON.stringify(customComments));
-
-    generarComentarios();
-    input.value = '';
-    document.getElementById('comments-list').scrollTop = 0;
-}
-
-// Inicia el contador de reacciones (me gustas) si existieran, y monta los comentarios
-window.addEventListener('DOMContentLoaded', () => {
-    // Si tienes un sistema de reacciones arriba, esto las carga de la memoria
-    const types = ['love', 'shock', 'growth'];
-    types.forEach(type => {
-        const el = document.getElementById(`count-${type}`);
-        if (el) {
-            const savedValue = localStorage.getItem(`react-${type}`);
-            if (savedValue !== null) el.innerText = savedValue;
+        // 2. Sistema de Reacciones con Memoria Local
+        function initReactions() {
+            const types = ['love', 'shock', 'fire'];
+            types.forEach(type => {
+                const el = document.getElementById(`count-${type}`);
+                if (el) {
+                    const savedValue = localStorage.getItem(`react-${type}`);
+                    if (savedValue !== null) el.innerText = savedValue;
+                }
+            });
         }
-    });
-    generarComentarios();
-});
 
-    <!-- Contenedor con scroll para los 1500 comentarios -->
-    <div id="comments-list" class="flex flex-col gap-4 mt-4 border-t border-gray-700/50 pt-4 max-h-[500px] overflow-y-auto pr-2">
-        <!-- JavaScript va a rellenar esto solo -->
-</div>
-
-</div>
-
-<div id="comments-list">
-
-<div class="bg-slate-900 rounded-xl p-5 border border-slate-700 mb-4">
-
-<strong class="text-amber-400">
-
-Dr. Martínez
-
-</strong>
-
-<p class="text-sm text-gray-400 mb-3">
-
-Hace 2 horas
-
-</p>
-
-<p>
-
-Una investigación muy seria. Este libro promete abrir un debate muy importante sobre el Derecho y las garantías constitucionales.
-
-</p>
-
-</div>
-
-<div class="bg-slate-900 rounded-xl p-5 border border-slate-700">
-
-<strong class="text-amber-400">
-
-María González
-
-</strong>
-
-<p class="text-sm text-gray-400 mb-3">
-
-Hace 6 horas
-
-</p>
-
-<p>
-
-Excelente presentación. Ya reservé mi ejemplar.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-<section id="admin-view" class="hidden">
-
-<div class="max-w-3xl mx-auto">
-
-<div class="card p-8">
-
-<h2 class="text-3xl font-black text-amber-400 mb-2">
-
-Panel de Administración
-
-</h2>
-
-<p class="text-gray-400 mb-8">
-
-Desde aquí podrás modificar toda la información del libro sin tocar el código.
-
-</p>
-
-<form onsubmit="handleFormSubmit(event)">
-
-<div class="mb-6">
-
-<label class="block mb-2 font-bold">
-
-Título
-
-</label>
-
-<input
-type="text"
-id="form-title"
-value="La Dictadura de la Sospecha"
-class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4">
-
-</div>
-
-<div class="mb-6">
-
-<label class="block mb-2 font-bold">
-
-Subtítulo
-
-</label>
-
-<input
-type="text"
-id="form-subtitle"
-value="El colapso del Derecho, el daño a la infancia y el despertar de la razón en Uruguay."
-class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4">
-
-</div>
-
-<div class="mb-6">
-
-<label class="block mb-2 font-bold">
-
-Sinopsis
-
-</label>
-
-<textarea
-id="form-synopsis"
-rows="10"
-class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4 resize-none">
-
-La Dictadura de la Sospecha es una investigación jurídica y social sobre la transformación del Derecho de Familia, la presunción de inocencia y las consecuencias sociales derivadas de la legislación vigente.
-
-</textarea>
-
-</div>
-
-<div class="grid md:grid-cols-2 gap-5">
-
-<div>
-
-<label class="block mb-2 font-bold">
-
-Editorial
-
-</label>
-
-<input
-type="text"
-value="Grupo Ígneo"
-class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4">
-
-</div>
-
-<div>
-
-<label class="block mb-2 font-bold">
-
-Estado
-
-</label>
-
-<select
-class="w-full rounded-xl bg-slate-900 border border-slate-700 p-4">
-
-<option>
-
-Próximamente
-
-</option>
-
-<option>
-
-Disponible
-
-</option>
-
-<option>
-
-Agotado
-
-</option>
-
-</select>
-
-</div>
-
-</div>
-
-<div class="mt-8 flex gap-4">
-
-<button
-type="submit"
-class="bg-amber-500 hover:bg-amber-600 text-black font-bold px-8 py-3 rounded-xl">
-
-Guardar Cambios
-
-</button>
-
-<button
-type="button"
-onclick="switchTab('public-view')"
-class="bg-slate-700 hover:bg-slate-600 px-8 py-3 rounded-xl">
-
-Volver
-
-</button>
-
-</div>
-
-</form>
-
-</div>
-
-<div class="card p-8 mt-8">
-
-<h3 class="text-2xl font-bold text-amber-400 mb-5">
-
-Estadísticas del libro
-
-</h3>
-
-<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-
-<div class="text-center">
-
-<div class="text-4xl font-black text-amber-400">
-
-1.2M
-
-</div>
-
-<div class="text-gray-400">
-
-Visualizaciones
-
-</div>
-
-</div>
-
-<div class="text-center">
-
-<div class="text-4xl font-black text-green-400">
-
-18.450
-
-</div>
-
-<div class="text-gray-400">
-
-Reservas
-
-</div>
-
-</div>
-
-<div class="text-center">
-
-<div class="text-4xl font-black text-red-400">
-
-250K
-
-</div>
-
-<div class="text-gray-400">
-
-Me gusta
-
-</div>
-
-</div>
-
-<div class="text-center">
-
-<div class="text-4xl font-black text-blue-400">
-
-150K
-
-</div>
-
-<div class="text-gray-400">
-
-Impacto
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-<script>
-
-// =========================
-// CAMBIO DE PESTAÑAS
-// =========================
-
-function switchTab(tab){
-
-const publicView=document.getElementById("public-view");
-const adminView=document.getElementById("admin-view");
-
-const btnPublic=document.getElementById("btn-public-view");
-const btnAdmin=document.getElementById("btn-admin-view");
-
-if(tab==="public-view"){
-
-publicView.classList.remove("hidden");
-adminView.classList.add("hidden");
-
-btnPublic.classList.remove("bg-slate-700");
-btnPublic.classList.add("bg-amber-500","text-black");
-
-btnAdmin.classList.remove("bg-amber-500","text-black");
-btnAdmin.classList.add("bg-slate-700");
-
-}else{
-
-adminView.classList.remove("hidden");
-publicView.classList.add("hidden");
-
-btnAdmin.classList.remove("bg-slate-700");
-btnAdmin.classList.add("bg-amber-500","text-black");
-
-btnPublic.classList.remove("bg-amber-500","text-black");
-btnPublic.classList.add("bg-slate-700");
-
-}
-
-}
-
-
-
-// =========================
-// REACCIONES
-// =========================
-
-function addReaction(tipo){
-
-const contador=document.getElementById("count-"+tipo);
-
-let texto=contador.innerHTML;
-
-texto=texto.replace("K","");
-
-let numero=parseFloat(texto);
-
-numero+=0.1;
-
-contador.innerHTML=numero.toFixed(1)+"K";
-
-contador.animate([
-
-{transform:"scale(1.0)"},
-
-{transform:"scale(1.4)"},
-
-{transform:"scale(1.0)"}
-
-],{
-
-duration:250
-
-});
-
-}
-
-
-
-// =========================
-// COMENTARIOS
-// =========================
-
-function postComment(){
-
-const input=document.getElementById("comment-input");
-
-const texto=input.value.trim();
-
-if(texto===""){
-
-alert("Escribe un comentario.");
-
-return;
-
-}
-
-const lista=document.getElementById("comments-list");
-
-const comentario=document.createElement("div");
-
-comentario.className="bg-slate-900 rounded-xl p-5 border border-slate-700 mb-4";
-
-comentario.innerHTML=`
-
-<strong class="text-amber-400">
-
-Lector
-
-</strong>
-
-<p class="text-sm text-gray-400 mb-3">
-
-Ahora mismo
-
-</p>
-
-<p>${texto}</p>
-
-`;
-
-lista.prepend(comentario);
-
-input.value="";
-
-}
-
-
-
-// =========================
-// ACTUALIZAR INFORMACIÓN
-// =========================
-
-function handleFormSubmit(e){
-
-e.preventDefault();
-
-document.getElementById("view-title").innerHTML=
-
-document.getElementById("form-title").value;
-
-document.getElementById("view-subtitle").innerHTML=
-
-document.getElementById("form-subtitle").value;
-
-document.getElementById("view-synopsis").innerHTML=
-
-document.getElementById("form-synopsis").value;
-
-alert("Libro actualizado correctamente.");
-
-switchTab("public-view");
-
-}
-
-
-
-// =========================
-// CONTADOR AUTOMÁTICO
-// =========================
-
-setInterval(()=>{
-
-const vistas=document.querySelectorAll(".contador");
-
-vistas.forEach(item=>{
-
-let n=parseInt(item.innerHTML);
-
-n++;
-
-item.innerHTML=n;
-
-});
-
-},7000);
-
-</script>
-<script>
-
-// =========================
-// CONTADORES EN VIVO
-// =========================
-
-let reservas = 18450;
-let vistas = 1200000;
-
-setInterval(() => {
-
-reservas += Math.floor(Math.random()*3);
-
-const r = document.getElementById("live-reservas");
-
-if(r){
-
-r.innerHTML = reservas.toLocaleString("es-UY");
-
-}
-
-},12000);
-
-setInterval(() => {
-
-vistas += Math.floor(Math.random()*25);
-
-const v = document.getElementById("live-vistas");
-
-if(v){
-
-v.innerHTML = vistas.toLocaleString("es-UY");
-
-}
-
-},3000);
-
-
-
-// =========================
-// ANIMACIÓN DE PORTADA
-// =========================
-
-window.addEventListener("load",()=>{
-
-const portada=document.querySelector("img");
-
-if(portada){
-
-portada.animate([
-
-{opacity:0,transform:"scale(.9)"},
-
-{opacity:1,transform:"scale(1)"}
-
-],{
-
-duration:700,
-
-fill:"forwards"
-
-});
-
-}
-
-});
-
-
-
-// =========================
-// BOTÓN PREVENTA
-// =========================
-
-const boton=document.querySelector("a");
-
-if(boton){
-
-boton.addEventListener("mouseenter",()=>{
-
-boton.style.boxShadow="0 0 30px rgba(245,158,11,.7)";
-
-});
-
-boton.addEventListener("mouseleave",()=>{
-
-boton.style.boxShadow="none";
-
-});
-
-}
-
-
-
-// =========================
-// MENSAJE DE BIENVENIDA
-// =========================
-
-setTimeout(()=>{
-
-console.log("Bienvenido a la Biblioteca de Alexis Rivero");
-
-},1000);
-
-</script>
-
-<footer class="mt-20 border-t border-slate-700">
-
-<div class="max-w-7xl mx-auto py-10 px-6">
-
-<div class="grid md:grid-cols-3 gap-10">
-
-<div>
-
-<h3 class="text-xl font-black text-amber-400">
-
-Alexis Rivero
-
-</h3>
-
-<p class="text-gray-400 mt-4">
-
-Autor, investigador y creador de contenido sobre apologética católica, derecho, sociedad e historia.
-
-</p>
-
-</div>
-
-<div>
-
-<h3 class="text-xl font-black text-amber-400">
-
-Próximos libros
-
-</h3>
-
-<ul class="mt-4 space-y-2 text-gray-300">
-
-<li>📘 La Dictadura de la Sospecha</li>
-
-<li>📗 Cristianismo y Civilización</li>
-
-<li>📕 Historia del Papado</li>
-
-<li>📙 El Judaísmo y Cristo</li>
-
-</ul>
-
-</div>
-
-<div>
-
-<h3 class="text-xl font-black text-amber-400">
-
-Sígueme
-
-</h3>
-
-<div class="mt-4 space-y-2">
-
-<p>📺 YouTube</p>
-
-<p>📚 Biblioteca</p>
-
-<p>🌐 Sitio Oficial</p>
-
-<p>✉️ Contacto Editorial</p>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="text-center mt-12 text-gray-500">
-
-© 2026 Alexis Rivero · Todos los derechos reservados.
-
-</div>
-
-</div>
-
-</footer>
-<script>
-
-// ===============================
-// EFECTO DE APARICIÓN AL HACER SCROLL
-// ===============================
-
-const elementos=document.querySelectorAll(".card");
-
-const observer=new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.animate([
-
-{
-opacity:0,
-transform:"translateY(30px)"
-},
-
-{
-opacity:1,
-transform:"translateY(0)"
-}
-
-],{
-
-duration:600,
-fill:"forwards"
-
-});
-
-}
-
-});
-
-});
-
-elementos.forEach(card=>observer.observe(card));
-
-
-
-// ===============================
-// CAMBIAR EL TÍTULO DE LA PESTAÑA
-// ===============================
-
-let alternar=false;
-
-setInterval(()=>{
-
-document.title=alternar
-? "📚 Mis Libros | Alexis Rivero"
-: "🔥 Próximamente - La Dictadura de la Sospecha";
-
-alternar=!alternar;
-
-},4000);
-
-
-
-// ===============================
-// MENSAJE DE BIENVENIDA
-// ===============================
-
-window.onload=function(){
-
-console.log("Biblioteca cargada correctamente.");
-
-};
-
-</script>
-
-</main>
-
-<footer class="bg-slate-950 border-t border-slate-700 mt-20">
-
-<div class="max-w-7xl mx-auto px-6 py-10">
-
-<div class="flex flex-col md:flex-row justify-between items-center gap-4">
-
-<div>
-
-<h3 class="text-xl font-black text-amber-400">
-
-Alexis Rivero
-
-</h3>
-
-<p class="text-gray-400 text-sm">
-
-Investigación • Apologética • Historia • Derecho
-
-</p>
-
-</div>
-
-<div class="text-center">
-
-<p class="text-gray-400">
-
-📚 Biblioteca Oficial
-
-</p>
-
-<p class="text-gray-500 text-sm">
-
-Todos los libros y publicaciones oficiales.
-
-</p>
-
-</div>
-
-<div>
-
-<a href="https://youtube.com/@RedCatolicaAlexisRivero"
-
-target="_blank"
-
-class="bg-red-600 hover:bg-red-700 px-5 py-3 rounded-xl font-bold">
-
-📺 YouTube
-
-</a>
-
-</div>
-
-</div>
-
-<hr class="border-slate-700 my-8">
-
-<p class="text-center text-gray-500 text-sm">
-
-© 2026 Alexis Rivero · Todos los derechos reservados.
-
-</p>
-
-</div>
-
-</footer>
-
+        function addReaction(tipo) {
+            const contador = document.getElementById("count-" + tipo);
+            if (!contador) return;
+            let texto = contador.innerHTML;
+            texto = texto.replace("K", "");
+            let numero = parseFloat(texto);
+            numero += 0.1;
+            let nuevoTexto = numero.toFixed(1) + "K";
+            contador.innerHTML = nuevoTexto;
+
+            localStorage.setItem(`react-${tipo}`, nuevoTexto);
+
+            contador.animate([
+                { transform: "scale(1.0)" },
+                { transform: "scale(1.4)" },
+                { transform: "scale(1.0)" }
+            ], { duration: 250 });
+        }
+
+        // 3. Motor Generador Inteligente de Comentarios Positivos
+        const nombres = ['Carlos', 'María', 'Juan', 'Ana', 'Diego', 'Laura', 'Esteban', 'Patricia', 'Nicolás', 'Florencia', 'Gabriel', 'Valentina', 'Santiago', 'Lucía', 'Martín', 'Elena', 'Alejandro', 'Andrés', 'Gonzalo', 'Guzmán', 'Tabaré', 'Mathías', 'Álvaro', 'Rodrigo', 'Cecilia', 'Beatriz', 'Ignacio', 'Joaquín', 'Roberto', 'Guillermo', 'Daniela', 'Federico', 'Sebastián', 'Agustín', 'Eduardo', 'Verónica', 'Marcelo', 'Camila', 'Facundo', 'Matías'];
+        const apellidos = ['Rodríguez', 'González', 'Martínez', 'García', 'Pérez', 'López', 'Sánchez', 'Ramírez', 'Álvarez', 'Fernández', 'Díaz', 'Silva', 'Pereira', 'Ferreira', 'Sosa', 'Castro', 'Suárez', 'Olivera', 'Acosta', 'Borda', 'Viera', 'Méndez', 'Ríos', 'Blanco', 'Torres', 'Suarez', 'Giménez'];
+        const departamentos = ['Montevideo', 'Maldonado', 'Canelones', 'Colonia', 'Salto', 'Paysandú', 'Rocha', 'San José', 'Tacuarembó', 'Soriano', 'Rivera', 'Artigas', 'Lavalleja', 'Flores', 'Florida', 'Durazno', 'Treinta y Tres', 'Río Negro', 'Cerro Largo'];
+        
+        const frases = [
+            "Excelente investigación. Un análisis sumamente necesario y valiente sobre las garantías procesales.",
+            "Ya quiero que salga para comprar mi ejemplar. Felicitaciones por poner estos temas sobre la mesa.",
+            "Un enfoque brillante y muy riguroso. El Uruguay actual necesita este debate constitucional urgente.",
+            "Excelente aporte de Alexis Rivero. Un grito de cordura jurídica ante tanta arbitrariedad.",
+            "Totalmente de acuerdo con el planteo del libro. La presunción de inocencia es sagrada.",
+            "Un trabajo impecable. Hacía falta una autopsia seria del sistema judicial de familia.",
+            "Imprescindible lectura para abogados, legisladores y ciudadanos comunes. Gran trabajo intelectual.",
+            "Mis más sinceras felicitaciones por el coraje de abordar este tabú sin rodeos ideológicos.",
+            "El análisis fáctico es brutal. Abre los ojos ante realidades institucionales que muchos callan.",
+            "¡Muchos éxitos con este lanzamiento! Cuenta con mi reserva desde el interior.",
+            "Brillante estructura argumentativa. Una defensa formidable del Estado de Derecho y la igualdad.",
+            "Se nota que hay un trabajo de investigación exhaustivo detrás. Un gran aporte para la sociedad.",
+            "Gracias por dar el paso y escribir sobre esto. Apoyo total desde mi departamento.",
+            "Un libro clave para entender las crisis ocultas del tejido social familiar en nuestro país.",
+            "Una obra necesaria para el despertar de la razón. Éxitos totales en las librerías.",
+            "Completamente necesario este libro, mi total apoyo a la investigación realizada.",
+            "Un enfoque jurídico muy lúcido y directo. Hacía falta un texto con esta claridad.",
+            "Felicitaciones por la valentía de publicar este material. Lo comparto plenamente.",
+            "Un aporte fundamental para cuestionar lo que nadie se atreve a cuestionar hoy en día.",
+            "Excelente redacción, atrapante y con fundamentos muy sólidos de principio a fin.",
+            "Es una lectura obligatoria para entender los desafíos reales de nuestra justicia actual.",
+            "Gran trabajo. Se nota el compromiso con la verdad y el análisis estructural riguroso.",
+            "Ya reservé el mío. Es un orgullo ver este nivel de debate y rigurosidad en el país.",
+            "Un texto indispensable que desarma argumentos falsos con datos y leyes claras.",
+            "Firme, claro y sumamente documentado. Felicitaciones por este gran logro literario."
+        ];
+
+        function generarComentarios() {
+            const listContainer = document.getElementById('comments-list');
+            if (!listContainer) return;
+            let htmlContenido = '';
+
+            // Cargar comentarios manuales guardados
+            const customComments = JSON.parse(localStorage.getItem('custom-comments')) || [];
+            customComments.forEach(c => {
+                htmlContenido += `
+                    <div class="bg-slate-900 p-4 rounded-xl border border-amber-500/30 shadow-md">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-xs font-bold text-amber-400">Lector (Guardado)</span>
+                            <span class="text-[10px] text-gray-500 font-mono">${c.tiempo}</span>
+                        </div>
+                        <p class="text-sm text-gray-200">${c.texto}</p>
+                    </div>
+                `;
+            });
+
+            // Fabricar 100 comentarios positivos mezclados matemáticamente
+            for (let i = 100; i > 0; i--) {
+                const nIdx = (i * 7 + 3) % nombres.length;
+                const aIdx = (i * 13 + 5) % apellidos.length;
+                const dIdx = (i * 3 + 2) % departamentos.length;
+                const fIdx = (i * 19 + i) % frases.length;
+
+                let tiempo = i > 90 ? `Hace ${101 - i} min` : (i > 40 ? `Hace ${Math.floor((100 - i) / 2) + 1} horas` : `Hace ${Math.floor((40 - i) / 5) + 1} días`);
+
+                htmlContenido += `
+                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/60">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-xs font-bold text-amber-400">${nombres[nIdx]} ${apellidos[aIdx]} (${departamentos[dIdx]})</span>
+                            <span class="text-[10px] text-gray-500 font-mono">${tiempo}</span>
+                        </div>
+                        <p class="text-sm text-gray-300">${frases[fIdx]}</p>
+                    </div>
+                `;
+            }
+
+            listContainer.innerHTML = htmlContenido;
+            document.getElementById('total-comments-counter').innerText = 1500 + customComments.length;
+        }
+
+        function postComment() {
+            const input = document.getElementById('comment-input');
+            const text = input.value.trim();
+            if (text === "") {
+                alert("Escribe un comentario.");
+                return;
+            }
+
+            const customComments = JSON.parse(localStorage.getItem('custom-comments')) || [];
+            customComments.unshift({ texto: text, tiempo: 'Ahora mismo' });
+            localStorage.setItem('custom-comments', JSON.stringify(customComments));
+
+            generarComentarios();
+            input.value = '';
+            document.getElementById('comments-list').scrollTop = 0;
+        }
+
+        // 4. Panel de Administración
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById("view-title").innerHTML = document.getElementById("form-title").value;
+            document.getElementById("view-subtitle").innerHTML = document.getElementById("form-subtitle").value;
+            document.getElementById("view-synopsis").innerHTML = document.getElementById("form-synopsis").value;
+            alert("Libro actualizado correctamente.");
+            switchTab("public-view");
+        }
+
+        // 5. Contadores en vivo simulación
+        let reservas = 18450;
+        let vistas = 1200000;
+
+        setInterval(() => {
+            reservas += Math.floor(Math.random() * 3);
+            const r = document.getElementById("live-reservas");
+            if (r) r.innerHTML = reservas.toLocaleString("es-UY");
+        }, 12000);
+
+        setInterval(() => {
+            vistas += Math.floor(Math.random() * 25);
+            const v = document.getElementById("live-vistas");
+            if (v) v.innerHTML = vistas.toLocaleString("es-UY");
+        }, 3000);
+
+        // Cambiar título de pestaña automáticamente
+        let alternar = false;
+        setInterval(() => {
+            document.title = alternar ? "📚 Mis Libros | Alexis Rivero" : "🔥 Próximamente - La Dictadura de la Sospecha";
+            alternar = !alternar;
+        }, 4000);
+
+        // 6. Lanzamiento de Eventos DOM Inicial
+        window.addEventListener("DOMContentLoaded", () => {
+            initReactions();
+            generarComentarios();
+
+            // Animación portada
+            const portada = document.querySelector("img");
+            if (portada) {
+                portada.animate([
+                    { opacity: 0, transform: "scale(.9)" },
+                    { opacity: 1, transform: "scale(1)" }
+                ], { duration: 700, fill: "forwards" });
+            }
+
+            // Sombra botón preventa
+            const boton = document.querySelector("a");
+            if (boton) {
+                boton.addEventListener("mouseenter", () => { boton.style.boxShadow = "0 0 30px rgba(245,158,11,.7)"; });
+                boton.addEventListener("mouseleave", () => { boton.style.boxShadow = "none"; });
+            }
+
+            // Animación Scroll para Tarjetas
+            const elementos = document.querySelectorAll(".card");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.animate([
+                            { opacity: 0, transform: "translateY(30px)" },
+                            { opacity: 1, transform: "translateY(0)" }
+                        ], { duration: 600, fill: "forwards" });
+                    }
+                });
+            });
+            elementos.forEach(card => observer.observe(card));
+        });
+    </script>
 </body>
-
 </html>
