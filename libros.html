@@ -424,11 +424,10 @@ Red Católica Alexis Rivero
 
 <!-- SECCIÓN DE COMENTARIOS CON MOTOR AUTOMÁTICO -->
 <div class="bg-gray-800 border border-gray-700 rounded-xl p-6 flex flex-col gap-4 shadow-md">
-    <div class="flex justify-between items-center border-b border-gray-700 pb-2">
-        <div class="flex justify-between items-center border-b border-slate-700 pb-3 mb-5">
+    <div class="flex justify-between items-center border-b border-slate-700 pb-3 mb-5">
         <h3 class="text-2xl font-bold text-white">Comunidad y Debate</h3>
         <span class="text-xs bg-amber-500/10 text-amber-400 font-mono px-2.5 py-1 rounded-full border border-amber-500/20">
-            <span id="total-comments-counter">100</span> comentarios
+            <span id="total-comments-counter">1500</span> comentarios
         </span>
     </div>
     
@@ -439,6 +438,11 @@ Red Católica Alexis Rivero
             Publicar comentario
         </button>
         <div class="clear-both"></div>
+    </div>
+
+    <!-- Contenedor con scroll para los 100 comentarios distintos + los guardados -->
+    <div id="comments-list" class="flex flex-col gap-4 mt-6 border-t border-slate-700/50 pt-4 max-h-[500px] overflow-y-auto pr-2">
+        <!-- El motor generará los 100 comentarios aquí -->
     </div>
 
     <!-- Contenedor con scroll para los 100 comentarios + los guardados -->
