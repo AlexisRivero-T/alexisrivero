@@ -1,0 +1,2496 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Católica | Red Católica Alexis Rivero</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #171717;
+            --bg-card: rgba(255,255,255,0.05);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255,255,255,0.6);
+            --text-muted: rgba(255,255,255,0.4);
+            --accent: #10b981;
+            --accent-glow: rgba(16,185,129,0.15);
+            --accent-strong: #34d399;
+            --border: rgba(255,255,255,0.1);
+            --border-hover: rgba(255,255,255,0.2);
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --blue: #3b82f6;
+            --purple: #a855f7;
+        }
+
+        body {
+            font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.625;
+            font-size: 16px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Background effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -200px;
+            right: -200px;
+            width: 800px;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(16,185,129,0.08), transparent 70%);
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -200px;
+            left: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59,130,246,0.06), transparent 70%);
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            z-index: 1;
+            padding: 60px 24px 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(to bottom, rgba(16,185,129,0.03), transparent);
+        }
+        header h1 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(36px, 6vw, 72px);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header > p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            font-weight: 300;
+        }
+
+        /* Nav */
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        nav a:hover, nav a.active {
+            color: var(--text-primary);
+            border-color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Section */
+        section {
+            padding: 48px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        section:last-of-type { border-bottom: none; }
+
+        h2 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .section-sub {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+
+        /* Search */
+        .search-wrap {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto 16px;
+        }
+        .search-wrap i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        .search-wrap input {
+            width: 100%;
+            padding: 18px 20px 18px 52px;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            color: var(--text-primary);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .search-wrap input::placeholder { color: var(--text-muted); }
+        .search-wrap input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        .search-wrap input:focus + i { color: var(--accent); }
+        .search-count {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            min-height: 20px;
+            margin-bottom: 24px;
+        }
+
+        /* Stats bar */
+        .stats-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .stat-item .num {
+            color: var(--accent-strong);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        /* Category Grid */
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        /* Category Card */
+        .cat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .cat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(16,185,129,0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .cat-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+        .cat-card:hover::before { opacity: 1; }
+        .cat-card > * { position: relative; z-index: 1; }
+        .cat-card .cat-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .cat-card h3 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .cat-card h3 .count {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--accent);
+            background: var(--accent-glow);
+            padding: 2px 8px;
+            border-radius: 100px;
+        }
+        .cat-card p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+        .cat-card .open-icon {
+            color: var(--text-muted);
+            font-size: 18px;
+            transition: transform 0.3s, color 0.3s;
+        }
+        .cat-card:hover .open-icon { color: var(--accent); transform: translateX(3px); }
+
+        /* Expanded Panel */
+        .cat-panel {
+            display: none;
+            grid-column: 1 / -1;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            margin-top: -4px;
+            animation: slideDown 0.4s ease;
+        }
+        .cat-panel.open { display: block; }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .panel-header h3 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        .panel-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .panel-close:hover {
+            border-color: var(--danger);
+            color: var(--danger);
+            background: rgba(239,68,68,0.1);
+        }
+
+        /* Document List */
+        .doc-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .doc-item {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .doc-item:hover { border-color: var(--border-hover); }
+        .doc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 18px;
+            cursor: pointer;
+            gap: 12px;
+            background: var(--bg-card);
+            transition: background 0.3s;
+        }
+        .doc-header:hover { background: rgba(255,255,255,0.07); }
+        .doc-title {
+            font-weight: 500;
+            font-size: 14px;
+            flex: 1;
+        }
+        .doc-tag {
+            font-size: 10px;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .tag-text { background: rgba(16,185,129,0.15); color: var(--accent-strong); }
+        .tag-pdf { background: rgba(239,68,68,0.15); color: #f87171; }
+        .tag-link { background: rgba(59,130,246,0.15); color: #60a5fa; }
+        .tag-embed { background: rgba(168,85,247,0.15); color: #c084fc; }
+        .doc-toggle {
+            color: var(--text-muted);
+            font-size: 16px;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+        .doc-item.open .doc-toggle { transform: rotate(180deg); }
+        .doc-body {
+            display: none;
+            padding: 20px 18px;
+            border-top: 1px solid var(--border);
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .doc-body.open { display: block; animation: slideDown 0.3s ease; }
+        .doc-body h4 {
+            color: var(--text-primary);
+            font-size: 15px;
+            font-weight: 600;
+            margin: 16px 0 8px;
+        }
+        .doc-body h4:first-child { margin-top: 0; }
+        .doc-body p { margin-bottom: 12px; }
+        .doc-body a {
+            color: var(--accent-strong);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(16,185,129,0.3);
+            transition: border-color 0.3s;
+        }
+        .doc-body a:hover { border-color: var(--accent-strong); }
+        .doc-body ul, .doc-body ol {
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+        .doc-body li { margin-bottom: 4px; }
+        .doc-body blockquote {
+            border-left: 3px solid var(--accent);
+            padding: 12px 16px;
+            margin: 12px 0;
+            background: rgba(16,185,129,0.05);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--text-primary);
+        }
+        .doc-body .verse {
+            padding: 8px 12px;
+            margin: 4px 0;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            font-size: 13px;
+        }
+        .doc-body .verse-ref {
+            color: var(--accent-strong);
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        .doc-body::-webkit-scrollbar { width: 6px; }
+        .doc-body::-webkit-scrollbar-track { background: transparent; }
+        .doc-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+        /* Bible book grid */
+        .bible-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+        .bible-book {
+            padding: 8px 10px;
+            font-size: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .bible-book:hover {
+            border-color: var(--accent);
+            background: var(--accent-glow);
+            color: var(--accent-strong);
+        }
+        .bible-book.deuterocanonico {
+            border-color: rgba(245,158,11,0.3);
+        }
+        .bible-book.deuterocanonico:hover {
+            border-color: var(--warning);
+            background: rgba(245,158,11,0.1);
+            color: #fbbf24;
+        }
+        .bible-section-label {
+            grid-column: 1 / -1;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            padding: 8px 0 4px;
+            border-bottom: 1px solid var(--border);
+            margin-top: 8px;
+        }
+
+        /* Admin section */
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 12px;
+        }
+        .admin-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .admin-item i { font-size: 20px; color: var(--accent); }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 20px;
+            font-size: 14px;
+            color: var(--text-primary);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast i { color: var(--accent); font-size: 18px; }
+
+        /* Back to top */
+        .back-top {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        .back-top.visible { opacity: 1; transform: translateY(0); }
+        .back-top:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* No results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+            display: none;
+        }
+        .no-results i { font-size: 48px; margin-bottom: 16px; display: block; }
+        .no-results.visible { display: block; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header { padding: 40px 16px 24px; }
+            .container { padding: 0 16px; }
+            section { padding: 32px 0; }
+            .cat-grid { grid-template-columns: 1fr; }
+            .cat-panel { padding: 20px; }
+            .bible-grid { grid-template-columns: repeat(3, 1fr); }
+            .stats-bar { gap: 8px; }
+            .stat-item { padding: 8px 12px; font-size: 12px; }
+            nav { gap: 6px; }
+            nav a { font-size: 12px; padding: 6px 12px; }
+        }
+        @media (max-width: 480px) {
+            .bible-grid { grid-template-columns: repeat(2, 1fr); }
+            .admin-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Biblioteca Católica</h1>
+    <p>Una biblioteca digital para la formación y el crecimiento en la fe católica.</p>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="libros.html">Mis Libros</a>
+        <a href="cursos.html">Cursos</a>
+        <a href="blog.html">Blog</a>
+        <a href="apologetica.html">Apologética</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+</header>
+
+<div class="container">
+
+<!-- BUSCAR -->
+<section>
+    <h2>Buscar en la Biblioteca</h2>
+    <p class="section-sub">Busca libros, documentos, autores o temas</p>
+    <div class="search-wrap">
+        <input type="text" id="searchInput" placeholder="Buscar libros, autores, temas, documentos...">
+        <i class="ri-search-line"></i>
+    </div>
+    <div class="search-count" id="searchCount"></div>
+
+    <div class="stats-bar">
+        <div class="stat-item"><span class="num" id="totalDocs">0</span> documentos</div>
+        <div class="stat-item"><span class="num">17</span> categorías</div>
+        <div class="stat-item"><span class="num">73</span> libros bíblicos</div>
+        <div class="stat-item"><span class="num">∞</span> gracia divina</div>
+    </div>
+</section>
+
+<!-- CATEGORÍAS -->
+<section id="categoriasSection">
+    <div class="cat-grid" id="catGrid">
+
+        <!-- ============ 1. BIBLIA ============ -->
+        <div class="cat-card" data-cat="biblia" onclick="togglePanel('biblia')">
+            <span class="cat-icon">📖</span>
+            <h3>Biblia <span class="count">73 libros</span></h3>
+            <p>La Sagrada Escritura completa: 46 libros del AT y 27 del NT en versión católica.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-biblia">
+            <div class="panel-header">
+                <h3>📖 Sagrada Biblia — Versión Católica</h3>
+                <button class="panel-close" onclick="closePanel('biblia')"><i class="ri-close-line"></i></button>
+            </div>
+
+            <p style="margin-bottom:16px;">La Biblia católica contiene <strong>73 libros</strong>: 46 en el Antiguo Testamento (incluyendo los 7 deuterocanónicos) y 27 en el Nuevo Testamento. Haz clic en cada libro para ver pasajes clave.</p>
+
+            <h4 style="margin-bottom:8px;">Antiguo Testamento — Pentateuco</h4>
+            <div class="bible-grid" id="pentateuco"></div>
+
+            <h4 style="margin-bottom:8px;">Antiguo Testamento — Libros Históricos</h4>
+            <div class="bible-grid" id="historicos"></div>
+
+            <h4 style="margin-bottom:8px;">Antiguo Testamento — Libros Sapienciales</h4>
+            <div class="bible-grid" id="sapienciales"></div>
+
+            <h4 style="margin-bottom:8px;">Antiguo Testamento — Libros Proféticos</h4>
+            <div class="bible-grid" id="profeticos"></div>
+
+            <h4 style="margin-bottom:8px;">Nuevo Testamento — Evangelios y Hechos</h4>
+            <div class="bible-grid" id="evangelios"></div>
+
+            <h4 style="margin-bottom:8px;">Nuevo Testamento — Cartas Paulinas</h4>
+            <div class="bible-grid" id="paulinas"></div>
+
+            <h4 style="margin-bottom:8px;">Nuevo Testamento — Cartas Católicas y Apocalipsis</h4>
+            <div class="bible-grid" id="catolicas"></div>
+
+            <div class="doc-list" style="margin-top:20px;">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Génesis 1:1-31 — La Creación</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <div class="verse"><span class="verse-ref">1:1</span>En el principio creó Dios los cielos y la tierra.</div>
+                        <div class="verse"><span class="verse-ref">1:2</span>La tierra era caos y confusión y oscuridad por encima del abismo, y un viento de Dios aleteaba por encima de las aguas.</div>
+                        <div class="verse"><span class="verse-ref">1:3</span>Dijo Dios: «Que exista la luz», y la luz existió.</div>
+                        <div class="verse"><span class="verse-ref">1:4</span>Vio Dios que la luz estaba bien, y separó Dios la luz de la oscuridad;</div>
+                        <div class="verse"><span class="verse-ref">1:5</span>llamó Dios a la luz «día», y a la oscuridad la llamó «noche». Pasó una tarde, pasó una mañana: el día primero.</div>
+                        <div class="verse"><span class="verse-ref">1:26</span>Dijo entonces Dios: «Hagamos al hombre a nuestra imagen, a nuestra semejanza; que domine los peces del mar, las aves del cielo, los animales domésticos, los reptiles de la tierra.»</div>
+                        <div class="verse"><span class="verse-ref">1:27</span>Y creó Dios al hombre a su imagen, a imagen de Dios lo creó, hombre y mujer los creó.</div>
+                        <div class="verse"><span class="verse-ref">1:31</span>Vio Dios todo lo que había hecho, y era muy bueno. Pasó una tarde, pasó una mañana: el día sexto.</div>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Juan 1:1-18 — El Verbo se hizo carne</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <div class="verse"><span class="verse-ref">1:1</span>En el principio existía el Verbo, y el Verbo estaba junto a Dios, y el Verbo era Dios.</div>
+                        <div class="verse"><span class="verse-ref">1:2</span>Él estaba en el principio junto a Dios.</div>
+                        <div class="verse"><span class="verse-ref">1:3</span>Todo se hizo por él, y sin él no se hizo nada de cuanto existe.</div>
+                        <div class="verse"><span class="verse-ref">1:14</span>Y el Verbo se hizo carne y habitó entre nosotros, y hemos contemplado su gloria: gloria como del Unigénito del Padre, lleno de gracia y de verdad.</div>
+                        <div class="verse"><span class="verse-ref">1:18</span>A Dios nadie lo ha visto jamás: el Hijo único, que está en el seno del Padre, él lo ha dado a conocer.</div>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Mateo 5:1-16 — Las Bienaventuranzas</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <div class="verse"><span class="verse-ref">5:3</span>Bienaventurados los pobres en el espíritu, porque de ellos es el Reino de los cielos.</div>
+                        <div class="verse"><span class="verse-ref">5:4</span>Bienaventurados los que lloran, porque serán consolados.</div>
+                        <div class="verse"><span class="verse-ref">5:5</span>Bienaventurados los sufridos, porque heredarán la tierra.</div>
+                        <div class="verse"><span class="verse-ref">5:6</span>Bienaventurados los que tienen hambre y sed de justicia, porque quedarán saciados.</div>
+                        <div class="verse"><span class="verse-ref">5:7</span>Bienaventurados los misericordiosos, porque ellos alcanzarán misericordia.</div>
+                        <div class="verse"><span class="verse-ref">5:8</span>Bienaventurados los limpios de corazón, porque ellos verán a Dios.</div>
+                        <div class="verse"><span class="verse-ref">5:9</span>Bienaventurados los que trabajan por la paz, porque ellos se llamarán hijos de Dios.</div>
+                        <div class="verse"><span class="verse-ref">5:10</span>Bienaventurados los perseguidos por causa de la justicia, porque de ellos es el Reino de los cielos.</div>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Juan 3:16 — El versículo más conocido</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <div class="verse"><span class="verse-ref">3:16</span>Porque tanto amó Dios al mundo, que entregó a su Hijo único, para que todo el que cree en él no perezca, sino que tenga vida eterna.</div>
+                        <div class="verse"><span class="verse-ref">3:17</span>Porque Dios no envió a su Hijo al mundo para condenar al mundo, sino para que el mundo se salve por él.</div>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Lucas 1:26-38 — La Anunciación</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <div class="verse"><span class="verse-ref">1:28</span>El ángel entró donde estaba ella y le dijo: «Alégrate, llena de gracia, el Señor está contigo.»</div>
+                        <div class="verse"><span class="verse-ref">1:31</span>«Concebirás en tu vientre y darás a luz un hijo, y le pondrás por nombre Jesús.»</div>
+                        <div class="verse"><span class="verse-ref">1:34</span>Miría preguntó al ángel: «¿Cómo será eso, pues no conozco varón?»</div>
+                        <div class="verse"><span class="verse-ref">1:35</span>El ángel le contestó: «El Espíritu Santo vendrá sobre ti, y la fuerza del Altísimo te cubrirá con su sombra; por eso el Santo que va a nacer será llamado Hijo de Dios.»</div>
+                        <div class="verse"><span class="verse-ref">1:38</span>Miría dijo: «He aquí la esclava del Señor; hágase en mí según tu palabra.»</div>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">1 Corintios 13:1-13 — El himno a la caridad</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <div class="verse"><span class="verse-ref">13:1</span>Si hablo las lenguas de los hombres y de los ángeles, pero no tengo amor, no soy más que un metal que resuena o un címbalo que aturde.</div>
+                        <div class="verse"><span class="verse-ref">13:4</span>El amor es paciente, es servicial; el amor no es envidioso, no es jactancioso, no se engríe;</div>
+                        <div class="verse"><span class="verse-ref">13:5</span>no es decoroso, no busca su interés, no se irrita, no toma en cuenta el mal recibido;</div>
+                        <div class="verse"><span class="verse-ref">13:6</span>no se alegra de la injusticia, sino que goza con la verdad;</div>
+                        <div class="verse"><span class="verse-ref">13:7</span>todo lo disculpa, todo lo cree, todo lo espera, todo lo soporta.</div>
+                        <div class="verse"><span class="verse-ref">13:13</span>Ahora permanecen la fe, la esperanza y el amor, estos tres; pero el mayor de todos es el amor.</div>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Romanos 8:28-39 — Nada nos separará del amor de Dios</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <div class="verse"><span class="verse-ref">8:28</span>Sabemos que a los que aman a Dios todo les sirve para el bien.</div>
+                        <div class="verse"><span class="verse-ref">8:31</span>Si Dios está con nosotros, ¿quién estará contra nosotros?</div>
+                        <div class="verse"><span class="verse-ref">8:38-39</span>Pues estoy convencido de que ni muerte ni vida, ni ángeles ni principados, ni presente ni futuro, ni potencias, ni altura ni profundidad ni ninguna otra creatura podrá separarnos del amor de Dios manifestado en Cristo Jesús, nuestro Señor.</div>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">📖 Biblia completa en línea — Recursos externos</span>
+                        <span class="doc-tag tag-link">Enlace</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Para leer la Biblia católica completa con todos los 73 libros, te recomendamos estas fuentes oficiales y gratuitas:</p>
+                        <ul>
+                            <li><a href="https://www.vatican.va/archive/ESL0506/_INDEX.HTM" target="_blank">Biblia del Vaticano — Traducción oficial (latín-español)</a></li>
+                            <li><a href="https://biblia.catholic.net/" target="_blank">Biblia.Catholic.net — Versión Nácar-Colunga</a></li>
+                            <li><a href="https://www.bibliacatolica.com.br/" target="_blank">BibliaCatolica.com.br — Versión Ave María</a></li>
+                            <li><a href="https://youversion.com/es-es/bible/1/GEN.1.RVR1960" target="_blank">YouVersion — App con audio (seleccionar versión católica)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 2. CATECISMO ============ -->
+        <div class="cat-card" data-cat="catecismo" onclick="togglePanel('catecismo')">
+            <span class="cat-icon">📚</span>
+            <h3>Catecismo <span class="count">5 docs</span></h3>
+            <p>Catecismo de la Iglesia Católica, Compendio y catequesis fundamentales.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-catecismo">
+            <div class="panel-header">
+                <h3>📚 Catecismo y Formación Doctrinal</h3>
+                <button class="panel-close" onclick="closePanel('catecismo')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Catecismo de la Iglesia Católica — Índice Completo y Textos Clave</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>El Catecismo de la Iglesia Católica (CIC) fue promulgado por San Juan Pablo II el 11 de octubre de 1992 mediante la Constitución Apostólica <em>Fidei Depositum</em>. Contiene 2.865 párrafos organizados en cuatro partes:</p>
+                        <h4>Parte Primera: La Profesión de la Fe (§26-1065)</h4>
+                        <p>Trata sobre la revelación de Dios, la transmisión de la fe divina, la Sagrada Escritura, la Tradición, el Magisterio, los símbolos de la fe (Credo Apostólico y Credo Niceno-Constantinopolitano), la creación, el pecado, y la redención.</p>
+                        <blockquote>«Dios, infinitamente perfecto y bienaventurado en sí mismo, en un designio de pura bondad ha creado libremente al hombre para hacerle partícipe de su vida bienaventurada.» (§1)</blockquote>
+                        <blockquote>«La fe es la virtud teologal por la que creemos en Dios y en todo lo que él ha dicho y revelado.» (§1814)</blockquote>
+                        <h4>Parte Segunda: La Celebración del Misterio Cristiano — Los Sacramentos (§1066-1690)</h4>
+                        <p>Los siete sacramentos: Bautismo, Confirmación, Eucaristía, Reconciliación, Unción de los Enfermos, Orden Sacerdotal y Matrimonio.</p>
+                        <blockquote>«Los sacramentos son signos sensibles (palabras y acciones), accesibles a nuestra naturaleza humana. Realizan eficazmente la gracia que significan, en virtud de la obra de Cristo.» (§1084)</blockquote>
+                        <blockquote>«La Eucaristía es "fuente y cima de toda la vida cristiana"» (§1324)</blockquote>
+                        <h4>Parte Tercera: La Vida en Cristo — La Moral (§1691-2557)</h4>
+                        <p>La vocación del hombre a la bienaventuranza, la dignidad de la persona humana, la libertad moral, la conciencia, las virtudes, el pecado, los mandamientos, la Iglesia como comunión.</p>
+                        <blockquote>«La bienaventuranza nos define la finalidad última del acto humano. Dios nos la propone y la gracia nos hace capaces de alcanzarla.» (§1719)</blockquote>
+                        <blockquote>«Todo ser humano, creado a imagen de Dios, tiene el derecho natural de ser respetado como persona.» (§1929)</blockquote>
+                        <h4>Parte Cuarta: La Oración Cristiana (§2558-2865)</h4>
+                        <p>La revelación de la oración, la oración en el Antiguo Testamento, la oración de Jesús, la oración en la Iglesia, el Padre Nuestro (comentado párrafo por párrafo).</p>
+                        <blockquote>«La oración es la elevación del alma a Dios o la petición a Dios de cosas convenientes para nuestra salvación.» (§2559, citando a San Juan Damasceno)</blockquote>
+                        <blockquote>«"Padre nuestro que estás en el cielo": No decimos "mi Padre", sino "nuestro Padre", para que no consideremos a Dios como propio de una sola persona, sino como Padre común de todos.» (§2773)</blockquote>
+                        <p><strong>Leer completo:</strong> <a href="https://www.vatican.va/archive/ESL0022/_INDEX.HTM" target="_blank">Catecismo de la Iglesia Católica — Sitio oficial del Vaticano</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Compendio del Catecismo de la Iglesia Católica (2005)</span>
+                        <span class="doc-tag tag-link">Enlace</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Versión resumida en formato de preguntas y respuestas (598 preguntas), aprobado por Benedicto XVI. Ideal para estudio rápido y catequesis.</p>
+                        <p><a href="https://www.vatican.va/archive/compendium_ccc/documents/rc_compendium_catolica_sp.html" target="_blank">Leer en el sitio del Vaticano →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Catecismo de la Doctrina Cristiana — Catecismo de San Pío X</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Catecismo tradicional en formato de preguntas y respuestas, escrito por San Pío X cuando era Patriarca de Venecia (1908). Muy claro y directo.</p>
+                        <blockquote><strong>P. 1 — ¿Quién es Dios?</strong><br>R. Dios es el Creador del cielo y de la tierra, y de todas las cosas.</blockquote>
+                        <blockquote><strong>P. 2 — ¿Cuántos dioses hay?</strong><br>R. Hay un solo Dios verdadero.</blockquote>
+                        <blockquote><strong>P. 3 — ¿Cuántas personas hay en Dios?</strong><br>R. En Dios hay tres Personas: Padre, Hijo y Espíritu Santo.</blockquote>
+                        <blockquote><strong>P. 4 — ¿Qué es la Santísima Trinidad?</strong><br>R. La Santísima Trinidad es el misterio de un solo Dios en tres Personas distintas.</blockquote>
+                        <p><a href="https://www.aciprensa.com/catolicos/catecismopiux.htm" target="_blank">Leer el catecismo completo de San Pío X →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Youcat — Catecismo Joven de la Iglesia Católica</span>
+                        <span class="doc-tag tag-link">Enlace</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Catecismo dirigido a jóvenes, aprobado por la Conferencia Episcopal Alemana y presentado por Benedicto XVI en 2011. Lenguaje accesible con ilustraciones.</p>
+                        <p><a href="https://www.youcat.org/es/" target="_blank">Sitio oficial YOUCAT →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Docat — Doctrina Social de la Iglesia para jóvenes</span>
+                        <span class="doc-tag tag-link">Enlace</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Complemento del YOUCAT sobre la Doctrina Social de la Iglesia: dignidad humana, bien común, principio de subsidiariedad, justicia, paz.</p>
+                        <p><a href="https://www.youcat.org/es/docat/" target="_blank">Sitio oficial DOCAT →</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 3. DERECHO CANÓNICO ============ -->
+        <div class="cat-card" data-cat="derecho" onclick="togglePanel('derecho')">
+            <span class="cat-icon">⚖️</span>
+            <h3>Derecho Canónico <span class="count">3 docs</span></h3>
+            <p>Código de Derecho Canónico y legislación eclesiástica.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-derecho">
+            <div class="panel-header">
+                <h3>⚖️ Derecho Canónico</h3>
+                <button class="panel-close" onclick="closePanel('derecho')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Código de Derecho Canónico (1983) — Estructura y Cánones Clave</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Promulgado por San Juan Pablo II mediante la Constitución Apostólica <em>Sacrae Disciplinae Leges</em> el 25 de enero de 1983. Reemplazó al Código de 1917. Contiene 1.752 cánones en 7 libros:</p>
+                        <h4>Libro I: Normas Generales (c. 1-203)</h4>
+                        <p>Leyes, costumbres, decretos generales, rescriptos, privilegios, dispensas.</p>
+                        <blockquote>«Las leyes eclesiásticas deben entenderse según el significado propio de las palabras considerado en el texto y en el contexto; si el sentido permanece dudoso, hay que recurrir al lugar paralelo, si lo hay, a la finalidad de la ley y a las circunstancias del hecho, y al parecer del legislador.» (c. 17)</p>
+                        <h4>Libro II: El Pueblo de Dios (c. 204-746)</h4>
+                        <p>Los fieles cristianos, el ministerio sagrado (obispos, presbíteros, diáconos), los institutos de vida consagrada y las sociedades de vida apostólica.</p>
+                        <blockquote>«Los fieles cristianos son aquellos que, incorporados a Cristo por el bautismo, están constituidos en pueblo de Dios y hechos partícipes a su manera de la función sacerdotal, profética y real de Cristo.» (c. 204 §1)</blockquote>
+                        <h4>Libro III: La Función de Enseñar de la Iglesia (c. 747-833)</h4>
+                        <p>El ministerio de la Palabra, la predicación, la catequesis, la misión catequética, los medios de comunicación social.</p>
+                        <h4>Libro IV: La Función de Santificar de la Iglesia (c. 834-1253)</h4>
+                        <p>Los sacramentos en general y cada uno en particular, otros actos de culto divino, lugares y tiempos sagrados.</p>
+                        <blockquote>«Los fieles tienen obligación de participar en la Eucaristía los domingos y fiestas de precepto, y de abstenerse de los trabajos y negocios que impidan dar culto a Dios.» (c. 1247)</blockquote>
+                        <h4>Libro V: Los Bienes Temporales de la Iglesia (c. 1254-1310)</h4>
+                        <h4>Libro VI: Las Sanciones en la Iglesia (c. 1311-1399)</h4>
+                        <h4>Libro VII: Los Procesos (c. 1400-1752)</h4>
+                        <p><a href="https://www.vatican.va/archive/ESL1100/_INDEX.HTM" target="_blank">Leer el Código completo en el Vaticano →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Código de Cánones de las Iglesias Orientales (1990)</span>
+                        <span class="doc-tag tag-link">Enlace</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>El derecho propio de las Iglesias Orientales Católicas, promulgado por San Juan Pablo II.</p>
+                        <p><a href="https://www.vatican.va/archive/ESL1101/_INDEX.HTM" target="_blank">Leer en el sitio del Vaticano →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Ius Ecclesiae — Recursos de Derecho Canónico</span>
+                        <span class="doc-tag tag-link">Enlace</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Base de datos con legislación canónica, instrucciones, rescriptos y documentos del Dicasterio para los Textos Legislativos.</p>
+                        <p><a href="https://www.iusecclesiae.va/" target="_blank">Acceder a Ius Ecclesiae →</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 4. CONCILIOS ============ -->
+        <div class="cat-card" data-cat="concilios" onclick="togglePanel('concilios')">
+            <span class="cat-icon">🏛️</span>
+            <h3>Concilios <span class="count">8 docs</span></h3>
+            <p>Concilios Ecuménicos y documentos históricos fundamentales.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-concilios">
+            <div class="panel-header">
+                <h3>🏛️ Concilios Ecuménicos</h3>
+                <button class="panel-close" onclick="closePanel('concilios')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Concilio de Nicea I (325) — Símbolo Niceno</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Primer Concilio Ecuménico, convocado por Constantino. Definió la divinidad de Cristo contra el arrianismo.</p>
+                        <blockquote>Creemos en un solo Dios, Padre todopoderoso, Creador de todas las cosas, visibles e invisibles.<br><br>Y en un solo Señor Jesucristo, Hijo de Dios, nacido del Padre, unigénito, es decir, de la sustancia del Padre. Dios de Dios, Luz de Luz, Dios verdadero de Dios verdadero; engendrado, no creado, consustancial con el Padre, por quien todo fue hecho; que por nosotros los hombres y por nuestra salvación bajó del cielo, y se encarnó por obra del Espíritu Santo en María Virgen, y se hizo hombre; y fue crucificado por nosotros bajo el poder de Poncio Pilato, padeció y fue sepultado, y resucitó al tercer día según las Escrituras, y subió al cielo, y está sentado a la derecha del Padre, y vendrá otra vez con gloria para juzgar a vivos y muertos, y su reino no tendrá fin.</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Concilio de Constantinopla I (381) — Símbolo Niceno-Constantinopolitano</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Completó el Credo definando la divinidad del Espíritu Santo.</p>
+                        <blockquote>Y en el Espíritu Santo, Señor y dador de vida, que procede del Padre (y del Hijo), que con el Padre y el Hijo recibe una misma adoración y gloria, y que habló por los profetas.</blockquote>
+                        <p>Este es el Credo que se reza en la Misa todos los domingos.</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Concilio de Éfeso (431) — María Theotókos</span>
+                        <span class="doc-tag tag-text">Resumen</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Proclamó a María como <strong>Theotókos</strong> (Madre de Dios), contra las enseñanzas de Nestorio. Este título no significa que María sea la fuente de la divinidad, sino que el que ella llevó en su seno era verdaderamente Dios hecho hombre.</p>
+                        <blockquote>«Si alguno no confiesa que el Emmanuel es verdaderamente Dios y que por tanto la Santísima Virgen es Madre de Dios (Theotókos), pues dio a luz según la carne al Verbo de Dios hecho carne, sea anatema.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Concilio de Calcedonia (451) — Dos naturalezas de Cristo</span>
+                        <span class="doc-tag tag-text">Resumen</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Definió que Cristo es una sola Persona en dos naturalezas, sin confusión, sin cambio, sin división, sin separación.</p>
+                        <blockquote>«Siguiendo a los santos Padres, enseñamos unánimemente que se ha de confesar a un solo y mismo Hijo, nuestro Señor Jesucristo, perfecto en la divinidad y perfecto en la humanidad, verdaderamente Dios y verdaderamente hombre, compuesto de alma racional y cuerpo, consustancial con el Padre según la divinidad y consustancial con nosotros según la humanidad, en todo semejante a nosotros, excepto en el pecado; engendrado del Padre antes de los siglos según la divinidad, y en estos últimos días, por nosotros y por nuestra salvación, nacido de María Virgen, madre de Dios, según la humanidad; un solo y mismo Cristo, Hijo, Señor, Unigénito, que ha de ser reconocido en dos naturalezas, sin confusión, sin cambio, sin división, sin separación.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Concilio de Trento (1545-1563) — La reforma católica</span>
+                        <span class="doc-tag tag-text">Resumen</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>El concilio más largo de la historia. Respondió a la Reforma Protestante definiendo doctrinas sobre: las Sagradas Escrituras y la Tradición, el pecado original, la justificación, los sacramentos (7, no 2), la Eucaristía como sacrificio, la transustanciación, el orden sacerdotal, el matrimonio, el purgatorio, la invocación de los santos, las reliquias y las imágenes sagradas.</p>
+                        <blockquote>«El sínodo declara que, para la salvación de los pecadores, se instituyeron en la Iglesia siete sacramentos: Bautismo, Confirmación, Eucaristía, Penitencia, Extremaunción, Orden y Matrimonio.» (Sesión VII, Canon 1)</blockquote>
+                        <p><a href="https://www.vatican.va/archive/HSF0500/_INDEX.HTM" target="_blank">Documentos del Concilio de Trento →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Concilio Vaticano I (1869-1870) — Constitución Pastor Aeternus</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Definió la infalibilidad papal cuando el Papa habla <em>ex cathedra</em> en materias de fe y moral.</p>
+                        <blockquote>«Por tanto, fiel a la confesión de la fe cristiana recibida desde los tiempos apostólicos [...] enseñamos y definimos como dogma revelado por Dios: que el Romano Pontífice, cuando habla ex cathedra, esto es, cuando cumpliese su oficio de pastor y doctor de todos los cristianos, define por su suprema autoridad apostólica que una doctrina sobre la fe o las costumbres debe ser sostenida por toda la Iglesia, posee, por la asistencia divina que le fue prometida en el bienaventurado Pedro, aquella infalibilidad de la que el Divino Redentor quiso que estuviera provista su Iglesia al definir la doctrina sobre la fe y las costumbres.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Concilio Vaticano II (1962-1965) — Constituciones, Decretos y Declaraciones</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Convocado por San Juan XXIII y concluido por Pablo VI. Produjo 16 documentos fundamentales:</p>
+                        <h4>4 Constituciones:</h4>
+                        <ul>
+                            <li><strong>Sacrosanctum Concilium</strong> — Constitución sobre la Sagrada Liturgia</li>
+                            <li><strong>Dei Verbum</strong> — Constitución Dogmática sobre la Divina Revelación</li>
+                            <li><strong>Lumen Gentium</strong> — Constitución Dogmática sobre la Iglesia</li>
+                            <li><strong>Gaudium et Spes</strong> — Constitución Pastoral sobre la Iglesia en el Mundo Actual</li>
+                        </ul>
+                        <h4>9 Decretos:</h4>
+                        <ul>
+                            <li><strong>Inter Mirifica</strong> — Medios de Comunicación Social</li>
+                            <li><strong>Orientalium Ecclesiarum</strong> — Iglesias Orientales Católicas</li>
+                            <li><strong>Unitatis Redintegratio</strong> — Ecumenismo</li>
+                            <li><strong>Christus Dominus</strong> — Oficio Pastoral de los Obispos</li>
+                            <li><strong>Decree on the Up-to-Date Renewal of Religious Life</strong> — Perfectae Caritatis</li>
+                            <li><strong>Optatam Totius</strong> — Formación Sacerdotal</li>
+                            <li><strong>Apostolicam Actuositatem</strong> — Apostolado de los Laicos</li>
+                            <li><strong>Ad Gentes</strong> — Actividad Misionera</li>
+                            <li><strong>Presbyterorum Ordinis</strong> — Ministerio y Vida de los Presbíteros</li>
+                        </ul>
+                        <h4>3 Declaraciones:</h4>
+                        <ul>
+                            <li><strong>Gravissimum Educationis</strong> — Educación Cristiana</li>
+                            <li><strong>Nostra Aetate</strong> — Relaciones de la Iglesia con las Religiones no Cristianas</li>
+                            <li><strong>Dignitatis Humanae</strong> — Libertad Religiosa</li>
+                        </ul>
+                        <p><a href="https://www.vatican.va/archive/hist_councils/ii_vatican_council/" target="_blank">Todos los documentos del Vaticano II en el sitio del Vaticano →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Lista completa de los 21 Concilios Ecuménicos</span>
+                        <span class="doc-tag tag-text">Lista</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ol>
+                            <li>Nicea I (325) — La divinidad de Cristo</li>
+                            <li>Constantinopla I (381) — La divinidad del Espíritu Santo</li>
+                            <li>Éfeso (431) — María Theotókos</li>
+                            <li>Calcedonia (451) — Dos naturalezas de Cristo</li>
+                            <li>Constantinopla II (553) — Contra los "Tres Capítulos"</li>
+                            <li>Constantinopla III (680-681) — Dos voluntades en Cristo</li>
+                            <li>Nicea II (787) — Legitimidad del culto a las imágenes</li>
+                            <li>Constantinopla IV (869-870) — Cuestión de Focio</li>
+                            <li>Letrán I (1123) — Investiduras</li>
+                            <li>Letrán II (1139) — Contra los cátaros</li>
+                            <li>Letrán III (1179) — Elección papal</li>
+                            <li>Letrán IV (1215) — Transustanciación</li>
+                            <li>Lyón I (1245) — Contra Federico II</li>
+                            <li>Lyón II (1274) — Unión con los griegos</li>
+                            <li>Vienne (1311-1312) — Contra los templarios</li>
+                            <li>Constantinopla (Ferrara-Florencia) (1431-1449) — Unión con Oriente</li>
+                            <li>Letrán V (1512-1517) — Reforma antes de Lutero</li>
+                            <li>Trento (1545-1563) — Contra la Reforma protestante</li>
+                            <li>Vaticano I (1869-1870) — Infalibilidad papal</li>
+                            <li>Vaticano II (1962-1965) — Actualización de la Iglesia</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 5. ENCÍCLICAS ============ -->
+        <div class="cat-card" data-cat="enciclicas" onclick="togglePanel('enciclicas')">
+            <span class="cat-icon">📜</span>
+            <h3>Encíclicas <span class="count">12 docs</span></h3>
+            <p>Encíclicas y documentos pontificios más importantes.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-enciclicas">
+            <div class="panel-header">
+                <h3>📜 Encíclicas y Documentos Pontificios</h3>
+                <button class="panel-close" onclick="closePanel('enciclicas')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Rerum Novarum — León XIII (1891)</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Encíclica fundacional de la Doctrina Social de la Iglesia. Trata sobre los derechos de los trabajadores, la propiedad privada, el papel del Estado y la dignidad del trabajo.</p>
+                        <blockquote>«La razón misma demuestra, ante todo, que el derecho de propiedad es propio del hombre... La ley no lo concede, sino que lo ampara.»</blockquote>
+                        <blockquote>«A los obreros se les debe asegurar un salario suficiente para sostenerse a sí mismos y a sus familias.»</blockquote>
+                        <p><a href="https://www.vatican.va/content/leo-xiii/es/encyclicals/documents/hf_l-xiii_enc_15051891_rerum-novarum.html" target="_blank">Leer completa →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Casti Connubii — Pío XI (1930) — Sobre el Matrimonio Cristiano</span>
+                        <span class="doc-tag tag-text">Resumen</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Defiende la indisolubilidad del matrimonio, condena el divorcio y la anticoncepción artificial. Reafirma la unidad, la indisolubilidad y la apertura a la vida como propiedades esenciales del matrimonio.</p>
+                        <blockquote>«El matrimonio no fue instituido ni restablecido por el hombre, sino por Dios.»</blockquote>
+                        <p><a href="https://www.vatican.va/content/pius-xi/es/encyclicals/documents/hf_p-xi_enc_31121930_casti-connubii.html" target="_blank">Leer completa →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Humani Generis — Pío XII (1950)</span>
+                        <span class="doc-tag tag-text">Resumen</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Sobre las falsas opiniones que amenazan a la doctrina católica. Aborda el evolucionismo, el existencialismo, el historicismo y el relativismo dogmático. No condena la evolución como hipótesis científica, pero exige que se reconozca el origen especial del alma.</p>
+                        <p><a href="https://www.vatican.va/content/pius-xii/es/encyclicals/documents/hf_p-xii_enc_12081950_humani-generis.html" target="_blank">Leer completa →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Lumen Gentium — Concilio Vaticano II (1964) — extractos</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <blockquote>«Cristo es la luz de los pueblos; por lo que este Sacrosanto Sínodo, reunido en el Espíritu Santo, desea ardientemente anunciar el Evangelio de toda luz a todos los hombres.» (Proemio)</blockquote>
+                        <blockquote>«La Iglesia es en Cristo como un sacramento, o sea signo e instrumento de la íntima unión con Dios y de la unidad de todo el género humano.» (§1)</blockquote>
+                        <blockquote>«Todos los fieles cristianos, dondequiera que vivan, están obligados a manifestar, con el ejemplo de su vida y el testimonio de su palabra, al hombre nuevo de que revistieron por el bautismo.» (§11)</blockquote>
+                        <blockquote>«La Santísima Virgen María, al término de su vida terrena, fue asunta en cuerpo y alma a la gloria del cielo.» (§59)</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Humanae Vitae — Pablo VI (1968) — Sobre la Regulación de la Natalidad</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Reafirmó la doctrina católica sobre la prohibición de la anticoncepción artificial. Promovió los métodos naturales de regulación de la fertilidad.</p>
+                        <blockquote>«Queda además excluida toda acción que, o en previsión del acto conyugal, o en su realización, o en el desarrollo de sus consecuencias naturales, se proponga, como fin o como medio, hacer imposible la procreación.» (§14)</blockquote>
+                        <blockquote>«Si se examinan los procesos naturales de la vida humana, es fácil ver que en el hombre, en cuanto que es persona, convergen y se unen la vida del cuerpo y la vida del alma.» (§9)</blockquote>
+                        <p><a href="https://www.vatican.va/content/paul-vi/es/encyclicals/documents/hf_p-vi_enc_25071968_humanae-vitae.html" target="_blank">Leer completa →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Evangelium Vitae — Juan Pablo II (1995) — El Evangelio de la Vida</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Sobre el valor y la inviolabilidad de la vida humana. Condena el aborto, la eutanasia y la pena de muerte como atentados contra la vida.</p>
+                        <blockquote>«La vida humana es sagrada e inviolable en cualquier momento de su existencia, incluso en el momento inicial que precede al nacimiento.» (§61)</blockquote>
+                        <blockquote>«El mandamiento "no matarás" tiene un valor absoluto cuando se refiere a la persona inocente.» (§57)</blockquote>
+                        <p><a href="https://www.vatican.va/content/john-paul-ii/es/encyclicals/documents/hf_jp-ii_enc_25031995_evangelium-vitae.html" target="_blank">Leer completa →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Fides et Ratio — Juan Pablo II (1998) — Fe y Razón</span>
+                        <span class="doc-tag tag-text">Resumen</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Sobre la relación entre fe y razón. Afirma que fe y razón son como dos alas con las cuales el espíritu humano se eleva hacia la contemplación de la verdad.</p>
+                        <blockquote>«La fe y la razón son como las dos alas con las cuales el espíritu humano se eleva hacia la contemplación de la verdad.»</blockquote>
+                        <p><a href="https://www.vatican.va/content/john-paul-ii/es/encyclicals/documents/hf_jp-ii_enc_14091998_fides-et-ratio.html" target="_blank">Leer completa →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Deus Caritas Est — Benedicto XVI (2005) — Dios es Amor</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Primera encíclica de Benedicto XVI. Reflexiona sobre el amor cristiano (ágape) frente al amor humano (eros), y sobre la caridad como servicio al prójimo.</p>
+                        <blockquote>«Al principio de la fe cristiana no hay una decisión ética o una gran idea, sino el encuentro con un acontecimiento, con una Persona, que da a la vida un nuevo horizonte y con ello la dirección decisiva.» (§1)</blockquote>
+                        <blockquote>«La Iglesia no puede ni debe sustituir al Estado. Pero tampoco puede ni debe quedarse al margen en la lucha por la justicia.» (§28)</blockquote>
+                        <p><a href="https://www.vatican.va/content/benedict-xvi/es/encyclicals/documents/hf_ben-xvi_enc_20051225_deus-caritas-est.html" target="_blank">Leer completa →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Laudato Si' — Francisco (2015) — Sobre el Cuidado de la Casa Común</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Encíclica sobre la ecología integral, conectando el cuidado del medio ambiente con la justicia social y la teología de la creación.</p>
+                        <blockquote>«Esta hermana clama por el daño que le causamos a causa del uso irresponsable y del abuso de los bienes que Dios le ha puesto en ella.» (§2)</blockquote>
+                        <blockquote>«No hay dos crisis separadas, una ambiental y otra social, sino una sola y compleja crisis socioambiental.» (§139)</blockquote>
+                        <p><a href="https://www.vatican.va/content/francesco/es/encyclicals/documents/papa-francesco_20150524_enciclica-laudato-si.html" target="_blank">Leer completa →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Fratelli Tutti — Francisco (2020) — Sobre la Fraternidad y la Amistad Social</span>
+                        <span class="doc-tag tag-text">Resumen</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Sobre la fraternidad universal, el diálogo social, la paz, la economía inclusiva y la cultura del encuentro.</p>
+                        <blockquote>«Una fraternidad abierta, que permite reconocer, valorar y amar a cada persona más allá de la proximidad física, más allá del lugar del mundo donde haya nacido.» (§1)</blockquote>
+                        <p><a href="https://www.vatican.va/content/francesco/es/encyclicals/documents/papa-francesco_20201003_enciclica-fratelli-tutti.html" target="_blank">Leer completa →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Dignitas Infinita — Francisco (2024) — Dignidad Infinita</span>
+                        <span class="doc-tag tag-text">Resumen</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Declaración del Dicasterio para la Doctrina de la Fe sobre la dignidad humana. Aborda la violencia contra la mujer, el aborto, la eutanasia, la guerra, la trata de personas, la marginación de personas con discapacidad y otras amenazas a la dignidad humana.</p>
+                        <p><a href="https://www.vatican.va/content/dicasterio-dottrina-fede/es/dichiarazioni/20240408-dignitas-infinita.html" target="_blank">Leer completa →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">📖 Todas las encíclicas — Archivo completo del Vaticano</span>
+                        <span class="doc-tag tag-link">Enlace</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Archivo completo de todas las encíclicas de todos los Papas, desde León XIII hasta Francisco, en español.</p>
+                        <p><a href="https://www.vatican.va/content/francesco/es/encyclicals/documents/papa-francesco_20201003_enciclica-fratelli-tutti.html" target="_blank">Archivo de encíclicas del Vaticano →</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 6. PADRES DE LA IGLESIA ============ -->
+        <div class="cat-card" data-cat="padres" onclick="togglePanel('padres')">
+            <span class="cat-icon">👑</span>
+            <h3>Padres de la Iglesia <span class="count">9 docs</span></h3>
+            <p>Escritos patrísticos fundamentales de los primeros siglos.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-padres">
+            <div class="panel-header">
+                <h3>👑 Padres de la Iglesia</h3>
+                <button class="panel-close" onclick="closePanel('padres')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">🔥 La Didajé (Doctrina de los Doce Apóstoles) — TEXTO COMPLETO</span>
+                        <span class="doc-tag tag-embed">Texto Completo</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Escrito del siglo I, posiblemente anterior a algunos libros del Nuevo Testamento. Descubierto en 1873 en el monasterio de Jerusalén. Es el catecismo más antiguo de la Iglesia.</p>
+                        <h4>Capítulo 1 — Los dos caminos</h4>
+                        <p>1. Hay dos caminos, uno de la vida y otro de la muerte; pero hay gran diferencia entre estos dos caminos.</p>
+                        <p>2. El camino de la vida es este: Primero, amarás a Dios que te creó; segundo, amarás a tu prójimo como a ti mismo. Cuanto no quieras que se haga contigo, no lo hagas a otro.</p>
+                        <h4>Capítulo 2</h4>
+                        <p>2. No matarás, no adulterarás, no corromperás a los niños, no fornicarás, no robarás, no practicarás la magia ni la hechicería, no matarás al niño en el seno de su madre, ni matarás al niño ya nacido.</p>
+                        <p>3. No codiciarás los bienes de tu prójimo, no perjurarás, no darás falso testimonio, no hablarás mal de nadie, no guardarás rencor.</p>
+                        <p>4. No serás doble de ánimo ni de palabra, pues la doblez es un lazo de muerte. Tu palabra no será mentirosa ni vacía, sino que se cumplirá en la obra.</p>
+                        <h4>Capítulo 7 — Sobre el bautismo</h4>
+                        <p>1. En cuanto al bautismo, bautizad así: habiendo dicho antes todo esto, bautizad en agua viva en el nombre del Padre y del Hijo y del Espíritu Santo.</p>
+                        <p>2. Si no tienes agua viva, bautiza en otra agua; y si no puedes en agua fría, entonces en agua caliente.</p>
+                        <p>3. Y si no tienes ni una ni otra, echa agua tres veces sobre la cabeza en el nombre del Padre y del Hijo y del Espíritu Santo.</p>
+                        <p>4. Pero antes del bautismo, que el que bautiza y el bautizado ayunen, y si pueden, también otros; pero se ordenará que el bautizado ayune uno o dos días antes.</p>
+                        <h4>Capítulos 9-10 — La Eucaristía</h4>
+                        <p>1. En cuanto a la Eucaristía, dad gracias así: Primero sobre el cáliz: «Te damos gracias, Padre nuestro, por la santa viña de David tu siervo, que nos diste a conocer por medio de Jesús tu siervo; a ti sea la gloria por los siglos.»</p>
+                        <p>2. Sobre el pan partido: «Te damos gracias, Padre nuestro, por la vida y el conocimiento que nos diste a conocer por medio de Jesús tu siervo; a ti sea la gloria por los siglos. Como este pan partido fue esparcido por los montes y reunido se hizo uno, así sea reunida tu Iglesia de los confines de la tierra en tu Reino; porque tuya es la gloria y el poder por Jesucristo por los siglos.»</p>
+                        <p>3. Que nadie coma ni beba de vuestra Eucaristía sino los bautizados en el nombre del Señor; pues acerca de esto dijo el Señor: «No deis lo santo a los perros.»</p>
+                        <h4>Capítulo 14 — La reunión del domingo</h4>
+                        <p>1. Reuníos cada día del Señor, partid el pan y dad gracias después de haber confesado vuestros pecados, para que vuestro sacrificio sea puro.</p>
+                        <p>2. Pero el que tiene contención con su compañero, no se junte con vosotros hasta que se reconcilie, a fin de que vuestro sacrificio no sea profanado.</p>
+                        <p>3. Porque este es el sacrificio del que dijo el Señor: «En todo lugar y en todo tiempo se me ofrece un sacrificio puro, porque soy un gran Rey, dice el Señor, y mi nombre es admirable entre las naciones.»</p>
+                        <h4>Capítulo 16 — La vigilancia del final</h4>
+                        <p>1. Velad sobre vuestra vida; no se apaguen vuestras lámparas, ni dejéis ceñidos vuestros lomos, sino estad preparados, pues no sabéis la hora en que viene nuestro Señor.</p>
+                        <p>2. Reuníos con frecuencia, buscando lo que conviene a vuestras almas, porque de nada os servirá todo el tiempo que habéis creído si no sois encontrados perfectos en el último tiempo.</p>
+                        <p>3. Porque en los últimos días se multiplicarán los falsos profetas y los corruptores, y las ovejas se convertirán en lobos, y el amor se convertirá en odio.</p>
+                        <p>8. Porque toda la ley se resume en estas dos palabras: «Amarás a Dios con todo tu corazón y a tu prójimo como a ti mismo. Lo que es mayor que estos dos mandamientos no existe.»</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">San Clemente de Roma — Carta a los Corintios (c. 96 d.C.)</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Una de las primeras cartas cristianas fuera del Nuevo Testamento. El Papa Clemente interviene en un conflicto en la iglesia de Corinto.</p>
+                        <blockquote>«Mirad, amadísimos, cuán cerca está el Señor de los que le temen. La compunción es la salvación de los penitentes.»</blockquote>
+                        <blockquote>«Tened caridad, que es el principio de todos los bienes.»</blockquote>
+                        <p><a href="https://www.newadvent.org/fathers/1010.htm" target="_blank">Texto completo (inglés) →</a> | <a href="https://mercaba.org/PATRISTICA/Clemente_Romano/Carta_Corintios.htm" target="_blank">Texto en español →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">San Ignacio de Antioquía — Cartas (c. 107 d.C.)</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Escritas mientras era llevado a Roma para ser devorado por las fieras. 7 cartas auténticas. Defiende la Eucaristía real, la estructura jerárquica (obispo, presbíteros, diáconos) y la unidad con el obispo.</p>
+                        <blockquote>«Donde esté el obispo, allí esté el pueblo, así como donde esté Jesucristo, allí esté la Iglesia católica.» (Carta a los Esmirniotas, 8)</blockquote>
+                        <blockquote>«Yo soy el trigo de Dios y soy molido por los dientes de las fieras para ser encontrado pan puro de Cristo.» (Carta a los Romanos, 4)</blockquote>
+                        <blockquote>«Considerad como conveniente celebrar la Eucaristía, porque una sola es la carne de nuestro Señor Jesucristo, y uno el cáliz para la unión de su sangre.» (Carta a los Esmirniotas, 8)</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">San Justino Mártir — Primera Apología (c. 155 d.C.)</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Primera descripción detallada de la Misa cristiana. Defensa de los cristianos ante el emperador Antonino Pío.</p>
+                        <blockquote>«Se nos llama "cristianos" porque adoramos a Cristo como a Dios.»</blockquote>
+                        <blockquote>«Este alimento se llama entre nosotros Eucaristía, de la cual no es lícito participar a nadie sino al que cree que nuestras enseñanzas son verdaderas y ha sido lavado en el baño de la remisión de los pecados y del nuevo nacimiento.» (Primera Apología, 66)</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">San Ireneo de Lyon — Contra las Herejías (c. 180 d.C.)</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Refutación del gnosticismo. Fundamento de la teología de la recapitulación: Cristo recapitula en sí toda la historia humana.</p>
+                        <blockquote>«La gloria de Dios es el hombre vivo, y la vida del hombre es la visión de Dios.» (Contra las Herejías, IV, 20, 7)</blockquote>
+                        <blockquote>«Por lo que a la fe se refiere, todos los cristianos, bárbaros y griegos, esclavos y libres, creen en Dios Padre todopoderoso y en Jesucristo, Hijo de Dios.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">San Agustín de Hipona — Confesiones (397-400 d.C.)</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Autobiografía espiritual, una de las obras maestras de la literatura universal.</p>
+                        <blockquote>«Nos has hecho, Señor, para ti, y nuestro corazón está inquieto hasta que descanse en ti.» (Libro I, 1)</blockquote>
+                        <blockquote>«Tarde te amé, hermosura tan antigua y tan nueva, tarde te amé. Y he aquí que tú estabas dentro de mí y yo fuera, y por fuera te buscaba.» (Libro X, 27)</blockquote>
+                        <p><a href="https://www.vatican.va/spiritual/spirit_20000315_agustin-confesiones_sp.html" target="_blank">Texto completo en español →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">San Juan Crisóstomo — Homilías sobre el Evangelio de Mateo</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>El "Boca de Oro", maestro de la predicación patrística.</p>
+                        <blockquote>«Nadie puede ofender a Dios tanto como quien no se compadece de los pobres.»</blockquote>
+                        <blockquote>«Si no encuentras a un hombre pobre, ofrécele tu limosna a la Iglesia. La Iglesia es la que hace las veces de todos los pobres.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">San Atanasio — Sobre la Encarnación del Verbo (c. 318 d.C.)</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Obra fundamental sobre la encarnación y la redención. Atanasio defendió la divinidad de Cristo contra Arrio toda su vida.</p>
+                        <blockquote>«Dios se hizo hombre para que el hombre se hiciera Dios.» (Cap. 54)</blockquote>
+                        <blockquote>«Él se hizo hombre para que nosotros nos hiciéramos Dios; se manifestó por medio de un cuerpo para que recibiéramos la idea del Padre invisible.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">📖 Biblioteca completa de los Padres de la Iglesia</span>
+                        <span class="doc-tag tag-link">Enlace</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><a href="https://www.newadvent.org/fathers/" target="_blank">New Advent — Fathers of the Church (inglés)</a></li>
+                            <li><a href="https://mercaba.org/PATRISTICA/" target="_blank">Mercaba — Padres de la Iglesia en español</a></li>
+                            <li><a href="https://www.vatican.va/spiritual/spirit_index_sp.html" target="_blank">Vaticano — Textos espirituales</a></li>
+                            <li><a href="https://www.patristica.net/" target="_blank">Patristica.net — Obras patrísticas en español</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 7. DOCTORES DE LA IGLESIA ============ -->
+        <div class="cat-card" data-cat="doctores" onclick="togglePanel('doctores')">
+            <span class="cat-icon">🎓</span>
+            <h3>Doctores de la Iglesia <span class="count">6 docs</span></h3>
+            <p>Obras de los 37 Doctores de la Iglesia reconocidos.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-doctores">
+            <div class="panel-header">
+                <h3>🎓 Doctores de la Iglesia</h3>
+                <button class="panel-close" onclick="closePanel('doctores')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Lista completa de los 37 Doctores de la Iglesia</span>
+                        <span class="doc-tag tag-text">Lista</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <h4>Padres Latinos (8)</h4>
+                        <p>San Ambrosio, San Agustín, San Jerónimo, San Gregorio Magno, San Beda el Venerable, San Pedro Damián, San Anselmo de Canterbury, San Bernardo de Claraval.</p>
+                        <h4>Padres Griegos (8)</h4>
+                        <p>San Atanasio, San Basilio Magno, San Gregorio Nacianceno, San Juan Crisóstomo, San Cirilo de Alejandría, San Cirilo de Jerusalén, San Juan Damasceno, San Gregorio Palamás.</p>
+                        <h4>Doctores Medievales y Modernos (21)</h4>
+                        <p>Santo Tomás de Aquino, San Buenaventura, Santa Catalina de Siena, Santa Teresa de Jesús, San Juan de la Cruz, San Pedro Canisio, San Roberto Belarmino, San Francisco de Sales, San Alfonso María de Ligorio, San Luis María Grignion de Montfort, Santa Teresa de Lisieux, San Juan de Ávila, Santa Hildegarda de Bingen, San Gregorio de Narek, San Juan XXIII, San Tomás Moro, San Francisco de Asís (2024), San Antonio de Padua (2024), San Lorenzo de Brindis (2024), San Efrén el Sirio (2024), Santa Lidia (verificar).*</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Santo Tomás de Aquino — Suma Teológica — Extractos</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>La obra teológica más importante de la Iglesia. Escrita entre 1265-1274. Estructurada en tres partes con una sección suplementaria:</p>
+                        <blockquote><strong>I, q. 2, a. 3 — Las cinco vías para demostrar la existencia de Dios:</strong><br>
+                        1.ª El movimiento: todo lo que se mueve es movido por otro. Debe haber un Primer Motor no movido.<br>
+                        2.ª La causa eficiente: nada es causa de sí mismo. Debe haber una Primera Causa incausada.<br>
+                        3.ª Lo contingente y lo necesario: los seres contingentes exigen un Ser Necesario.<br>
+                        4.ª Los grados de perfección: debe haber un ser maximamente perfecto.<br>
+                        5.ª El gobierno de las cosas: el orden del universo exige un Intelecto Ordenador.</blockquote>
+                        <p><a href="https://www.corpusthomisticum.org/iopera.html" target="_blank">Corpusthomisticum — Obras completas (latín) →</a></p>
+                        <p><a href="https://www.summa-theologica.info/" target="_blank">Suma Teológica en español →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Santa Teresa de Jesús — Las Moradas del Castillo Interior</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Obra cumbre de la mística cristiana. Describe el alma como un castillo con siete moradas (siete estaciones del camino espiritual).</p>
+                        <blockquote>«Consideremos que este castillo tiene muchas moradas: unas en lo bajo, otras en lo alto, otras en medio; y en el centro y medio de todas ellas está la más principal, donde están las cosas más secretas entre Dios y el alma.» (Moradas I, 1)</blockquote>
+                        <blockquote>«No penséis que si en las moradas pasadas iba hablando de oración, que son todas oración, porque en todas va el alma trabajando, aunque no tan embebida; aquí es ya como la fuente que va corriendo; o como la lluvia que cae del cielo para llenar estas huertas del alma.» (Moradas V, 1)</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">San Juan de la Cruz — Subida al Monte Carmelo — Noche Oscura del Alma</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <blockquote>«En la tarde de la vida, seremos juzgados en el amor.»</blockquote>
+                        <blockquote>«Donde no hay amor, pon amor y sacarás amor.»</blockquote>
+                        <blockquote>«El alma que está encendida en amor vivo de Dios no hay cosa que no sufra por Jesucristo.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Santa Catalina de Siena — El Diálogo</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <blockquote>«Tú eres la que no es, y yo soy el que soy.» (Palabras de Dios a Catalina)</blockquote>
+                        <blockquote>«No llores por lo que has perdido, que la larga misericordia de Dios lo puede restaurar en un instante.»</blockquote>
+                        <blockquote>«La calle de la verdad es la calle del amor.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Santa Teresa de Lisieux — Historia de un Alma</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <blockquote>«En el corazón de la Iglesia, mi madre, yo seré el amor.»</blockquote>
+                        <blockquote>«Mi vocación es el amor. ¡Con el amor se puede todo!»</blockquote>
+                        <blockquote>«Quiero pasar mi cielo haciendo el bien en la tierra.»</blockquote>
+                        <p><a href="https://www.vatican.va/spiritual/spirit_19991114_teresa-lisieux_sp.html" target="_blank">Texto completo →</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 8. HISTORIA DE LA IGLESIA ============ -->
+        <div class="cat-card" data-cat="historia" onclick="togglePanel('historia')">
+            <span class="cat-icon">⛪</span>
+            <h3>Historia de la Iglesia <span class="count">4 docs</span></h3>
+            <p>Historia del cristianismo y de la Iglesia Católica.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-historia">
+            <div class="panel-header">
+                <h3>⛪ Historia de la Iglesia</h3>
+                <button class="panel-close" onclick="closePanel('historia')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Cronología de la Historia de la Iglesia</span>
+                        <span class="doc-tag tag-text">Resumen</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <h4>Época Apostólica (33-100)</h4>
+                        <p>Pentecostés, predicación de los apóstoles, martirio de San Pedro y San Pablo en Roma (c. 64-67), destrucción del Templo de Jerusalén (70).</p>
+                        <h4>Padres Apostólicos y Apologistas (100-313)</h4>
+                        <p>Didajé, cartas de San Clemente, San Ignacio de Antioquía, San Justino Mártir. Persecuciones romanas periódicas. La pregunta de Tertuliano: «¿De dónde os viene esta hostilidad contra los cristianos?»</p>
+                        <h4>Edad de Oro de la Patrística (313-476)</h4>
+                        <p>Edicto de Milán (313), Concilio de Nicea (325), San Agustín (354-430), caída de Roma (476). Formación del canon bíblico.</p>
+                        <h4>Edad Media (476-1453)</h4>
+                        <p>Benedictinos, Carlomagno, Cisma de Oriente (1054), Cruzadas, Santo Tomás de Aquino, Peste Negra, Cautiverio de Aviñón.</p>
+                        <h4>Reforma y Contrarreforma (1453-1648)</h4>
+                        <p>Lutero (1517), Enrique VIII, Concilio de Trento (1545-1563), Compañía de Jesús (1540), Guerra de los Treinta Años.</p>
+                        <h4>Época Moderna (1648-1900)</h4>
+                        <p>Ilustración, Revolución Francesa, pérdida de los Estados Pontificios, Rerum Novarum (1891).</p>
+                        <h4>Siglo XX y XXI (1900-presente)</h4>
+                        <p>Concilio Vaticano II (1962-1965), Juan Pablo II (1978-2005), Benedicto XVI, Francisco.</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Daniel-Rops — Historia de la Iglesia de Cristo</span>
+                        <span class="doc-tag tag-text">Referencia</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Obra monumental en varios tomos del historiador católico francés. Cubre desde la Iglesia primitiva hasta la época moderna.</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Ludwig von Hertling — Historia de la Iglesia</span>
+                        <span class="doc-tag tag-text">Referencia</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Historia académica de la Iglesia en varios volúmenes, con rigor científico y perspectiva católica.</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Libros recomendados de Historia de la Iglesia</span>
+                        <span class="doc-tag tag-link">Enlaces</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><a href="https://www.ecatholic2000.com/historia/" target="_blank">Biblioteca de Historia de la Iglesia — E-Catholic2000</a></li>
+                            <li><a href="https://www.churchhistory.net/" target="_blank">Church History Timeline</a></li>
+                            <li>Warren Carroll — <em>Una Historia de Cristoendom</em> (7 tomos)</li>
+                            <li>Philip Hughes — <em>A History of the Church</em> (3 tomos)</li>
+                            <li>Hilaire Belloc — <em>La Gran Herejía</em></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 9. TEOLOGÍA ============ -->
+        <div class="cat-card" data-cat="teologia" onclick="togglePanel('teologia')">
+            <span class="cat-icon">📘</span>
+            <h3>Teología <span class="count">8 docs</span></h3>
+            <p>Teología dogmática, moral, espiritual y sacramental.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-teologia">
+            <div class="panel-header">
+                <h3>📘 Teología Católica</h3>
+                <button class="panel-close" onclick="closePanel('teologia')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Ludwig Ott — Manual de Teología Dogmática</span>
+                        <span class="doc-tag tag-text">Referencia</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>El manual de teología dogmática más completo. Contiene todas las doctrinas definidas por la Iglesia con su grado de certeza teológica (de fide, fidei proxima, sententia communis, etc.).</p>
+                        <h4>Temas principales:</h4>
+                        <ul>
+                            <li>Dios Uno y Trino</li>
+                            <li>Creación, ángeles y demonios</li>
+                            <li>La gracia</li>
+                            <li>Cristología: Encarnación, Redención, Resurrección</li>
+                            <li>Mariología: Inmaculada Concepción, Asunción, Maternidad Divina</li>
+                            <li>Eclesiología: Naturaleza de la Iglesia, primado papal</li>
+                            <li>Sacramentología</li>
+                            <li>Escatología: Muerte, juicio, cielo, infierno, purgatorio</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Santo Tomás de Aquino — Compendio de Teología</span>
+                        <span class="doc-tag tag-text">Referencia</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Resumen que el mismo Santo Tomás escribió de su teología. Dividido en tres partes: Fe, Esperanza y Caridad.</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Juan María Laboa — Teología Fundamental</span>
+                        <span class="doc-tag tag-text">Referencia</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Manual universitario de teología fundamental: la revelación, la fe, la credibilidad del cristianismo, la relación entre fe y razón, la apologética contemporánea.</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Marc Ouellet — Teología del Cuerpo — San Juan Pablo II</span>
+                        <span class="doc-tag tag-text">Referencia</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Ciclo de 129 catequesis de Juan Pablo II (1979-1984) sobre la teología del cuerpo humano: el significado del cuerpo, la complementariedad hombre-mujer, la celibacidad por el Reino, el matrimonio como sacramento, la Humanae Vitae a la luz del cuerpo.</p>
+                        <blockquote>«El cuerpo, y solo él, es capaz de hacer visible lo invisible: lo espiritual y lo divino. Fue creado para transferir a la realidad visible del mundo el misterio escondido desde la eternidad en Dios.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Teología Moral — Obras fundamentales</span>
+                        <span class="doc-tag tag-text">Lista</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><strong>San Alfonso María de Ligorio</strong> — <em>Teología Moral</em> (obra de referencia para confesores)</li>
+                            <li><strong>Germain Grisez</strong> — <em>The Way of the Lord Jesus</em> (teología moral contemporánea)</li>
+                            <li><strong>Martin Rhonheimer</strong> — <em>La perspectiva de la moral</em></li>
+                            <li><strong>Angelo Scola</strong> — <em>Hombres y mujeres sin secreto</em></li>
+                            <li><strong>Ángel Rodríguez Luño</strong> — <em>Escrúpulos y libertad en la vida moral</em></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Teología Espiritual — Obras fundamentales</span>
+                        <span class="doc-tag tag-text">Lista</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><strong>Jordan Aumann</strong> — <em>Teología Espiritual</em></li>
+                            <li><strong>Adolfo Tanquerey</strong> — <em>Compendio de Teología Ascética y Mística</em></li>
+                            <li><strong>Reginald Garrigou-Lagrange</strong> — <em>Las tres edades de la vida interior</em></li>
+                            <li><strong>José Luis Sertillanges</strong> — <em>La vida intelectual</em></li>
+                            <li><strong>Thomas Merton</strong> — <em>Nueva semilla de contemplación</em></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Sacramentología — Libros recomendados</span>
+                        <span class="doc-tag tag-text">Lista</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><strong>Louis-Marie de Blignières</strong> — <em>Los sacramentos</em></li>
+                            <li><strong>Jean Hervé Nicolas</strong> — <em>Synthèse dogmatique</em></li>
+                            <li><strong>Marc Ouellet</strong> — <em>Au coeur de la foi, l'Eucharistie</em></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">📖 Biblioteca de Teología en línea</span>
+                        <span class="doc-tag tag-link">Enlace</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><a href="https://www.corpusthomisticum.org/" target="_blank">Corpus Thomisticum — Obras de Santo Tomás</a></li>
+                            <li><a href="https://www.dominicos.org/" target="_blank">Dominicos — Biblioteca teológica</a></li>
+                            <li><a href="https://mercaba.org/TEOLOGIA/" target="_blank">Mercaba — Teología en español</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 10. APOLOGÉTICA ============ -->
+        <div class="cat-card" data-cat="apologetica" onclick="togglePanel('apologetica')">
+            <span class="cat-icon">🛡️</span>
+            <h3>Apologética <span class="count">8 docs</span></h3>
+            <p>Defensa y explicación de la fe católica.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-apologetica">
+            <div class="panel-header">
+                <h3>🛡️ Apologética Católica</h3>
+                <button class="panel-close" onclick="closePanel('apologetica')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">G.K. Chesterton — Ortodoxia</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>La obra apologética más brillante del siglo XX. Chesterton parte del asombro ante la existencia y llega a la fe católica por pura lógica y sentido común.</p>
+                        <blockquote>«El hombre que comienza a pensar sin haber creído, termina por no creer en nada, o por creer en cualquier cosa.»</blockquote>
+                        <blockquote>«Cuando el hombre deja de creer en Dios, no es que no crea en nada, es que cree en todo.»</blockquote>
+                        <blockquote>«La tradición significa dar votos a los más oscuros de todos los antepasados, no a los meramente oscuros. Es la democracia de los muertos.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">G.K. Chesterton — El hombre eterno</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <blockquote>«Si el cristianismo es una cosa, es intolerablemente razonable. Si es otra cosa, es intolerablemente incomprensible.»</blockquote>
+                        <blockquote>«Hay una gran cantidad de gente que se niega a considerar que el cristianismo sea verdadero, no porque sea irrazonable, sino porque es muy razonable.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">San Agustín — Contra los Herejes — Selección</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <blockquote>«No creas porque es razonable, sino porque te lo mando la fe; entonces verás que es razonable.»</blockquote>
+                        <blockquote>«La herejía es un vicio de la inteligencia que hace que el hombre sea su propio maestro.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Frank Sheed — Teología y Sentido Común</span>
+                        <span class="doc-tag tag-text">Referencia</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Explicación clara y accesible de las verdades de la fe: la Trinidad, la Encarnación, la Redención, la Gracia, la Iglesia, los Sacramentos.</p>
+                        <blockquote>«La teología es la ciencia de Dios y de todo lo que Dios ha hecho. Pero es más: es la ciencia de lo que Dios es y de lo que nosotros somos.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Peter Kreeft — Manual de Apologética Católica</span>
+                        <span class="doc-tag tag-text">Referencia</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Responde a las objeciones más comunes contra la fe católica: el problema del mal, la existencia de Dios, la historicidad de la resurrección, la autoridad de la Iglesia, los santos, María, los sacramentos.</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Trent Horn — Respuestas a las objeciones protestantes</span>
+                        <span class="doc-tag tag-text">Referencia</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Sola Scriptura, Sola Fide, la intercesión de los santos, el purgatorio, la confesión sacramental, la Eucaristía como sacrificio, el primado de Pedro, la autoridad de la Tradición.</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Scott Hahn — Roma Dulce Hogar</span>
+                        <span class="doc-tag tag-text">Referencia</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Testimonio de un presbítero presbiteriano que descubrió la fe católica estudiando la Biblia y los Padres de la Iglesia.</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">📖 Recursos de Apologética en línea</span>
+                        <span class="doc-tag tag-link">Enlace</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><a href="https://www.catholic.com/" target="_blank">Catholic Answers — Apologética en inglés</a></li>
+                            <li><a href="https://www.aciprensa.com/apologetica/" target="_blank">ACI Prensa — Sección de Apologética</a></li>
+                            <li><a href="https://apologeticacatolica.org/" target="_blank">ApologéticaCatolica.org</a></li>
+                            <li><a href="https://www.patristica.net/" target="_blank">Patristica.net — Demostración patrística</a></li>
+                            <li><a href="https://www.defensacatolica.com/" target="_blank">Defensa Católica</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 11. FAMILIA ============ -->
+        <div class="cat-card" data-cat="familia" onclick="togglePanel('familia')">
+            <span class="cat-icon">👨‍👩‍👧</span>
+            <h3>Familia <span class="count">6 docs</span></h3>
+            <p>Formación para la vida familiar cristiana.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-familia">
+            <div class="panel-header">
+                <h3>👨‍👩‍👧 Familia Cristiana</h3>
+                <button class="panel-close" onclick="closePanel('familia')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Familiaris Consortio — Juan Pablo II (1981) — extractos</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Exhortación Apostólica sobre la función de la familia cristiana en el mundo contemporáneo.</p>
+                        <blockquote>«La familia, fundada sobre el matrimonio, es una comunión de personas, signo e imagen de la comunión del Padre y del Hijo en el Espíritu Santo.» (§21)</blockquote>
+                        <blockquote>«El futuro de la humanidad se forja en la familia.» (§86)</blockquote>
+                        <blockquote>«La familia es el "santuario de la Iglesia en el hogar".» (§21)</blockquote>
+                        <p><a href="https://www.vatican.va/content/john-paul-ii/es/apost_exhortations/documents/hf_jp-ii_exh_22111981_familiaris-consortio.html" target="_blank">Leer completa →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Amoris Laetitia — Francisco (2016) — extractos</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Exhortación postsinodal sobre el amor en la familia.</p>
+                        <blockquote>«El amor entre los padres es el lugar donde se aprende el amor.» (§171)</blockquote>
+                        <blockquote>«Ninguna familia es una realidad perfecta y hecha de una vez para siempre, sino que necesita un camino de maduración de su consciencia.» (§325)</blockquote>
+                        <blockquote>«La Iglesia debe acompañar con atención y cuidado los pasos más frágiles, los más difíciles y aquellos que a menudo se dan en condiciones de gran sufrimiento.» (§291)</blockquote>
+                        <p><a href="https://www.vatican.va/content/francesco/es/apost_exhortations/documents/papa-francesco_esortazione-ap_20160319_amoris-laetitia.html" target="_blank">Leer completa →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Catequesis de Juan Pablo II sobre la familia (1979-1984)</span>
+                        <span class="doc-tag tag-text">Referencia</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>El ciclo de catequesis que dio origen a la "Teología del Cuerpo". 129 audiencias sobre el matrimonio, la familia, la sexualidad y la virginidad.</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Consejo Pontificio para la Familia — Carta de los Derechos de la Familia (1983)</span>
+                        <span class="doc-tag tag-text">Resumen</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>12 artículos que resumen los derechos fundamentales de la familia: derecho a la vida, a existir y progresar, a educar a los hijos, a la estabilidad del matrimonio, a la religión, al trabajo, a la vivienda, a la asistencia social.</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Libros recomendados sobre familia</span>
+                        <span class="doc-tag tag-text">Lista</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><strong>Conferencia Episcopal Española</strong> — <em>Manual de pastoral familiar</em></li>
+                            <li><strong>Pedro María Reyes</strong> — <em>Educar en el amor</em></li>
+                            <li><strong>Jaime Pérez</strong> — <em>La familia, santuario de la vida</em></li>
+                            <li><strong>Alfonso Aguilar</strong> — <em>El matrimonio: un proyecto de vida</em></li>
+                            <li><strong>Conferencia Episcopal</strong> — <em>La familia, iglesia doméstica</em></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">📖 Recursos para la familia en línea</span>
+                        <span class="doc-tag tag-link">Enlace</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><a href="https://www.lafamiliaenlafi.org/" target="_blank">La familia en la fe</a></li>
+                            <li><a href="https://www.familia.org/" target="_blank">Familia.org</a></li>
+                            <li><a href="https://www.dpf.va/" target="_blank">Dicasterio para los Laicos, la Familia y la Vida</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 12. MATRIMONIO ============ -->
+        <div class="cat-card" data-cat="matrimonio" onclick="togglePanel('matrimonio')">
+            <span class="cat-icon">💍</span>
+            <h3>Matrimonio <span class="count">4 docs</span></h3>
+            <p>Preparación y acompañamiento matrimonial.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-matrimonio">
+            <div class="panel-header">
+                <h3>💍 Matrimonio Católico</h3>
+                <button class="panel-close" onclick="closePanel('matrimonio')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Propiedades esenciales del Matrimonio</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Según el Código de Derecho Canónico (c. 1055-1056) y el Catecismo (§1643-1654), el matrimonio tiene estas propiedades esenciales:</p>
+                        <h4>1. Unidad</h4>
+                        <p>Es la unión entre un solo hombre y una sola mujer. Excluye la poligamia.</p>
+                        <h4>2. Indisolubilidad</h4>
+                        <p>Es un vínculo que no puede ser roto mientras viven ambos cónyuges. «Lo que Dios unió, no lo separe el hombre» (Mt 19,6).</p>
+                        <h4>3. Apertura a la vida</h4>
+                        <p>Los esposos están llamados a la fecundidad: «Crezcan y multiplíquense» (Gn 1,28). Los hijos son el fruto más excelente del matrimonio.</p>
+                        <h4>Los fines del matrimonio (c. 1055 §1):</h4>
+                        <ol>
+                            <li><strong>Bien de los cónyuges:</strong> el amor conyugal, la ayuda mutua, el camino de santificación.</li>
+                            <li><strong>Procreación y educación de la prole:</strong> acoger la vida y educar a los hijos en la fe.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Casti Connubii — Pío XI — Extractos sobre el matrimonio</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <blockquote>«El matrimonio no fue instituido ni restablecido por el hombre, sino por Dios.»</blockquote>
+                        <blockquote>«La primera bendición que Dios dio a nuestros primeros padres no fue la del poder, sino la del amor.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Libros recomendados para preparación matrimonial</span>
+                        <span class="doc-tag tag-text">Lista</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><strong>Conferencia Episcopal</strong> — <em>Preparación al matrimonio</em></li>
+                            <li><strong>Consejo Pontificio para la Familia</strong> — <em>Preparación al Sacramento del Matrimonio</em></li>
+                            <li><strong>Ángel Peña</strong> — <em>El matrimonio en el plan de Dios</em></li>
+                            <li><strong>Alfonso Aguilar</strong> — <em>Casarse y ser feliz</em></li>
+                            <li><strong>Eduardo Hontoria</strong> — <em>Para que sean uno</em></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">📖 Recursos para matrimonios</span>
+                        <span class="doc-tag tag-link">Enlace</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><a href="https://www.matrimonio.org/" target="_blank">Matrimonio.org — Recursos para matrimonios</a></li>
+                            <li><a href="https://www.smartlazycatholic.com/" target="_blank">Smart Lazy Catholic — Matrimonio</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 13. HIJOS ============ -->
+        <div class="cat-card" data-cat="hijos" onclick="togglePanel('hijos')">
+            <span class="cat-icon">🧒</span>
+            <h3>Hijos <span class="count">4 docs</span></h3>
+            <p>Educación y crianza desde una perspectiva cristiana.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-hijos">
+            <div class="panel-header">
+                <h3>🧒 Educación de los Hijos</h3>
+                <button class="panel-close" onclick="closePanel('hijos')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Gravissimum Educationis — Vaticano II — Sobre la Educación Cristiana</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <blockquote>«Toda persona, por su misma naturaleza, tiene necesidad de la educación, ya que es persona, es decir, dotada de inteligencia y de libre albedrío.» (§1)</blockquote>
+                        <blockquote>«Los padres, ya que han dado la vida a los hijos, tienen la gravísima obligación de educar a la prole, y por tanto deben ser reconocidos como los primeros y principales educadores de sus hijos.» (§3)</blockquote>
+                        <p><a href="https://www.vatican.va/archive/hist_councils/ii_vatican_council/documents/vat-ii_decl_19651028_gravissimum-educationis_sp.html" target="_blank">Leer completa →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Familiaris Consortio — La educación de los hijos</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <blockquote>«El derecho-deber de los padres de educar a sus hijos es esencial, original y primario, e insustituible, y por tanto debe ser siempre reconocido y protegido.» (§36)</blockquote>
+                        <blockquote>«La familia es la primera escuela de las virtudes sociales, de las que todas las sociedades necesitan.» (§37)</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Libros recomendados para la educación de los hijos</span>
+                        <span class="doc-tag tag-text">Lista</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><strong>James Stenson</strong> — <em>Preparar a tus hijos para el éxito</em></li>
+                            <li><strong>Gregory Popcak</strong> — <em>Crianza con gracia</em></li>
+                            <li><strong>Michele Assunto</strong> — <em>Educar los afectos</em></li>
+                            <li><strong>Conferencia Episcopal</strong> — <em>Catequesis familiar</em></li>
+                            <li><strong>Laura Berquist</strong> — <em>Designing Your Own Classical Curriculum</em></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Principios católicos de crianza</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ol>
+                            <li><strong>El niño es persona:</strong> desde la concepción, tiene dignidad y derechos (CIC c. 227)</li>
+                            <li><strong>Los padres son los primeros educadores:</strong> no se puede delegar esta responsabilidad (GE 3)</li>
+                            <li><strong>Educar en la fe:</strong> bautismo, primera comunión, confirmación, oración en familia</li>
+                            <li><strong>El ejemplo vale más que la palabra:</strong> los hijos aprenden lo que viven</li>
+                            <li><strong>La disciplina es un acto de amor:</strong> «El que ama a su hijo lo corrige con diligencia» (Prov 13,24)</li>
+                            <li><strong>Proteger la inocencia:</strong> controlar los medios de comunicación, las amistades, el entorno</li>
+                            <li><strong>Educar para la libertad:</strong> no autoritarismo ni permisividad, sino crecimiento progresivo en responsabilidad</li>
+                            <li><strong>La oración en familia:</strong> el rosario, las bendiciones antes de las comidas, la oración de la noche</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 14. JÓVENES ============ -->
+        <div class="cat-card" data-cat="jovenes" onclick="togglePanel('jovenes')">
+            <span class="cat-icon">🧑</span>
+            <h3>Jóvenes <span class="count">5 docs</span></h3>
+            <p>Recursos para la pastoral juvenil y la formación de jóvenes.</p>
+            <i class="ri-arrow-right-s-line doc-toggle"></i>
+        </div>
+        <div class="cat-panel" id="panel-jovenes">
+            <div class="panel-header">
+                <h3>🧑 Pastoral Juvenil</h3>
+                <button class="panel-close" onclick="closePanel('jovenes')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Christus Vivit — Francisco (2019) — extractos</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Exhortación apostólica postsinodal dirigida a los jóvenes y a todo el Pueblo de Dios.</p>
+                        <blockquote>«Cristo está vivo, y quiere que estemos vivos. Él está siempre en medio de nosotros, caminando a nuestro lado, aunque no lo percibamos.» (§2)</blockquote>
+                        <blockquote>«No dejéis que el mundo os haga perder la audacia, la esperanza, la capacidad de soñar.» (§143)</blockquote>
+                        <blockquote>«Jesús no te pide que seas perfecto desde el principio, sino que no dejes de caminar.» (§3)</blockquote>
+                        <p><a href="https://www.vatican.va/content/francesco/es/apost_exhortations/documents/papa-francesco_esortazione-ap_20190325_christus-vivit.html" target="_blank">Leer completa →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Juan Pablo II — Mensajes para las Jornadas Mundiales de la Juventud</span>
+                        <span class="doc-tag tag-text">Referencia</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <blockquote>«¡No tengáis miedo! ¡Abrid, más aún, abrid de par en par las puertas a Cristo!» (JMJ 1985)</blockquote>
+                        <blockquote>«¡Vosotros sois la esperanza de la Iglesia y del mundo!» (JMJ 1993)</blockquote>
+                        <blockquote>«No seáis cómplices de la cultura de la muerte.» (JMJ 1993)</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">YOUCAT — Catecismo Joven</span>
+                        <span class="doc-tag tag-text">Referencia</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Catecismo escrito específicamente para jóvenes, con lenguaje accesible, ilustraciones y preguntas de reflexión. Aprobado por la Conferencia Episcopal Alemana y presentado por Benedicto XVI.</p>
+                        <p><a href="https://www.youcat.org/es/" target="_blank">Sitio oficial →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Libros recomendados para jóvenes</span>
+                        <span class="doc-tag tag-text">Lista</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><strong>Robert Barron</strong> — <em>Catholicism: A Journey to the Heart of the Faith</em></li>
+                            <li><strong>Matthew Kelly</strong> — <em>The Rhythm of Life</em></li>
+                            <li><strong>Peter Kreeft</strong> — <em>Because God Is Real</em></li>
+                            <li><strong>Jason Evert</strong> — <em>Pure Manhood / Pure Womanhood</em></li>
+                            <li><strong>Crystalina Evert</strong> — <em>How to Find Your Soulmate without Losing Your Soul</em></li>
+                            <li><strong>John Paul II</strong> — <em>Los jóvenes ante el tercer milenio</em></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">📖 Recursos para jóvenes en línea</span>
+                        <span class="doc-tag tag-link">Enlace</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><a href="https://www.lajornadamundialdelajuventud.org/" target="_blank">Jornada Mundial de la Juventud</a></li>
+                            <li><a href="https://www.youcat.org/" target="_blank">YOUCAT</a></li>
+                            <li><a href="https://www.chastityproject.com/" target="_blank">Chastity Project (Jason Evert)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 15. PSICOLOGÍA CATÓLICA ============ -->
+        <div class="cat-card" data-cat="psicologia" onclick="togglePanel('psicologia')">
+            <span class="cat-icon">🧠</span>
+            <h3>Psicología Católica <span class="count">5 docs</span></h3>
+            <p>Psicología y acompañamiento desde la visión cristiana.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-psicologia">
+            <div class="panel-header">
+                <h3>🧠 Psicología Católica</h3>
+                <button class="panel-close" onclick="closePanel('psicologia')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">San Juan Pablo II — La salud y la cura del alma (1982)</span>
+                        <span class="doc-tag tag-text">Extractos</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <blockquote>«La psicología, si quiere ser verdaderamente ciencia del hombre, no puede prescindir de la dimensión religiosa y espiritual de la persona humana.»</blockquote>
+                        <blockquote>«El sacerdote y el psicólogo, cada uno en su campo, deben colaborar para el bien integral de la persona.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Viktor Frankl — Logoterapia y fe cristiana</span>
+                        <span class="doc-tag tag-text">Referencia</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Frankl, sobreviviente del Holocausto, fundó la logoterapia: el hombre busca sentido. Su obra converge con la antropología cristiana.</p>
+                        <blockquote>«El que tiene un por qué para vivir puede soportar casi cualquier cómo.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Libros de Psicología Católica recomendados</span>
+                        <span class="doc-tag tag-text">Lista</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><strong>Dr. Gregory Bottaro</strong> — <em>CatholicPsych: Finding God in the Science of the Mind</em></li>
+                            <li><strong>Dr. Kevin Vost</strong> — <em>Memorize the Faith! (and Most Any Other Catholic Teaching)</em></li>
+                            <li><strong>Dr. Robert Schlapfer</strong> — <em>Psicología y vida espiritual</em></li>
+                            <li><strong>P. Benedict Groeschel</strong> — <em>Arise from Darkness: What to Do When Life Doesn't Make Sense</em></li>
+                            <li><strong>Dr. Conrad Baars</strong> — <em>Feeling and Healing Your Emotions</em></li>
+                            <li><strong>Dr. Anna Terruwe</strong> — <em>Psicología de la afectividad</em></li>
+                            <li><strong>Dr. William May</strong> — <em>Psicología y moral católica</em></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Dirección espiritual y acompañamiento psicológico</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Principios católicos sobre la relación entre dirección espiritual y terapia psicológica:</p>
+                        <ol>
+                            <li><strong>Complementariedad:</strong> la psicología trabaja el plano natural, la dirección espiritual el sobrenatural. Se necesitan mutuamente.</li>
+                            <li><strong>No sustitución:</strong> el sacerdote no es psicoterapeuta ni el psicólogo es director espiritual.</li>
+                            <li><strong>Antropología cristiana:</strong> toda psicología debe partir de que el hombre es cuerpo y alma, creado a imagen de Dios, herido por el pecado, redimido por Cristo.</li>
+                            <li><strong>El discernimiento:</strong> distinguir entre problemas psicológicos y problemas espirituales (tentación, pecado, crisis de fe).</li>
+                            <li><strong>La gracia:</strong> los sacramentos (especialmente la Confesión y la Eucaristía) tienen un poder curativo que va más allá de cualquier terapia.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">📖 Recursos de Psicología Católica</span>
+                        <span class="doc-tag tag-link">Enlace</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><a href="https://catholicpsych.com/" target="_blank">CatholicPsych Institute</a></li>
+                            <li><a href="https://www.institute-for-psychological-sciences.org/" target="_blank">Institute for Psychological Sciences</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 16. PROFECÍAS ============ -->
+        <div class="cat-card" data-cat="profecias" onclick="togglePanel('profecias')">
+            <span class="cat-icon">🔮</span>
+            <h3>Profecías <span class="count">5 docs</span></h3>
+            <p>Profecías bíblicas y revelaciones privadas aprobadas.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-profecias">
+            <div class="panel-header">
+                <h3>🔮 Profecías y Revelaciones Privadas Aprobadas</h3>
+                <button class="panel-close" onclick="closePanel('profecias')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Nota doctrinal sobre las revelaciones privadas — CDF (2024)</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>El Dicasterio para la Doctrina de la Fe (con aprobación del Papa Francisco) estableció nuevas normas para las revelaciones privadas. Ya no se habla de "constancia de milagros" sino de "nihil obstat" (nada se opone).</p>
+                        <blockquote>«El fiel no tiene obligación de creer en las revelaciones privadas. Sin embargo, pueden ofrecer un aporte útil para la vida cristiana.»</blockquote>
+                        <p><a href="https://www.vatican.va/content/dicasterio-dottrina-fede/es/norme/norme-rivelazioni-private.html" target="_blank">Leer el documento completo →</a></p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Nuestra Señora de Fátima (1917) — Aprobada</span>
+                        <span class="doc-tag tag-text">Resumen</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Apariciones aprobadas por la Iglesia. Jacinta, Francisco y Lucía vieron a la Virgen María del 13 de mayo al 13 de octubre de 1917 en Fátima, Portugal.</p>
+                        <blockquote>«Al final, mi Corazón Inmaculado triunfará.»</blockquote>
+                        <p>Mensajes principales: la oración del rosario, la conversión, la consagración al Corazón Inmaculado, el secreto de Fátima (tres partes: visión del infierno, devoción al Corazón Inmaculado, el atentado al Papa).</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Santa Faustina Kowalska — Diario: La Divina Misericordia (Aprobada)</span>
+                        <span class="doc-tag tag-text">Resumen</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Revelaciones de Jesús a Santa Faustina (1905-1938). Canonizada por Juan Pablo II en 2000.</p>
+                        <blockquote>«La humanidad no encontrará la paz hasta que se dirija con confianza a mi misericordia.» (Diario, 300)</blockquote>
+                        <blockquote>«Jesús, en ti confío.» (Oración de la Divina Misericordia)</blockquote>
+                        <p>La imagen de la Divina Misericordia, la Coronilla, la Hora de la Misericordia (3 PM), la Fiesta de la Divina Misericordia (Domingo de Pascua).</p>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Profecías del Antiguo Testamento — Selección</span>
+                        <span class="doc-tag tag-text">Resumen</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <h4>Isaías 7:14 — La Virgen concebirá</h4>
+                        <blockquote>«He aquí que la virgen concebirá y dará a luz un hijo, y le pondrá por nombre Emmanuel.»</blockquote>
+                        <h4>Isaías 53 — El Siervo Sufriente</h4>
+                        <blockquote>«Fue oprimido y afligido, y no abrió su boca; como un cordero que es llevado al matadero.» (Is 53,7)</blockquote>
+                        <h4>Miqueas 5:2 — El lugar del nacimiento</h4>
+                        <blockquote>«Pero tú, Belén de Efrata, pequeña para estar entre las familias de Judá, de ti me saldrá el que será Señor en Israel.»</blockquote>
+                        <h4>Daniel 7:13-14 — El Hijo del Hombre</h4>
+                        <blockquote>«Vi venir en las nubes del cielo uno como un hijo de hombre... Se le dio dominio, gloria y reino.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Otras revelaciones privadas aprobadas por la Iglesia</span>
+                        <span class="doc-tag tag-text">Lista</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><strong>Guadalupe</strong> (1531, México) — San Juan Diego</li>
+                            <li><strong>París</strong> (1830) — Santa Catalina Labouré (Medalla Milagrosa)</li>
+                            <li><strong>La Salette</strong> (1846, Francia)</li>
+                            <li><strong>Lourdes</strong> (1858, Francia) — Santa Bernadette Soubirous</li>
+                            <li><strong>Pontmain</strong> (1871, Francia)</li>
+                            <li><strong>Knock</strong> (1879, Irlanda)</li>
+                            <li><strong>Fátima</strong> (1917, Portugal)</li>
+                            <li><strong>Beauraing</strong> (1932, Bélgica)</li>
+                            <li><strong>Banneux</strong> (1933, Bélgica)</li>
+                            <li><strong>Akita</strong> (1973, Japón)</li>
+                            <li><strong>Kibeho</strong> (1981, Ruanda)</li>
+                        </ul>
+                        <p><em>Nota: Solo las revelaciones aprobadas por la Iglesia católica deben ser consideradas como dignas de crédito.</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 17. SANTOS ============ -->
+        <div class="cat-card" data-cat="santos" onclick="togglePanel('santos')">
+            <span class="cat-icon">😇</span>
+            <h3>Santos <span class="count">6 docs</span></h3>
+            <p>Biografías, escritos y espiritualidad de los santos.</p>
+            <i class="ri-arrow-right-s-line open-icon"></i>
+        </div>
+        <div class="cat-panel" id="panel-santos">
+            <div class="panel-header">
+                <h3>😇 Santos de la Iglesia Católica</h3>
+                <button class="panel-close" onclick="closePanel('santos')"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Qué es un santo — Catecismo (§823-829)</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <blockquote>«La Iglesia es santa porque Dios Santo es su autor. Cristo se entregó por ella para santificarla. La santifica por medio de la Palabra y de los sacramentos.» (§823)</blockquote>
+                        <blockquote>«Los santos han sido siempre fuente y origen de renovación en los momentos más difíciles de la historia de la Iglesia.» (§828)</blockquote>
+                        <blockquote>«La santidad es la vocación de todos los bautizados, no solo de algunos "especiales".»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">San Francisco de Asís — Cántico del Hermano Sol</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <p>Considerado el primer poema de la literatura italiana. Escrito en 1225, cerca de la muerte de Francisco.</p>
+                        <blockquote>Altísimo, omnipotente, buen Señor,<br>
+                        tuyas son las alabanzas, la gloria y el honor;<br>
+                        a ti solo, Altísimo, corresponden,<br>
+                        y ningún hombre es digno de nombrarte.<br><br>
+                        Alabado seas, mi Señor, con todas tus criaturas,<br>
+                        especialmente el señor hermano sol,<br>
+                        que es el día, y por el cual nos iluminas.<br><br>
+                        Alabado seas, mi Señor, por la hermana luna y las estrellas,<br>
+                        las cuales has formado claras, preciosas y bellas.<br><br>
+                        Alabado seas, mi Señor, por el hermano viento,<br>
+                        y por el aire y la nube y el cielo sereno y todo tiempo.<br><br>
+                        Alabado seas, mi Señor, por la hermana agua,<br>
+                        la cual es muy útil y humilde y preciosa y casta.<br><br>
+                        Alabado seas, mi Señor, por nuestro hermano el fuego,<br>
+                        con el cual iluminas la noche.<br><br>
+                        Alabado seas, mi Señor, por nuestra hermana la madre tierra,<br>
+                        la cual nos sostiene y gobierna,<br>
+                        y produce diversos frutos con flores coloridas y hierbas.<br><br>
+                        Alabado seas, mi Señor, por aquellos que perdonan por tu amor<br>
+                        y soportan enfermedad y tribulación.<br>
+                        Bienaventurados los que las soporten en paz,<br>
+                        porque por ti, Altísimo, coronados serán.<br><br>
+                        Alabado seas, mi Señor, por nuestra hermana la muerte corporal,<br>
+                        de la cual ningún hombre vivo puede escapar.<br>
+                        ¡Ay de aquellos que mueran en pecado mortal!<br>
+                        Bienaventurados los que hallaren en tu santísima voluntad,<br>
+                        porque la muerte segunda no les hará mal.<br><br>
+                        Load y bendecid a mi Señor,<br>
+                        y dadle gracias y servidle con gran humildad.</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">Santa Teresa de Calcuta — Oraciones y pensamientos</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <blockquote>«Si quieres cambiar el mundo, ve a casa y ama a tu familia.»</blockquote>
+                        <blockquote>«No hacemos grandes cosas, sino cosas pequeñas con gran amor.»</blockquote>
+                        <blockquote>«El hambre más terrible no es la del pan, sino la de ser amado.»</blockquote>
+                        <blockquote>«Una vida no vivida para los demás no es una vida.»</blockquote>
+                        <blockquote>«No me pidas que haga grandes cosas. Pídeme que haga pequeñas cosas con gran amor.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">San Padre Pío de Pietrelcina — Oraciones</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <blockquote>«Permanece en silencio y espera al Señor. Deja que tu oración sea siempre: "Señor, ten misericordia de mí, porque soy un pecador." No pidas nada más.»</blockquote>
+                        <blockquote>«Reza, espera y no te preocupes. La preocupación es inútil. Dios es misericordioso y escuchará tu oración.»</blockquote>
+                        <blockquote>«La oración es la mejor arma que poseemos; es la llave que abre el corazón de Dios.»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">San Juan Pablo II — Oración a la Virgen (Rome, 1978)</span>
+                        <span class="doc-tag tag-embed">Texto</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <blockquote>«Madre de los hombres y de los pueblos, tú que conoces todos sus sufrimientos y sus esperanzas, tú que sientes maternalmente todas las luchas entre el bien y el mal, entre la luz y las tinieblas, que sacuden al mundo contemporáneo, acoge nuestro ruego que, unidos en una sola voluntad, te dirigimos en el momento mismo en que tu Hijo va a confiarnos, como un don inestimable, la misión de amar y de servir a la vida, su vida, en todos los hombres y mujeres de este mundo.»</blockquote>
+                        <blockquote>«¡No tengáis miedo! ¡Abrid, más aún, abrid de par en par las puertas a Cristo!»</blockquote>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-header" onclick="toggleDoc(this)">
+                        <span class="doc-title">📖 Base de datos de Santos — Recursos</span>
+                        <span class="doc-tag tag-link">Enlace</span>
+                        <i class="ri-arrow-down-s-line doc-toggle"></i>
+                    </div>
+                    <div class="doc-body">
+                        <ul>
+                            <li><a href="https://www.vatican.va/news_services/liturgy/saints/index_sp.html" target="_blank">Vaticano — Índice de Santos y Beatos</a></li>
+                            <li><a href="https://www.santopedia.com/" target="_blank">Santopedia — Enciclopedia de Santos</a></li>
+                            <li><a href="https://catholicsaints.info/" target="_blank">Catholic Saints Info (inglés)</a></li>
+                            <li><a href="https://www.aciprensa.com/santos/" target="_blank">ACI Prensa — Santos del día</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- No results message -->
+    <div class="no-results" id="noResults">
+        <i class="ri-search-eye-line"></i>
+        <h3>Sin resultados</h3>
+        <p>No se encontraron documentos que coincidan con tu búsqueda.</p>
+    </div>
+</section>
+
+<!-- ADMINISTRACIÓN -->
+<section>
+    <h2>Administración</h2>
+    <p class="section-sub">En una futura versión podrás gestionar la biblioteca sin editar código.</p>
+    <div class="admin-grid">
+        <div class="admin-item"><i class="ri-add-circle-line"></i> Agregar libros sin editar código</div>
+        <div class="admin-item"><i class="ri-folder-upload-line"></i> Subir archivos PDF</div>
+        <div class="admin-item"><i class="ri-image-add-line"></i> Agregar portadas de libros</div>
+        <div class="admin-item"><i class="ri-edit-line"></i> Editar información de los libros</div>
+        <div class="admin-item"><i class="ri-delete-bin-line"></i> Eliminar libros</div>
+        <div class="admin-item"><i class="ri-refresh-line"></i> Actualizar buscador automáticamente</div>
+    </div>
+</section>
+
+</div>
+
+<footer>
+    <p>© 2026 Red Católica | Alexis Rivero — <em>"Ad Maiorem Dei Gloriam"</em></p>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast"><i class="ri-book-open-line"></i><span id="toastMsg"></span></div>
+
+<!-- Back to top -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="ri-arrow-up-line"></i></button>
+
+<script>
+// Bible data
+const bibleBooks = {
+    pentateuco: [
+        {n:'Génesis',a:50},{n:'Éxodo',a:40},{n:'Levítico',a:27},{n:'Números',a:36},{n:'Deuteronomio',a:34}
+    ],
+    historicos: [
+        {n:'Josué',a:24},{n:'Jueces',a:21},{n:'Rut',a:4},{n:'1 Samuel',a:31},{n:'2 Samuel',a:24},
+        {n:'1 Reyes',a:22},{n:'2 Reyes',a:25},{n:'1 Crónicas',a:29},{n:'2 Crónicas',a:36},
+        {n:'Esdras',a:10},{n:'Nehemías',a:13},{n:'Tobías',a:14,d:true},{n:'Judit',a:16,d:true},
+        {n:'Ester',a:10},{n:'1 Macabeos',a:16,d:true},{n:'2 Macabeos',a:15,d:true}
+    ],
+    sapienciales: [
+        {n:'Job',a:42},{n:'Salmos',a:150},{n:'Proverbios',a:31},{n:'Eclesiastés',a:12},
+        {n:'Cantar de los Cantares',a:8},{n:'Sabiduría',a:19,d:true},{n:'Eclesiástico',a:51,d:true}
+    ],
+    profeticos: [
+        {n:'Isaías',a:66},{n:'Jeremías',a:52},{n:'Lamentaciones',a:5},{n:'Baruc',a:6,d:true},
+        {n:'Ezequiel',a:48},{n:'Daniel',a:14},{n:'Oseas',a:14},{n:'Jo
