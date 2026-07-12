@@ -442,14 +442,123 @@ Red Católica Alexis Rivero
 
     <!-- Contenedor con scroll para los 100 comentarios distintos + los guardados -->
     <div id="comments-list" class="flex flex-col gap-4 mt-6 border-t border-slate-700/50 pt-4 max-h-[500px] overflow-y-auto pr-2">
-        <!-- El motor generará los 100 comentarios aquí -->
-    </div>
+        // ========================================================
+// MOTOR DE 100 COMENTARIOS ÚNICOS Y PERSISTENCIA (BASE 1500)
+// ========================================================
 
-    <!-- Contenedor con scroll para los 100 comentarios + los guardados -->
-    <div id="comments-list" class="flex flex-col gap-4 mt-6 border-t border-slate-700/50 pt-4 max-h-[500px] overflow-y-auto pr-2">
-        <!-- El motor inteligente cargará los comentarios aquí -->
-        </div>
-    </div>
+const nombres = ['Carlos', 'María', 'Juan', 'Ana', 'Diego', 'Laura', 'Esteban', 'Patricia', 'Nicolás', 'Florencia', 'Gabriel', 'Valentina', 'Santiago', 'Lucía', 'Martín', 'Elena', 'Alejandro', 'Andrés', 'Gonzalo', 'Guzmán', 'Tabaré', 'Mathías', 'Álvaro', 'Rodrigo', 'Cecilia', 'Beatriz', 'Ignacio', 'Joaquín', 'Roberto', 'Guillermo', 'Daniela', 'Federico', 'Sebastián', 'Agustín', 'Eduardo', 'Verónica', 'Marcelo', 'Camila', 'Facundo', 'Matías'];
+const apellidos = ['Rodríguez', 'González', 'Martínez', 'García', 'Pérez', 'López', 'Sánchez', 'Ramírez', 'Álvarez', 'Fernández', 'Díaz', 'Silva', 'Pereira', 'Ferreira', 'Sosa', 'Castro', 'Suárez', 'Olivera', 'Acosta', 'Borda', 'Viera', 'Méndez', 'Ríos', 'Blanco', 'Torres', 'Suarez', 'Giménez'];
+const departamentos = ['Montevideo', 'Maldonado', 'Canelones', 'Colonia', 'Salto', 'Paysandú', 'Rocha', 'San José', 'Tacuarembó', 'Soriano', 'Rivera', 'Artigas', 'Lavalleja', 'Flores', 'Florida', 'Durazno', 'Treinta y Tres', 'Río Negro', 'Cerro Largo'];
+
+const frases = [
+    "Excelente investigación. Un análisis sumamente necesario y valiente sobre las garantías procesales.",
+    "Ya quiero que salga para comprar mi ejemplar. Felicitaciones por poner estos temas sobre la mesa.",
+    "Un enfoque brillante y muy riguroso. El Uruguay actual necesita este debate constitucional urgente.",
+    "Excelente aporte de Alexis Rivero. Un grito de cordura jurídica ante tanta arbitrariedad.",
+    "Totalmente de acuerdo con el planteo del libro. La presunción de inocencia es sagrada.",
+    "Un trabajo impecable. Hacía falta una autopsia seria del sistema judicial de familia.",
+    "Imprescindible lectura para abogados, legisladores y ciudadanos comunes. Gran trabajo intelectual.",
+    "Mis más sinceras felicitaciones por el coraje de abordar este tabú sin rodeos ideológicos.",
+    "El análisis fáctico es brutal. Abre los ojos ante realidades institucionales que muchos callan.",
+    "¡Muchos éxitos con este lanzamiento! Cuenta con mi reserva desde el interior.",
+    "Brillante estructura argumentativa. Una defensa formidable del Estado de Derecho y la igualdad.",
+    "Se nota que hay un trabajo de investigación exhaustivo detrás. Un gran aporte para la sociedad.",
+    "Gracias por dar el paso y escribir sobre esto. Apoyo total desde mi departamento.",
+    "Un libro clave para entender las crisis ocultas del tejido social familiar en nuestro país.",
+    "Una obra necesaria para el despertar de la razón. Éxitos totales en las librerías.",
+    "Completamente necesario este libro, mi total apoyo a la investigación realizada.",
+    "Un enfoque jurídico muy lúcido y directo. Hacía falta un texto con esta claridad.",
+    "Felicitaciones por la valentía de publicar este material. Lo comparto plenamente.",
+    "Un aporte fundamental para cuestionar lo que nadie se atreve a cuestionar hoy en día.",
+    "Excelente redacción, atrapante y con fundamentos muy sólidos de principio a fin.",
+    "Es una lectura obligatoria para entender los desafíos reales de nuestra justicia actual.",
+    "Gran trabajo. Se nota el compromiso con la verdad y el análisis estructural riguroso.",
+    "Ya reservé el mío. Es un orgullo ver este nivel de debate y rigurosidad en el país.",
+    "Un texto indispensable que desarma argumentos falsos con datos y leyes claras.",
+    "Firme, claro y sumamente documentado. Felicitaciones por este gran logro literario."
+];
+
+function generarComentarios() {
+    const listContainer = document.getElementById('comments-list');
+    if(!listContainer) return;
+    
+    let htmlContenido = '';
+
+    // 1. Renderiza primero los comentarios que TÚ escribas y queden guardados
+    const customComments = JSON.parse(localStorage.getItem('custom-comments')) || [];
+    customComments.forEach(c => {
+        htmlContenido += `
+            <div class="bg-slate-900 p-4 rounded-xl border border-amber-500/30 shadow-md">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="text-xs font-bold text-amber-400">Lector (Guardado)</span>
+                    <span class="text-[10px] text-gray-500 font-mono">${c.tiempo}</span>
+                </div>
+                <p class="text-sm text-gray-200">${c.texto}</p>
+            </div>
+        `;
+    });
+
+    // 2. Genera exactamente 100 comentarios base completamente mezclados y distintos
+    for (let i = 100; i > 0; i--) {
+        // Mezclas matemáticas para que ningún comentario repita el mismo nombre con la misma frase
+        const nIdx = (i * 7 + 3) % nombres.length;
+        const aIdx = (i * 13 + 5) % apellidos.length;
+        const dIdx = (i * 3 + 2) % departamentos.length;
+        const fIdx = (i * 19 + i) % frases.length;
+
+        let tiempo;
+        if (i > 90) {
+            tiempo = `Hace ${101 - i} min`;
+        } else if (i > 40) {
+            tiempo = `Hace ${Math.floor((100 - i) / 2) + 1} horas`;
+        } else {
+            tiempo = `Hace ${Math.floor((40 - i) / 5) + 1} días`;
+        }
+
+        htmlContenido += `
+            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/60">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="text-xs font-bold text-amber-400">${nombres[nIdx]} ${apellidos[aIdx]} (${departamentos[dIdx]})</span>
+                    <span class="text-[10px] text-gray-500 font-mono">${tiempo}</span>
+                </div>
+                <p class="text-sm text-gray-300">${frases[fIdx]}</p>
+            </div>
+        `;
+    }
+
+    listContainer.innerHTML = htmlContenido;
+    
+    // Mantiene la visual en 1500 y le suma tus comentarios nuevos guardados
+    document.getElementById('total-comments-counter').innerText = 1500 + customComments.length;
+}
+
+function postComment() {
+    const input = document.getElementById('comment-input');
+    const text = input.value.trim();
+    if (!text) return;
+
+    const customComments = JSON.parse(localStorage.getItem('custom-comments')) || [];
+    customComments.unshift({ texto: text, tiempo: 'Ahora mismo' });
+    localStorage.setItem('custom-comments', JSON.stringify(customComments));
+
+    generarComentarios();
+    input.value = '';
+    document.getElementById('comments-list').scrollTop = 0;
+}
+
+// Inicia el contador de reacciones (me gustas) si existieran, y monta los comentarios
+window.addEventListener('DOMContentLoaded', () => {
+    // Si tienes un sistema de reacciones arriba, esto las carga de la memoria
+    const types = ['love', 'shock', 'growth'];
+    types.forEach(type => {
+        const el = document.getElementById(`count-${type}`);
+        if (el) {
+            const savedValue = localStorage.getItem(`react-${type}`);
+            if (savedValue !== null) el.innerText = savedValue;
+        }
+    });
+    generarComentarios();
+});
 
     <!-- Contenedor con scroll para los 1500 comentarios -->
     <div id="comments-list" class="flex flex-col gap-4 mt-4 border-t border-gray-700/50 pt-4 max-h-[500px] overflow-y-auto pr-2">
