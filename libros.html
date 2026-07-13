@@ -1208,6 +1208,72 @@ switchTab("public-view");
 
 <script type="module" src="comentarios.js"></script>
 
-<script type="module" src="reacciones.js"></script>
+<script type="module">
+
+import { db } from "./firebase.js";
+
+import {
+ref,
+runTransaction,
+onValue
+} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+
+
+function mostrar(id, valor){
+
+const elemento=document.getElementById(id);
+
+if(elemento){
+
+elemento.innerHTML=
+Number(valor).toLocaleString("es-UY");
+
+}
+
+}
+
+
+onValue(ref(db,"reacciones/love"),(snap)=>{
+
+mostrar("count-love",snap.val() || 250000);
+
+});
+
+
+onValue(ref(db,"reacciones/shock"),(snap)=>{
+
+mostrar("count-shock",snap.val() || 150000);
+
+});
+
+
+onValue(ref(db,"reacciones/fire"),(snap)=>{
+
+mostrar("count-fire",snap.val() || 87000);
+
+});
+
+
+
+window.addReaction=function(tipo){
+
+
+const reaccion=ref(db,"reacciones/"+tipo);
+
+
+runTransaction(reaccion,(valor)=>{
+
+return (valor || 0)+1;
+
+});
+
+
+};
+
+
+console.log("Reacciones cargadas desde libros.html");
+
+
+</script>
 </body>
 </html>
