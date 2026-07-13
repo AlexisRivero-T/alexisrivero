@@ -9,23 +9,32 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
 
 
-// REFERENCIAS
 
-const loveRef = ref(db, "reacciones/love");
-const shockRef = ref(db, "reacciones/shock");
-const fireRef = ref(db, "reacciones/fire");
+// REFERENCIAS FIREBASE
+
+const loveRef =
+ref(db,"reacciones/love");
+
+
+const shockRef =
+ref(db,"reacciones/shock");
+
+
+const fireRef =
+ref(db,"reacciones/fire");
 
 
 
-// CREAR VALORES INICIALES
 
-function inicializarReaccion(referencia, valorInicial){
+// INICIALIZAR CONTADORES
 
-    runTransaction(referencia, (valor)=>{
+function inicializar(referencia, numeroInicial){
+
+    runTransaction(referencia,(valor)=>{
 
         if(valor === null){
 
-            return valorInicial;
+            return numeroInicial;
 
         }
 
@@ -36,11 +45,11 @@ function inicializarReaccion(referencia, valorInicial){
 }
 
 
-inicializarReaccion(loveRef,250000);
+inicializar(loveRef,250000);
 
-inicializarReaccion(shockRef,150000);
+inicializar(shockRef,150000);
 
-inicializarReaccion(fireRef,87000);
+inicializar(fireRef,87000);
 
 
 
@@ -57,7 +66,8 @@ function formato(numero){
 
 
 
-// MOSTRAR DATOS
+
+// MOSTRAR EN PANTALLA
 
 onValue(loveRef,(snapshot)=>{
 
@@ -108,23 +118,40 @@ onValue(fireRef,(snapshot)=>{
 
 
 
-// BOTONES HTML
-
-window.addReaction = function(tipo){
 
 
-const referencia =
-ref(db,"reacciones/"+tipo);
+// CLIC EN REACCIONES
+
+
+document.querySelectorAll("[data-reaction]")
+.forEach((boton)=>{
+
+
+    boton.addEventListener("click",()=>{
+
+
+        const tipo =
+        boton.dataset.reaction;
 
 
 
-runTransaction(referencia,(valor)=>{
+        const referencia =
+        ref(db,"reacciones/"+tipo);
 
 
-return (valor || 0) + 1;
+
+        runTransaction(
+        referencia,
+        (valorActual)=>{
+
+
+            return (valorActual || 0) + 1;
+
+
+        });
+
+
+    });
 
 
 });
-
-
-};
