@@ -5,165 +5,123 @@ import { db } from "./firebase.js";
 import {
     ref,
     onValue,
-    runTransaction,
-    set
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
-
+    runTransaction
+} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
 
 
 // REFERENCIAS
 
-const loveRef =
-ref(db,"reacciones/love");
-
-
-const shockRef =
-ref(db,"reacciones/shock");
-
-
-const fireRef =
-ref(db,"reacciones/fire");
+const loveRef = ref(db, "reacciones/love");
+const shockRef = ref(db, "reacciones/shock");
+const fireRef = ref(db, "reacciones/fire");
 
 
 
-
-// CREAR VALORES INICIALES SI NO EXISTEN
-
+// CREAR VALORES INICIALES
 
 function inicializarReaccion(referencia, valorInicial){
 
+    runTransaction(referencia, (valor)=>{
 
-runTransaction(
-referencia,
-(valor)=>{
+        if(valor === null){
 
+            return valorInicial;
 
-if(valor === null){
+        }
 
-    return valorInicial;
+        return valor;
 
-}
-
-
-return valor;
-
-
-});
-
+    });
 
 }
 
 
+inicializarReaccion(loveRef,250000);
 
-inicializarReaccion(
-loveRef,
-250000
-);
+inicializarReaccion(shockRef,150000);
 
-
-inicializarReaccion(
-shockRef,
-150000
-);
-
-
-inicializarReaccion(
-fireRef,
-87000
-);
+inicializarReaccion(fireRef,87000);
 
 
 
 
-
-// FORMATO DE NÚMEROS
-
+// FORMATO
 
 function formato(numero){
 
-return Number(numero)
-.toLocaleString("es-UY");
+    return Number(numero)
+    .toLocaleString("es-UY");
 
 }
 
 
 
 
+// MOSTRAR DATOS
 
-// MOSTRAR CONTADORES
+onValue(loveRef,(snapshot)=>{
+
+    const elemento =
+    document.getElementById("count-love");
+
+    if(elemento){
+
+        elemento.innerHTML =
+        formato(snapshot.val() || 250000);
+
+    }
+
+});
 
 
-onValue(
-loveRef,
-(snapshot)=>{
+
+onValue(shockRef,(snapshot)=>{
+
+    const elemento =
+    document.getElementById("count-shock");
+
+    if(elemento){
+
+        elemento.innerHTML =
+        formato(snapshot.val() || 150000);
+
+    }
+
+});
 
 
-document.getElementById("count-love").innerHTML =
 
-formato(snapshot.val() || 250000);
+onValue(fireRef,(snapshot)=>{
 
+    const elemento =
+    document.getElementById("count-fire");
+
+    if(elemento){
+
+        elemento.innerHTML =
+        formato(snapshot.val() || 87000);
+
+    }
 
 });
 
 
 
 
-
-onValue(
-shockRef,
-(snapshot)=>{
-
-
-document.getElementById("count-shock").innerHTML =
-
-formato(snapshot.val() || 150000);
-
-
-});
-
-
-
-
-
-onValue(
-fireRef,
-(snapshot)=>{
-
-
-document.getElementById("count-fire").innerHTML =
-
-formato(snapshot.val() || 87000);
-
-
-});
-
-
-
-
-
-
-
-// FUNCIÓN GLOBAL PARA LOS BOTONES HTML
-
+// BOTONES HTML
 
 window.addReaction = function(tipo){
 
 
-
 const referencia =
-
 ref(db,"reacciones/"+tipo);
 
 
 
+runTransaction(referencia,(valor)=>{
 
 
-runTransaction(
-referencia,
-(valorActual)=>{
-
-
-return (valorActual || 0) + 1;
+return (valor || 0) + 1;
 
 
 });
