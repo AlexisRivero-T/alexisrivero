@@ -1,5 +1,5 @@
 // reacciones.js
-
+console.log("REACCIONES CARGADO");
 import { db } from "./firebase.js";
 console.log("REACCIONES.JS CARGADO");
 console.log("DB:", db);
