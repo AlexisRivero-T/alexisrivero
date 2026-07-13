@@ -120,7 +120,32 @@
                 </div>
 
                 <!-- COLUMNA DERECHA (DETALLES Y COMENTARIOS) -->
-                <div class="lg:col-span-8 fade">
+                <div class="lg:col-span-8 fade"> <section class="comentarios">
+
+<h2>Comentarios</h2>
+
+<form id="formComentario">
+
+<input
+id="nombre"
+type="text"
+placeholder="Tu nombre"
+required>
+
+<textarea
+id="comentario"
+placeholder="Escribe tu comentario"
+required></textarea>
+
+<button type="submit">
+Publicar comentario
+</button>
+
+</form>
+
+<div id="listaComentarios"></div>
+
+</section>
                     <div class="mb-8">
                         <h2 id="view-title" class="text-5xl font-black text-white leading-tight">La Dictadura de la Sospecha</h2>
                         <p id="view-subtitle" class="text-xl text-amber-400 mt-3">El colapso del Derecho, el daño a la infancia y el despertar de la razón en Uruguay.</p>
