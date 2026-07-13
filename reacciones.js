@@ -1,7 +1,8 @@
 // reacciones.js
 
 import { db } from "./firebase.js";
-
+console.log("REACCIONES.JS CARGADO");
+console.log("DB:", db);
 import {
     ref,
     onValue,
