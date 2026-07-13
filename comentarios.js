@@ -1,55 +1,194 @@
+// comentarios.js
+
 import { db } from "./firebase.js";
 
 import {
-  ref,
-  push,
-  onChildAdded
-} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+    ref,
+    push,
+    set,
+    onValue,
+    query,
+    orderByChild
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
 
-const lista = document.getElementById("listaComentarios");
-const formulario = document.getElementById("formComentario");
 
-if (formulario) {
 
-formulario.addEventListener("submit", function(e){
+// REFERENCIAS FIREBASE
+
+const comentariosRef = ref(db, "comentarios");
+
+
+
+// ELEMENTOS HTML
+
+const formulario =
+document.getElementById("formComentario");
+
+
+const lista =
+document.getElementById("listaComentarios");
+
+
+const contador =
+document.getElementById("total-comments-counter");
+
+
+
+
+// MOSTRAR COMENTARIOS EN TIEMPO REAL
+
+const comentariosOrdenados =
+query(
+    comentariosRef,
+    orderByChild("fecha")
+);
+
+
+
+onValue(comentariosOrdenados, (snapshot)=>{
+
+
+    lista.innerHTML="";
+
+
+    let cantidad=0;
+
+
+
+    snapshot.forEach((item)=>{
+
+
+        cantidad++;
+
+
+        const comentario =
+        item.val();
+
+
+
+        const tarjeta = document.createElement("div");
+
+
+        tarjeta.className =
+        "bg-slate-900 border border-slate-700 rounded-xl p-4";
+
+
+
+        tarjeta.innerHTML = `
+
+        <div class="flex justify-between items-center">
+
+
+            <span class="text-amber-400 font-bold">
+
+                ${comentario.nombre}
+
+            </span>
+
+
+            <span class="text-gray-500 text-xs">
+
+                ${comentario.fecha}
+
+            </span>
+
+
+        </div>
+
+
+
+        <p class="mt-3 text-gray-300">
+
+            ${comentario.texto}
+
+        </p>
+
+
+        `;
+
+
+
+        lista.appendChild(tarjeta);
+
+
+
+    });
+
+
+
+    contador.innerHTML = cantidad;
+
+
+
+});
+
+
+
+
+
+// GUARDAR NUEVO COMENTARIO
+
+
+formulario.addEventListener(
+"submit",
+(e)=>{
+
 
 e.preventDefault();
 
-const nombre = document.getElementById("nombre").value.trim();
 
-const comentario = document.getElementById("comentario").value.trim();
 
-if(nombre==="" || comentario==="") return;
+const nombre =
+document.getElementById("nombre").value.trim();
 
-push(ref(db,"comentarios"),{
 
-nombre:nombre,
 
-comentario:comentario,
+const texto =
+document.getElementById("comentario").value.trim();
 
-fecha:Date.now()
 
-});
 
-formulario.reset();
 
-});
+
+if(!nombre || !texto){
+
+    return;
 
 }
 
-onChildAdded(ref(db,"comentarios"),(snap)=>{
 
-const datos=snap.val();
 
-const div=document.createElement("div");
 
-div.className="comentario";
 
-div.innerHTML=`
-<h4>${datos.nombre}</h4>
-<p>${datos.comentario}</p>
-`;
+const nuevoComentario =
+push(comentariosRef);
 
-lista.prepend(div);
+
+
+
+
+set(nuevoComentario,{
+
+
+nombre:nombre,
+
+
+texto:texto,
+
+
+fecha:
+Date.now()
+
+
+
+});
+
+
+
+
+
+formulario.reset();
+
+
 
 });
