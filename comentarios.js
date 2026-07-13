@@ -48,7 +48,7 @@ const generarComentariosIniciales = () => {
 };
 
 // Descomenta la línea de abajo solo la primera vez que cargues la app para poblar la BD
-generarComentariosIniciales();
+//  generarComentariosIniciales();
 
 // MOSTRAR COMENTARIOS EN TIEMPO REAL
 const comentariosOrdenados = query(comentariosRef, orderByChild("fecha"));
