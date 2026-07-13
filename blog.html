@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog - Red Católica</title>
+    <style>
+        :root { --bg: #0a0a0a; --card: #171717; --acc: #10b981; --t1: #fff; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--t1); padding: 20px; }
+        .admin-panel { background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid #333; margin-bottom: 20px; }
+        .post-container { margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .btn { background: var(--acc); border: none; color: white; padding: 10px; border-radius: 6px; cursor: pointer; margin: 5px; }
+        .btn-live { background: #ef4444; }
+        .btn-del { background: #b91c1c; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+    <!-- Panel de Administración -->
+    <div class="admin-panel">
+        <h3>Panel de Publicación</h3>
+        <button class="btn" onclick="openUpload('texto')">Publicar Texto</button>
+        <button class="btn" onclick="openUpload('imagen')">Publicar Imagen</button>
+        <button class="btn" onclick="openUpload('video')">Publicar Video</button>
+        <button class="btn" onclick="openUpload('audio')">Subir Podcast/Audio</button>
+        <button class="btn btn-live" onclick="startLive()">🔴 Iniciar Transmisión en Vivo</button>
+    </div>
+
+    <!-- Feed del Blog -->
+    <div id="blogFeed">
+        <!-- Las publicaciones se inyectarán aquí mediante JS -->
+    </div>
+
+    <script>
+        // Función para manejar la eliminación de comentarios/publicaciones
+        function deleteContent(id) {
+            if(confirm("¿Seguro que deseas eliminar este contenido?")) {
+                // Aquí va la lógica de llamado al API/Servidor
+                console.log("Eliminando contenido con ID:", id);
+            }
+        }
+
+        // Función de simulación para subir archivos
+        function openUpload(type) {
+            alert("Abriendo selector para subir: " + type);
+            // Aquí integrarías un Input File dinámico o un modal
+        }
+
+        function startLive() {
+            alert("Iniciando conexión con RTMP para transmisión en vivo...");
+        }
+    </script>
+</body>
+</html>
